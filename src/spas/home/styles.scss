@@ -1,6 +1,146 @@
 /* PUT STYLES HERE */
+$responsive-breakpoint: 640px;
 
 svg {
     width: 100px;
     height: 100px;
+    z-index: 1;
 }
+
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.game {
+    height: 100%;
+    width: 100%;
+    @media (min-width: $responsive-breakpoint) {
+        font-size: 1.5rem;
+    }
+}
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    display: table;
+    background-color: #00a;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+    z-index: 2;
+    
+    div {
+        display: table-row;
+        
+        .level {
+            display: table-cell;
+            text-align: left;
+            width: 100px;
+            @media (min-width: $responsive-breakpoint) {
+                width: 150px;
+            }
+        }
+
+        .hit-count {
+            display: table-cell;
+            text-align: center;
+            @media (min-width: $responsive-breakpoint) {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .timer {
+            display: table-cell;
+            text-align: right;
+            width: 100px;
+            @media (min-width: $responsive-breakpoint) {
+                width: 150px;
+            }
+        }
+    }
+}
+
+.modal-container {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.modal {
+    position: relative;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    
+    h1 {
+        font-size: 1.5rem;
+        margin: 0 0 .35rem 0;
+    }
+    
+    svg {
+        width: 30px;
+        height: 30px;
+        margin-bottom: .5rem;
+    }
+
+    div {
+        margin-bottom: .75rem;
+    }
+
+    button {
+        color: #000;
+        background-color: #fff;
+        border-color: #999;
+        font-size: .7em;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px 15px;
+    }    
+
+    button:hover {
+        color: #000;
+        background-color: #ccc;
+        border-color: #666;
+    }    
+
+    @media (min-width: $responsive-breakpoint) {
+        width: 420px;
+
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 .5rem 0;
+        }
+        
+        svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: .75rem;
+        }
+
+        div {
+            margin-bottom: 1rem;
+        }
+        
+    }
+    
+}
+
