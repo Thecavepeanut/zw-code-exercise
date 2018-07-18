@@ -43,7 +43,7 @@ class HomeSPA extends Component {
                         ref={c => { this.gameContainer = c}} >
                     <Container height={this.state.height}
                                width={this.state.width} >
-                        <GithubKitty />
+                        <GithubKitty  />
                     </Container>
                 </div>
             </div>

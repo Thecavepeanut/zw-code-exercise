@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { generateRandom } from '../random';
 export default class Container extends Component {
     constructor(){
         super();
@@ -9,19 +9,34 @@ export default class Container extends Component {
     }
 
     componentDidMount(){
-        this.timer = setInterval(this.tick.bind(this), 100);
+        this.timer = setInterval(this.tick.bind(this), 1000);
     }
 
     tick(){
-        console.log(this.props);
+        const {
+            height,
+            width,
+        } = this.props;
+        const l = generateRandom(width - 100, 50);
+        const h = generateRandom(height - 100, 50);
+        this.setState({
+            style: {
+             transform: `translate(${l}px, ${h}px)`,
+             transitionDuration: '0.4s',
+            }
+        })
     }
 
     componentWillUnmount(){
         clearInterval(this.timer);
     }
 
+    click(){
+        console.log(this.props)
+    }
+
     render(){
-        return <div style={this.state.style} >
+        return <div style={this.state.style} onClick={this.click.bind(this)} >
             {this.props.children}
         </div>
     }
