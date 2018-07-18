@@ -9,7 +9,15 @@ export default class Container extends Component {
     }
 
     componentDidMount(){
-        
+        this.timer = setInterval(this.tick.bind(this), 100);
+    }
+
+    tick(){
+        console.log(this.props);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timer);
     }
 
     render(){

@@ -13,7 +13,13 @@ class HomeSPA extends Component {
             width: 0,
         }
     }
+
     componentDidMount(){
+        window.addEventListener('resize', this.setDimensions.bind(this));
+        this.setDimensions();
+    }
+
+    setDimensions(){
         const {
             offsetHeight,
             offsetWidth
@@ -23,6 +29,11 @@ class HomeSPA extends Component {
             width: offsetWidth,
         })
     }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.setDimensions.bind(this));
+    }
+
     render(){
         return (
             <div className="main" >
