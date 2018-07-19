@@ -18,3 +18,8 @@ svg {
     right: 0;
     padding: 0.6em;
 }
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}

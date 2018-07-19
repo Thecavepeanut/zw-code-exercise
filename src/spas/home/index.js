@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import GithubKitty from './github.svg'
 import Container from './container';
+import Toolbar from './toolbar';
 import './styles.scss'
 import './home.font'
 
@@ -11,7 +12,8 @@ class HomeSPA extends Component {
         this.state = {
             height: 0,
             width: 0,
-            points: 15,
+            misses: 15,
+            points: 10,
         }
     }
 
@@ -40,10 +42,9 @@ class HomeSPA extends Component {
     render(){
         return (
             <div className="main" >
-                <div>
-                    <span className="icon icon-beer" />
-                    <span className="icon icon-heart" />
-                </div>
+                <Toolbar 
+                    misses={this.state.misses}
+                    points={this.state.points} />
                 <div 
                      className="gameContainer" 
                         ref={c => { this.gameContainer = c}} >
