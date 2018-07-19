@@ -11,6 +11,7 @@ class HomeSPA extends Component {
         this.state = {
             height: 0,
             width: 0,
+            points: 15,
         }
     }
 
@@ -34,10 +35,15 @@ class HomeSPA extends Component {
         window.removeEventListener('resize', this.setDimensions.bind(this));
     }
 
+
+
     render(){
         return (
             <div className="main" >
-                <span className="icon icon-beer"/>
+                <div>
+                    <span className="icon icon-beer" />
+                    <span className="icon icon-heart" />
+                </div>
                 <div 
                      className="gameContainer" 
                         ref={c => { this.gameContainer = c}} >
