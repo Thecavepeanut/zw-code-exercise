@@ -18,7 +18,9 @@ svg {
     right: 0;
     padding: 0.6em;
 }
-
+.scored {
+    opacity: 0.6;
+}
 .toolbar {
     display: flex;
     justify-content: space-between;

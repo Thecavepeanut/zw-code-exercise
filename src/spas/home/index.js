@@ -13,7 +13,7 @@ class HomeSPA extends Component {
             height: 0,
             width: 0,
             misses: 15,
-            points: 10,
+            points: 4,
         }
     }
 
@@ -43,6 +43,7 @@ class HomeSPA extends Component {
         return (
             <div className="main" >
                 <Toolbar 
+                    maxPoints={10}
                     misses={this.state.misses}
                     points={this.state.points} />
                 <div 
