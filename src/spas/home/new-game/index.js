@@ -8,6 +8,7 @@ const NewGame = ({
             <div className="preview" >
                 <GithubKitty className='smallSvg' />
             </div>
+            <span>Click the kitty 10 times</span>
             <button onClick={clicked} >Start</button>
         </div>
 }
