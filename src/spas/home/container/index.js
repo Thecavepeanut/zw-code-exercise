@@ -19,12 +19,16 @@ export default class Container extends Component {
             height,
             width,
         } = this.props;
-        const l = generateRandom(width - 160, 160);
-        const h = generateRandom(height - 160, 160);
+        const dimension = (height * width)/5120;
+        const size = `${dimension}px`
+
+        const l = generateRandom(width - dimension, dimension);
+        const h = generateRandom(height - dimension, dimension);
+
         this.setState({
             style: {
-             height: '160px',
-             width: '160px',   
+             height: size,
+             width: size,   
              transform: `translate(${l}px, ${h}px)`,
              transitionDuration: '0.4s',
             }

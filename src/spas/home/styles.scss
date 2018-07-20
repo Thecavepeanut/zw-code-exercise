@@ -13,15 +13,18 @@ svg {
 
 @keyframes color {
     0% {
-        fill: black
+        fill: black;
+        opacity: 0.8;
     }
 
     50% {
         fill: red;
+        opacity: 0.3;
     }
 
     100% {
         fill: black;
+        opacity: 0.8;
     }
 }
 .gameContainer {
