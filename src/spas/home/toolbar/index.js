@@ -7,17 +7,17 @@ export const Toolbar = ({
     misses,
     maxMisses
 }) => {
-    return (<div className="toolbar">
+    return (<header className="toolbar">
             <div>
                 {Array(points).fill().map((_, i) => <span key={i + 'beer'} className="icon icon-beer"/>)}
-                {Array(maxPoints - points).fill().map((_, i) =>  <span key={i + 'beerd'} style={{ opacity: 0.1 }} className="icon icon-beer"/>)}
+                {Array(maxPoints - points).fill().map((_, i) =>  <span key={i + 'beerd'} className="icon icond icon-beer"/>)}
             </div>
             <h4>Kitty Clicker</h4>
             <div>
                 {Array(maxMisses - misses).fill().map((_, i) => <span key={i + 'lb'} className="icon icon-light-bulb" />)}
-                {Array(misses).fill().map((_, i) => <span key={i + 'lbd'} style={{ opacity: 0.1 }} className="icon icon-light-bulb" />)}
+                {Array(misses).fill().map((_, i) => <span key={i + 'lbd'} className="icon icond icon-light-bulb" />)}
             </div>
-        </div>);
+        </header>);
 }
 
 export default Toolbar;

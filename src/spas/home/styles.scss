@@ -30,9 +30,12 @@ svg {
 .gameContainer {
     height: 100%;
     width: 100%;
-    background: white;
+    background: rgba(255,255,255,0.75);;
 }
 
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 .main {
     position: absolute;
@@ -40,17 +43,21 @@ svg {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0.6em;
     overflow: hidden;
 }
 .scored {
     opacity: 0.6;
 }
+
 .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #24292e;
+    color: rgba(255,255,255,0.75);
+    padding: 0.3em;
 }
-.icond{
-    opacity: 0.6;
+
+.icond {
+    opacity: 0.4;
 }
