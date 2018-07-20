@@ -4,8 +4,8 @@ const NewGame = ({
     clicked
 }) => {
     return <div className='card' >
-            <h1>Kitty Clicker</h1>
-            <div className="preview" >
+            <h1>You Win!</h1>
+            <div className="dead" >
                 <GithubKitty className='smallSvg' />
             </div>
             <button onClick={clicked} >Start</button>

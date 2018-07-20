@@ -4,11 +4,12 @@ const NewGame = ({
     clicked
 }) => {
     return <div className='card' >
-            <h1>Kitty Clicker</h1>
-            <div className="preview" >
+            <h1>Game Over!</h1>
+            <div className="bounce" >
                 <GithubKitty className='smallSvg' />
             </div>
-            <button onClick={clicked} >Start</button>
+            <span>You ran out of tries</span>
+            <button onClick={clicked} >Try Again!</button>
         </div>
 }
 

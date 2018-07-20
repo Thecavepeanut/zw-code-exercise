@@ -4,10 +4,12 @@ import GithubKitty from './github.svg'
 import Container from './container';
 import Toolbar from './toolbar';
 import NewGame from './new-game';
-
+import GameOver from './game-over';
+import GameWon from './game-won';
 import './styles.scss'
 import './home.font'
-
+const maxMisses = 5;
+const maxPoints = 10;
 class HomeSPA extends Component {
     constructor(){
         super();
@@ -17,6 +19,7 @@ class HomeSPA extends Component {
             misses: 0,
             points: 0,
             gameOver: false,
+            gameWon: false,
             gameRunning: false,
             newGame: true,
         }
@@ -43,14 +46,47 @@ class HomeSPA extends Component {
     }
 
     hit(){
+        const points = this.state.points + 1;
         this.setState({
-            points: this.state.points + 1,
+            points,
         })
+        this.checkEndGame(this.state.misses, points);
     }
 
     missed (){
+        const misses = this.state.misses + 1;
         this.setState({
-            misses: this.state.misses + 1,
+            misses,
+        })
+
+        this.checkEndGame(misses, this.state.points);
+    }
+
+    checkEndGame(misses, points){
+        if(misses === maxMisses){
+            this.setState({
+                gameOver: true,
+                gameRunning: false,
+            });
+        }
+
+        if(points === maxPoints){
+            this.setState({
+                gameWon: true,
+                gameRunning: false,
+            });
+        }
+            
+    }
+
+    startNewGame() {
+        this.setState({
+            gameOver: false,
+            gameRunning: true,
+            newGame: false,
+            gameWon: false,
+            points: 0,
+            misses: 0,
         })
     }
 
@@ -61,14 +97,15 @@ class HomeSPA extends Component {
             gameRunning,
             newGame,
             gameOver,
+            gameWon,
             height,
             width,
         } = this.state;
         return (
             <div className="main" >
                 <Toolbar 
-                    maxPoints={10}
-                    maxMisses={5}
+                    maxPoints={maxPoints}
+                    maxMisses={maxMisses}
                     misses={misses}
                     points={points} />
                 <div
@@ -83,9 +120,13 @@ class HomeSPA extends Component {
                         <GithubKitty />
                     </Container>}
                 </div>
-                <div className="overlay" >
-                    {newGame && <NewGame />}
-                </div>
+               {!gameRunning && <div className="overlay" >
+                    {newGame && <NewGame clicked={this.startNewGame.bind(this)} />}
+                    {gameOver && <GameOver clicked={this.startNewGame.bind(this)} />}
+                    {gameWon && <GameWon clicked={this.startNewGame.bind(this)} />  }
+                    <div className="overlayBackground" />
+                    
+                </div>}
             </div>
         )
     }
