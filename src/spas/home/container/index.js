@@ -4,7 +4,9 @@ export default class Container extends Component {
     constructor(){
         super();
         this.state = {
-            style: {}
+            style: {
+                visibility: 'hidden',
+            }
         };
     }
 
@@ -17,10 +19,12 @@ export default class Container extends Component {
             height,
             width,
         } = this.props;
-        const l = generateRandom(width - 100, 50);
-        const h = generateRandom(height - 100, 50);
+        const l = generateRandom(width - 160, 160);
+        const h = generateRandom(height - 160, 160);
         this.setState({
             style: {
+             height: '160px',
+             width: '160px',   
              transform: `translate(${l}px, ${h}px)`,
              transitionDuration: '0.4s',
             }
@@ -32,7 +36,13 @@ export default class Container extends Component {
     }
 
     click(){
-        console.log(this.props)
+        clearInterval(this.timer);
+        const newStyle = Object.assign({ animation: 'color 0.5s infinite', pointerEvents: 'none' }, this.state.style);
+        this.setState({
+            style: newStyle 
+        });
+        this.timer = setInterval(this.tick.bind(this), 1000);
+        this.props.clicked();
     }
 
     render(){

@@ -12,8 +12,8 @@ class HomeSPA extends Component {
         this.state = {
             height: 0,
             width: 0,
-            misses: 15,
-            points: 4,
+            misses: 0,
+            points: 0,
         }
     }
 
@@ -37,21 +37,36 @@ class HomeSPA extends Component {
         window.removeEventListener('resize', this.setDimensions.bind(this));
     }
 
+    hit(){
+        this.setState({
+            points: this.state.points + 1,
+        })
+    }
 
+    missed (){
+        this.setState({
+            missed: this.state.misses + 1,
+        })
+    }
 
     render(){
         return (
             <div className="main" >
                 <Toolbar 
                     maxPoints={10}
+                    maxMisses={5}
                     misses={this.state.misses}
                     points={this.state.points} />
-                <div 
-                     className="gameContainer" 
-                        ref={c => { this.gameContainer = c}} >
+                <div
+                    onClick={this.missed.bind(this)} 
+                    className="gameContainer" 
+                    ref={c => { this.gameContainer = c}} 
+                    >
                     <Container height={this.state.height}
+                               className='svgContainer'
+                               clicked={this.hit.bind(this)}
                                width={this.state.width} >
-                        <GithubKitty  />
+                        <GithubKitty />
                     </Container>
                 </div>
             </div>
