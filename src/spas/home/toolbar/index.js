@@ -12,7 +12,7 @@ export const Toolbar = ({
                 {Array(points).fill().map((_, i) => <span key={i + 'beer'} className="icon icon-beer"/>)}
                 {Array(maxPoints - points).fill().map((_, i) =>  <span key={i + 'beerd'} className="icon icond icon-beer"/>)}
             </div>
-            <h4>Kitty Clicker</h4>
+            <h1>Kitty Clicker</h1>
             <div>
                 {Array(maxMisses - misses).fill().map((_, i) => <span key={i + 'lb'} className="icon icon-light-bulb" />)}
                 {Array(misses).fill().map((_, i) => <span key={i + 'lbd'} className="icon icond icon-light-bulb" />)}

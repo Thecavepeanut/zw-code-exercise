@@ -7,7 +7,7 @@
 
 .smallSvg {
     height: 3em;
-    width: 3empx;
+    width: 3em;
 }
 
 svg {
@@ -204,3 +204,32 @@ body{
 .icond {
     opacity: 0.4;
 }
+
+.icon {
+    font-size: 32px
+}
+@media screen and (max-width: 980px) {
+    .smallSvg {
+        height: 2em;
+        width: 2em;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .icon {
+        font-size: 24px
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .smallSvg {
+        height: 1.5em;
+        width: 1.5em;
+    }
+    h1 {
+        font-size: 1.0em;
+    }
+    .icon {
+        font-size: 16px
+    }
+}    
