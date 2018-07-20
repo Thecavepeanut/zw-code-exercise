@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GithubKitty from './github.svg'
 import Container from './container';
 import Toolbar from './toolbar';
+import NewGame from './new-game';
+
 import './styles.scss'
 import './home.font'
 
@@ -16,6 +18,7 @@ class HomeSPA extends Component {
             points: 0,
             gameOver: false,
             gameRunning: false,
+            newGame: true,
         }
     }
 
@@ -56,6 +59,8 @@ class HomeSPA extends Component {
             misses,
             points,
             gameRunning,
+            newGame,
+            gameOver,
             height,
             width,
         } = this.state;
@@ -78,7 +83,9 @@ class HomeSPA extends Component {
                         <GithubKitty />
                     </Container>}
                 </div>
-                <div className="overlay" />
+                <div className="overlay" >
+                    {newGame && <NewGame />}
+                </div>
             </div>
         )
     }
