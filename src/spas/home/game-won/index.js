@@ -8,7 +8,7 @@ const NewGame = ({
             <div className="dead" >
                 <GithubKitty className='smallSvg' />
             </div>
-            <button onClick={clicked} >Start</button>
+            <button onClick={clicked} >Play Again</button>
         </div>
 }
 

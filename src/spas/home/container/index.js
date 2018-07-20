@@ -11,7 +11,7 @@ export default class Container extends Component {
     }
 
     componentDidMount(){
-        this.timer = setInterval(this.tick.bind(this), 750);
+        this.timer = setInterval(this.tick.bind(this), 1200);
     }
 
     tick(){
