@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component, Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import GithubKitty from './github.svg'
 import Container from './container';
@@ -14,6 +14,8 @@ class HomeSPA extends Component {
             width: 0,
             misses: 0,
             points: 0,
+            gameOver: false,
+            gameRunning: false,
         }
     }
 
@@ -50,24 +52,31 @@ class HomeSPA extends Component {
     }
 
     render(){
+        const {
+            misses,
+            points,
+            gameRunning,
+            height,
+            width,
+        } = this.state;
         return (
             <div className="main" >
                 <Toolbar 
                     maxPoints={10}
                     maxMisses={5}
-                    misses={this.state.misses}
-                    points={this.state.points} />
+                    misses={misses}
+                    points={points} />
                 <div
                     onClick={this.missed.bind(this)} 
                     className="gameContainer" 
                     ref={c => { this.gameContainer = c}} 
                     >
-                    <Container height={this.state.height}
+                    {gameRunning && <Container height={height}
                                className='svgContainer'
                                clicked={this.hit.bind(this)}
-                               width={this.state.width} >
+                               width={width} >
                         <GithubKitty />
-                    </Container>
+                    </Container>}
                 </div>
             </div>
         )
