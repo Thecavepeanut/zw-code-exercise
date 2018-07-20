@@ -45,7 +45,7 @@ class HomeSPA extends Component {
 
     missed (){
         this.setState({
-            missed: this.state.misses + 1,
+            misses: this.state.misses + 1,
         })
     }
 

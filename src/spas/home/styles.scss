@@ -10,6 +10,7 @@ svg {
     height: inherit;
     animation: inherit;
 }
+
 @keyframes color {
     0% {
         fill: black
@@ -26,7 +27,10 @@ svg {
 .gameContainer {
     height: 100%;
     width: 100%;
+    background: white;
 }
+
+
 .main {
     position: absolute;
     top: 0;
@@ -42,6 +46,7 @@ svg {
 .toolbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .icond{
     opacity: 0.6;

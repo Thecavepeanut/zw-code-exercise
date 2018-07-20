@@ -35,7 +35,8 @@ export default class Container extends Component {
         clearInterval(this.timer);
     }
 
-    click(){
+    click(e){
+        e.stopPropagation();
         clearInterval(this.timer);
         const newStyle = Object.assign({ animation: 'color 0.5s infinite', pointerEvents: 'none' }, this.state.style);
         this.setState({
