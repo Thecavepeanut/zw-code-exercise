@@ -11,7 +11,7 @@ export default class Container extends Component {
     }
 
     componentDidMount(){
-        this.timer = setInterval(this.tick.bind(this), 1000);
+        this.timer = setInterval(this.tick.bind(this), 750);
     }
 
     tick(){
@@ -19,17 +19,17 @@ export default class Container extends Component {
             height,
             width,
         } = this.props;
-        const dimension = (height * width)/5120;
+        const dimension = (height * width)/10240;
         const size = `${dimension}px`
 
         const l = generateRandom(width - dimension, dimension);
         const h = generateRandom(height - dimension, dimension);
-
+        const r = generateRandom(360, 0);
         this.setState({
             style: {
              height: size,
              width: size,   
-             transform: `translate(${l}px, ${h}px)`,
+             transform: `translate(${l}px, ${h}px) rotate(${r}deg)`,
              transitionDuration: '0.4s',
             }
         })

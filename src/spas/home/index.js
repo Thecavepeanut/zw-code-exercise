@@ -32,12 +32,12 @@ class HomeSPA extends Component {
 
     setDimensions(){
         const {
-            offsetHeight,
-            offsetWidth
+            clientHeight,
+            clientWidth,
         } = this.gameContainer;
         this.setState({
-            height: offsetHeight,
-            width: offsetWidth,
+            height: clientHeight,
+            width: clientWidth,
         })
     }
 
