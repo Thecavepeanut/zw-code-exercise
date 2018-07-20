@@ -18,10 +18,12 @@ class HomeSPA extends Component {
             width: 0,
             misses: 0,
             points: 0,
+            missedClickPosition: [0 , 0],
             gameOver: false,
             gameWon: false,
             gameRunning: false,
             newGame: true,
+            showMiss: false,
         }
     }
 
@@ -53,12 +55,26 @@ class HomeSPA extends Component {
         this.checkEndGame(this.state.misses, points);
     }
 
-    missed (){
+    missed (e){
         const misses = this.state.misses + 1;
+        const {
+            pageX,
+            pageY,
+        } = e;
+        if(this.timeout){
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        }
         this.setState({
             misses,
+            showMiss: true,
+            missedClickPosition: [pageX, pageY]
         })
-
+        this.timeout = setTimeout(() => { 
+            this.setState({ showMiss: false }) 
+            this.timeout = null;
+        }, 1000);
+        console.log(this.timeout);
         this.checkEndGame(misses, this.state.points);
     }
 
@@ -98,8 +114,10 @@ class HomeSPA extends Component {
             newGame,
             gameOver,
             gameWon,
+            showMiss,
             height,
             width,
+            missedClickPosition,
         } = this.state;
         return (
             <div className="main" >
@@ -113,6 +131,11 @@ class HomeSPA extends Component {
                     className="gameContainer" 
                     ref={c => { this.gameContainer = c}} 
                     >
+                    {showMiss && <span style={{
+                        position: 'absolute',
+                        top: missedClickPosition[1],
+                        left: missedClickPosition[0],
+                    }} className="icon missed icon-light-bulb" />}
                     {gameRunning && <Container height={height}
                                className='svgContainer'
                                clicked={this.hit.bind(this)}
