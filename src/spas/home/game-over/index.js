@@ -5,7 +5,7 @@ const NewGame = ({
 }) => {
     return <div className='card' >
             <h1>Game Over!</h1>
-            <div className="bounce" >
+            <div className="dead" >
                 <GithubKitty className='smallSvg' />
             </div>
             <span>You ran out of tries</span>
