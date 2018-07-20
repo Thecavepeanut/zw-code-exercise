@@ -78,6 +78,7 @@ class HomeSPA extends Component {
                         <GithubKitty />
                     </Container>}
                 </div>
+                <div className="overlay" />
             </div>
         )
     }
