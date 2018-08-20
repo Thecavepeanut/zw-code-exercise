@@ -1,17 +1,12 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import './styles.scss'
-import GithubKitty from './github.svg'
-import './home.font'
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import ClickGame from './ClickGame.js';
 
 class HomeSPA extends Component {
     render(){
         return (
-            <div>
-                <span className="icon icon-beer"/>
-                <GithubKitty />
-            </div>
-        )
+          <ClickGame winScore="10"/>
+        );
     }
 }
 

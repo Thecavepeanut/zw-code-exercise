@@ -1,6 +1,79 @@
 /* PUT STYLES HERE */
+.display-start-screen, .display-winner-panel {
+  font-size: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.start-welcome, .start-controls, .winner-msg {
+  text-align: center;
+}
+
+.start-controls input {
+  border-color: black;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+}
+
+@keyframes kitty {
+    0%   {fill: red;}
+    25%  {fill: yellow;}
+    50%  {fill: blue;}
+    75%  {fill: green;}
+    100% {fill: red;}
+    from {
+      transform: rotateY(0deg)
+    } to {
+      transform: rotateY(360deg)
+    }
+}
+
+@keyframes rotateClockwise {
+    0%   {fill: red;}
+    25%  {fill: yellow;}
+    50%  {fill: blue;}
+    75%  {fill: green;}
+    100% {fill: red;}
+    from {
+      transform: rotate(0deg)
+    } to {
+      transform: rotate(360deg)
+    }
+}
+
+@keyframes rotateCounterClockwise {
+    0%   {fill: red;}
+    25%  {fill: green;}
+    50%  {fill: blue;}
+    75%  {fill: yellow;}
+    100% {fill: red;}
+    from {
+      transform: rotate(360deg)
+    } to {
+      transform: rotate(0deg)
+    }
+}
 
 svg {
     width: 100px;
     height: 100px;
+}
+
+.start-welcome svg, .winner-msg svg {
+  animation: kitty 5s infinite;
+}
+
+.rotate-counter-clockwise {
+  animation: rotateCounterClockwise 2s linear infinite;
+}
+
+.rotate-clockwise {
+  animation: rotateClockwise 2s linear infinite;
 }

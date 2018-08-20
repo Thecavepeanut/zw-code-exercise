@@ -57,5 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
-dist/**
+#update to pick up index.html
+#dist/**
+dist/home
+dist/main
+
 node_modules
