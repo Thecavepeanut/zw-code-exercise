@@ -1,6 +1,118 @@
 /* PUT STYLES HERE */
+$background-color: #0b3954;
+$border: 1px solid #88a2af;
+$text-color: #ffffff;
+
+.App {
+    max-width: 500px;
+    margin:0 auto;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #BFD7EA;
+}
 
 svg {
     width: 100px;
     height: 100px;
+    position: absolute;
+    fill: $text-color;
+    &:hover {
+        cursor: pointer;
+    };
+}
+
+//shared styles
+.header {
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 3px 0 3px 0;
+    background-color: #FF5A5F;
+    color: $text-color;
+}
+
+.btn {
+    cursor: pointer;
+    transition-duration: 200ms;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100px;
+    border: 2px solid #FF5A5F;
+    color: #FF5A5F;
+    font-weight: bold;
+    &:hover {
+        transition-duration: 200ms;
+        background-color: #FF5A5F;
+        border: 2px solid #FF5A5F;
+        color: $text-color;
+    };
+}
+
+// board styles
+.board {
+    margin-top: 20px;
+}
+
+.game-container {
+    max-width: 500px;
+    height: 600px;
+    overflow: hidden;
+    background-color: $background-color;
+    position: relative;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.game-container h1 {
+    color: $text-color;
+    text-align: center;
+    opacity: 0;
+}
+
+// start styles
+.start {
+    height: 400px;
+    background-color: $background-color;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.kitty-container {
+    max-width: 300px;
+    padding-top: 40px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.start-description {
+    text-align: center;
+    color: $text-color;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+// winner styles
+.winner {
+    height: 400px;
+    background-color: $background-color;
+    border-radius: 5px;
+}
+
+.winner-header {
+    text-align: center;
+    padding: 20px;
+    color: $text-color;
+}
+
+.winner-kitty {
+    width: 100px;
+    margin: 0 auto;
+    &:hover {
+        cursor: default;
+    };
 }
