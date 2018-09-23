@@ -1,6 +1,82 @@
 /* PUT STYLES HERE */
+$black: #000;
+$white: #fff;
+$terminalGreen: #00ff00;
 
-svg {
-    width: 100px;
-    height: 100px;
+body {
+    background: $black;
+    color: $terminalGreen;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+button {
+    color: $black;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: $terminalGreen;
+    border: 1px solid $terminalGreen;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+#game-play-screen {
+    .score-header{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        h1 {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .icon-beer {
+            color: $terminalGreen;
+            margin-right: 10px;
+        }
+    }
+
+    svg {
+        width: 100px;
+        height: 100px;
+        fill: $terminalGreen;
+    }
+}
+
+// Animations
+@keyframes rotateClockwise {
+    0%   {fill: yellow;}
+    25%  {fill: blue;}
+    50%  {fill: green;}
+    75%  {fill: red;}
+    100% {fill: purple;}
+    from {
+      transform: rotate(0deg)
+    } to {
+      transform: rotate(360deg)
+    }
+}
+
+@keyframes rotateCounterClockwise {
+    0%   {fill: yellow;}
+    25%  {fill: blue;}
+    50%  {fill: green;}
+    75%  {fill: red;}
+    100% {fill: purple;}
+    from {
+      transform: rotate(360deg)
+    } to {
+      transform: rotate(0deg)
+    }
+}
+
+.clockwise {
+    animation: rotateClockwise 1s linear infinite;
+}
+
+.counter-clockwise {
+    animation: rotateCounterClockwise 1s linear infinite;
 }

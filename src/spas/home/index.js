@@ -1,19 +1,14 @@
-import React, {Component} from 'react'
+
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import './styles.scss'
-import GithubKitty from './github.svg'
-import './home.font'
+import GameMain from './gameMain'
 
 class HomeSPA extends Component {
-    render(){
+    render() {
         return (
-            <div>
-                <span className="icon icon-beer"/>
-                <GithubKitty />
-            </div>
+            <GameMain winningTotal={10} />
         )
     }
 }
-
 
 ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))
