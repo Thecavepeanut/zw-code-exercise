@@ -1,6 +1,66 @@
+@import './reset.scss';
+
 /* PUT STYLES HERE */
+
+
 
 svg {
     width: 100px;
     height: 100px;
+}
+
+.start-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+    }
+
+    &__button {
+        background-color: white; /* Green */
+        border: none;
+        color: #4CAF50;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+    }
+
+    &__title {
+        font-size: 100px;
+        color: white;
+    }
+}
+
+.main-game-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+
+.target {
+    cursor: pointer;
+    position: absolute;
+
+    svg {
+        fill: white;
+    }
 }
