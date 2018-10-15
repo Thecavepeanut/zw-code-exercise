@@ -1,3 +1,6 @@
+
+## NOTE: Must move index.html and dubstep.mp3 to dist
+
 # zw-code-exercise
 ZW Code Exercise - React Game
 
