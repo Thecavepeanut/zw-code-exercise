@@ -1,6 +1,30 @@
 /* PUT STYLES HERE */
 
-svg {
+.svg {
     width: 100px;
     height: 100px;
+    position: relative;
+    -webkit-animation-name: kitty;
+    -webkit-animation-duration: 100s;
+    animation-name: kitty;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes kitty {
+    0%   {left:0px; top:0px; transform: rotate(0deg);}
+    25%  {left:60%; top:200px; transform: rotate(180deg);}
+    50%  {left:10%; top:400px; transform: rotate(36080deg);}
+    75%  {left:80%; top:600px; transform: rotate(270deg);}
+    100% {left:0px; top:0px; transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes kitty {
+    0%   {left:0px; top:0px; transform: rotate(0deg);}
+    25%  {left:60%; top:200px; transform: rotate(90deg);}
+    50%  {left:10%; top:400px; transform: rotate(36080deg);}
+    75%  {left:80%; top:600px; transform: rotate(270deg);}
+    100% {left:0px; top:0px; transform: rotate(360deg);}
 }
