@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './styles.scss';
-import GithubKitty from './github.svg';
 import './home.font';
+
 import Start from './start';
 import MainGame from './main-game';
 import Win from './win';
+import Lose from './lose';
 
-// Fake enum :(
 export const GameState = {
     START_MENU: 'start-menu',
     GAME_OVER: 'game-over',
@@ -22,53 +22,30 @@ class HomeSPA extends Component {
 
         // Init game state
         this.state = {
-            screen: {
-                width: window.innerWidth,
-                height: window.innerHeight,
-                ratio: window.devicePixelRatio || 1,
-            },
             gameState: GameState.START_MENU,
             successCount: 0,
         }
 
         this.loadSound();
 
-        // Ugg, I forgot about this...
+        // Bind context
         this.startGame = this.startGame.bind(this);
-        this.updateScore = this.updateScore.bind(this);
+        this.increaseScore = this.increaseScore.bind(this);
+        this.decreaseScore = this.decreaseScore.bind(this);
         this.resetGame = this.resetGame.bind(this);
     }
 
-    // Update game area dimensions when window is resized
-    handleResize(value, e){
-        this.setState({
-            screen : {
-                width: window.innerWidth,
-                height: window.innerHeight,
-                ratio: window.devicePixelRatio || 1,
-            }
-        });
-    }
-    
-    componentDidMount() {
-        // Listen for resize event when component is loaded
-        window.addEventListener('resize',  this.handleResize.bind(this, false));
-    }
-
-    componentWillUnmount() {
-        // Unload resize listener when component is destroyed
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    // Main game state controller
+    // Main game state controller. Load components when state changes.
     setGameScreen(state) {
         switch(state) {
             case GameState.START_MENU:
                 return <Start startGame = {this.startGame}/>;
             case GameState.IN_GAME:
-                return <MainGame updateScore = {this.updateScore}/>;
+                return <MainGame increaseScore = {this.increaseScore} decreaseScore = {this.decreaseScore}/>;
             case GameState.WINNER:
                 return <Win resetGame = {this.resetGame}/>;
+            case GameState.GAME_OVER:
+                return <Lose resetGame = {this.resetGame}/>;
         }
     }
 
@@ -87,11 +64,44 @@ class HomeSPA extends Component {
         this.stopAudio();
     }
 
+    loseGame() {
+        this.setState({
+            gameState: GameState.GAME_OVER
+        })
+        this.stopAudio();
+    }
+
     resetGame() {
         this.setState({
             gameState: GameState.START_MENU
         })
     }
+
+    increaseScore() {
+        const newScore = this.state.successCount + 1;
+
+        if (newScore < 10) {
+            this.setState({
+                successCount: newScore
+            })
+        } else {
+            this.winGame();
+        }
+    }
+
+    decreaseScore() {
+        const newScore = this.state.successCount - 1;
+
+        if (newScore < 0) {
+            this.loseGame();
+        } else {
+            this.setState({
+                successCount: newScore
+            })
+        }
+    }
+
+    // ========== AUDIO ========= //
 
     playAudio() {
         this.audio.play();
@@ -102,6 +112,12 @@ class HomeSPA extends Component {
         this.audio.currentTime = 0;
     }
 
+    /*
+        Note: I was planning to use the HTML5 Audio API spectrum analyzer to detect the song bpm 
+        and highs to sync events to. The setTimeout and setInterval aren't super accurate due to
+        rounding errors, which causes the song to slowly get out of sync. Didn't get around to 
+        doing this, but was still pretty cool.
+    */
     loadSound() {
         let AudioContext = window.AudioContext || window.webkitAudioContext;
         let audioContext = new AudioContext();
@@ -109,59 +125,22 @@ class HomeSPA extends Component {
         this.audio.src = './dubstep.mp3';
         let audioSrc = audioContext.createMediaElementSource(this.audio);
         var analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        let frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
         this.audio.addEventListener('canplay', function(){
             audioSrc.connect(analyser);
             audioSrc.connect(audioContext.destination);
-            //audio.play();
         });
-        
-        // var ctx = new AudioContext();
-        // this.audio = document.createElement('audio');
-        // this.audio.src = './dubstep.mp3';
-        // var audioSrc = ctx.createMediaElementSource(this.audio);
-        // var analyser = ctx.createAnalyser();
-        // audioSrc.connect(analyser);
-        // audioSrc.connect(ctx.destination);
-
-        // var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-
-        // // loop to use the data
-        // function renderFrame() {
-        //     requestAnimationFrame(renderFrame);
-        //     // update data in frequencyData
-        //     analyser.getByteFrequencyData(frequencyData);
-        //     // render frame based on values in frequencyData
-
-        // }
-
-        // this.audio.play();
-        // renderFrame();
-    }
-
-    updateScore() {
-        const newScore = this.state.successCount + 1;
-
-        if (newScore < 10) {
-            this.setState({
-                successCount: newScore
-            })
-        } else {
-            this.winGame();
-        }
-
     }
 
     render(){
         return (
             <div className="main">
-                {/* <span className="icon icon-beer"/>
-                <GithubKitty /> */}
                 {this.setGameScreen(this.state.gameState)}
             </div>
         )
     }
 }
-
 
 ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))

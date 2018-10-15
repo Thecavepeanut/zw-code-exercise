@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import GameState from './index';
 
 class Start extends Component {
 
@@ -9,10 +8,10 @@ class Start extends Component {
 
     render(){
         return (
-            <div className="start-screen">
-                <div className="start-screen__menu">
-                    <div className="start-screen__title">Let's do this.</div>
-                    <button className="start-screen__button" onClick={this.props.startGame}>Click To Start</button>
+            <div className="screen">
+                <div className="screen__menu">
+                    <div className="screen__title">Everybody likes dubstep, right?</div>
+                    <button className="screen__button button" onClick={this.props.startGame}>Click To Start</button>
                 </div>
             </div>
             

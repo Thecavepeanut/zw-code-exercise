@@ -8,10 +8,10 @@ class Win extends Component {
 
     render(){
         return (
-            <div className="start-screen">
-                <div className="start-screen__menu">
-                    <div className="start-screen__title">You Win!</div>
-                    <button className="start-screen__button" onClick={this.props.resetGame}>Click To Play Again</button>
+            <div className="screen">
+                <div className="screen__menu">
+                    <div className="screen__title">You Win!</div>
+                    <button className="screen__button button button" onClick={this.props.resetGame}>Click To Play Again</button>
                 </div>
             </div>
             
