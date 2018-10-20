@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import HomeSPA from './spas/home/'
 console.log('hello worlds!')
 
-ReactDOM.render(<h1>Hello Worlds!</h1>, document.getElementById('react-spa'))
+ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))

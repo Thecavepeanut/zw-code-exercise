@@ -35,6 +35,7 @@ class HomeSPA extends Component {
         }));
     }
 
+    // Could separate to own component
     createCounterDisplay() {
         var icons = [];
             for (var i = 0; i < this.state.counter; i++) {
@@ -47,7 +48,6 @@ class HomeSPA extends Component {
 
     render(){
         const isWin = this.state.isWin;
-        const counter = this.state.counter;
         let display;
 
         const gameArena = (
@@ -88,4 +88,4 @@ class HomeSPA extends Component {
 }
 
 
-ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))
+export default HomeSPA;

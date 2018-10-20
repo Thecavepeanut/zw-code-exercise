@@ -12,6 +12,8 @@ svg {
     display: flex;
     flex-direction: column;
     color: $green;
+    // Autoprefixer not respecting spec change
+    /* autoprefixer: off */
     height: -webkit-fill-available;
 }
 
@@ -49,26 +51,8 @@ svg {
     margin: 1rem;
 }
 
-/* Keyframes for WebKit browsers */
-@-webkit-keyframes travel {
-    from { }
-    to {
-      left: 100%;
-      margin-left: -50px;
-      -webkit-transform: rotateZ(360deg) rotateY(360deg);
-    }
-  }
-
-@-webkit-keyframes kitty {
-    from { }
-    to {
-        bottom: 100%;
-        margin-bottom: -50px;
-        -webkit-transform: rotateZ(360deg);
-    }
-}
-
 /* Keyframes */
+//TODO: Fix fixed-axis travel along plane
 @keyframes travel {
     from {
         left: 0;
