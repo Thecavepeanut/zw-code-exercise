@@ -7,8 +7,8 @@ const
     OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     path = require('path'),
     compiledFiles = './src/spas/**/index.js',
-    modules = { main: ['babel-polyfill', './src/index.js'] }
-
+    modules = { main: ['./src/index.js'] }
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //code splitting
 global.BUNDLE_HELPER = require('./src/utils')
@@ -80,6 +80,9 @@ module.exports = {
         modules: ['src', 'node_modules']
       },
       plugins: [
+        new HtmlWebpackPlugin({
+          template: './src/index.html',
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ExtractTextPlugin('[name]/styles.css'),
