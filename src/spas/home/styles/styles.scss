@@ -1,0 +1,200 @@
+@import "colors";
+/* PUT STYLES HERE */
+
+svg {
+    width: 100px;
+    height: 100px;
+}
+
+.game-container {
+    background-color: black;
+    font-family: 'Courier New';
+    display: flex;
+    flex-direction: column;
+    color: $green;
+    height: -webkit-fill-available;
+}
+
+.header > p {
+    font-size: 2rem;
+    color: $green;
+    text-align: center;
+}
+
+.bounce-container {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+.win-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.win-container > p {
+    font-size: 3rem;
+}
+
+.button {
+    color: black;
+    padding: 1rem;
+    animation: buttonColor 5s infinite linear;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+}
+
+/* Keyframes for WebKit browsers */
+@-webkit-keyframes travel {
+    from { }
+    to {
+      left: 100%;
+      margin-left: -50px;
+      -webkit-transform: rotateZ(360deg) rotateY(360deg);
+    }
+  }
+
+@-webkit-keyframes kitty {
+    from { }
+    to {
+        bottom: 100%;
+        margin-bottom: -50px;
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+
+/* Keyframes */
+@keyframes travel {
+    from {
+        left: 0;
+        margin-left: 0;
+        -moz-transform: rotate(0) rotateY(0);
+        -ms-transform: rotate(0) rotateY(0);
+        transform: rotate(0) rotateY(0);
+    }
+    to {
+        left: 100%;
+        margin-left: -50px;
+        -moz-transform: rotateZ(360deg) rotateY(360deg);
+        -ms-transform: rotateZ(360deg) rotateY(360deg);
+        transform: rotateZ(360deg) rotateY(360deg);
+    }
+}
+
+@keyframes bounce {
+    from {
+        bottom: 0;
+        margin-bottom: 0;
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        transform: rotate(0);
+    }
+    to {
+        bottom: 100%;
+        margin-bottom: -50px;
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+// TODO: Utilize sass logic to combine next two keyframes
+@keyframes kittyColor {
+    12.5% {
+      fill: $red;
+    }
+    25% {
+      fill: $orange;
+    }
+    37.5% {
+      fill: $yellow;
+    }
+    50% {
+      fill: $green;
+    }
+    62.5% {
+      fill: $blue;
+    }
+    75% {
+      fill: $indigo;
+    }
+    87.5% {
+      fill: $violet
+    }
+    100% {
+      fill: $red;
+    }
+}
+
+@keyframes buttonColor {
+    12.5% {
+      background-color: $red;
+    }
+    25% {
+      background-color: $orange;
+    }
+    37.5% {
+      background-color: $yellow;
+    }
+    50% {
+      background-color: $green;
+    }
+    62.5% {
+      background-color: $blue;
+    }
+    75% {
+      background-color: $indigo;
+    }
+    87.5% {
+      background-color: $violet
+    }
+    100% {
+      background-color: $red;
+    }
+}
+
+/* Animated Elements */
+.bounce-container {
+    position: relative;
+}
+
+.animation-plane {
+    position: absolute;
+    height: 320px; // TODO make more responsive
+
+    -webkit-animation-name: travel;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-duration: 4.8s;
+
+    animation-name: travel;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 4.8s;
+}
+  
+.kitty {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+
+    -webkit-animation-name: bounce;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-duration: 4.2s;
+
+    animation-name: bounce;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 4.2s;
+
+    // Kitty color transition
+    animation: kittyColor 5s infinite linear;
+}
