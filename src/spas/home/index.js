@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Card from './components/Card';
+import Monty from './components/Monty';
 import './styles.scss';
-import GithubKitty from './assets/github.svg';
 import './assets/home.font';
 
 class HomeSPA extends Component {
@@ -27,9 +28,13 @@ class HomeSPA extends Component {
     return (
       <div className="container">
         <div className="content">
-          <GithubKitty />
-          <GithubKitty />
-          <GithubKitty />
+          <div className="card-container">
+            <Card id="one">
+              <Monty />
+            </Card>
+            <Card id="two" />
+            <Card id="three" />
+          </div>
         </div>
         <div className="toolbar">{this.setWinningScore()}</div>
       </div>
