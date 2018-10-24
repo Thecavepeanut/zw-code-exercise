@@ -3,7 +3,11 @@ import './card.scss';
 
 const Card = props => {
   return (
-    <div id={`card-${props.id}`} className="card">
+    <div
+      id={`card-${props.id}`}
+      className={`card ${props.isRevealed ? 'revealed' : ''}`}
+      onClick={props.revealMe}
+    >
       {props.children}
     </div>
   );
