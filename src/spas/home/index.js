@@ -5,11 +5,33 @@ import GithubKitty from './assets/github.svg';
 import './assets/home.font';
 
 class HomeSPA extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      score: 0,
+      winningScore: 10
+    };
+  }
+
+  setWinningScore() {
+    let tally = [];
+    for (let i = 0; i < this.state.winningScore; i++) {
+      tally.push(<span key={`tally-${i}`} className="icon icon-beer" />);
+    }
+
+    return tally;
+  }
+
   render() {
     return (
-      <div>
-        <span className="icon icon-beer" />
-        <GithubKitty />
+      <div className="container">
+        <div className="content">
+          <GithubKitty />
+          <GithubKitty />
+          <GithubKitty />
+        </div>
+        <div className="toolbar">{this.setWinningScore()}</div>
       </div>
     );
   }
