@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assets/logo-zipwhip.svg';
+import Logo from '../../assets/logo-zipwhip.svg';
 
 const Monte = () => {
   return (
