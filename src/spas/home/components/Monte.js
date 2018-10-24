@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from '../assets/logo-zipwhip.svg';
 
-const Monty = () => {
+const Monte = () => {
   return (
-    <div className="monty">
+    <div className="monte">
       <Logo />
     </div>
   );
 };
 
-export default Monty;
+export default Monte;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Card from './components/Card';
-import Monty from './components/Monty';
+import Monte from './components/Monte';
 import './styles.scss';
 import './assets/home.font';
 
@@ -30,7 +30,7 @@ class HomeSPA extends Component {
         <div className="content">
           <div className="card-container">
             <Card id="one">
-              <Monty />
+              <Monte />
             </Card>
             <Card id="two" />
             <Card id="three" />
