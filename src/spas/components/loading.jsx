@@ -5,8 +5,6 @@ import React, { Fragment } from 'react';
 
 import { Loader, LoadingContainer, Spinner } from '../styles/loader';
 
-import '../styles/animations.css';
-
 const Loading = () => (
   <Fragment>
     <Loader />

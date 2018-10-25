@@ -1,7 +1,14 @@
 // @flow strict-local
 
+export type GameScore = {
+  home: number,
+  visitors: number,
+};
+
 export type GameState = {
+  animation: null | string,
   intro: boolean,
+  score: GameScore,
 };
 
 export type SystemState = {
@@ -11,5 +18,6 @@ export type SystemState = {
 }
 
 export type State = {
+  gameboard: GameState,
   system: SystemState,
 };

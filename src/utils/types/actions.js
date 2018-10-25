@@ -7,12 +7,16 @@ export type InitApplication = { type: 'INIT_APPLICATION' };
 export type SetDeviceType = { type: 'SET_DEVICE_TYPE', screenSize: number };
 
 // Game State
-export type GameState = { type: 'TOGGLE_INTRO', toggleIntro: boolean };
+export type AddPoint = { type: 'ADD_POINT', team: string };
+export type SetRandomAnimation = { type: 'GET_RANDOM_ANIMATION' };
+export type ToggleIntro = { type: 'TOGGLE_INTRO', toggle?: boolean }
 
 export type Action =
-| GameState
+| AddPoint
 | InitApplication
-| SetDeviceType;
+| SetDeviceType
+| SetRandomAnimation
+| ToggleIntro;
 
 export type GetState = () => State;
 // eslint-disable-next-line no-use-before-define
