@@ -1,6 +1,6 @@
 .name {
   color: darken(#f4f9ff, 60%);
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding: 8px 12px;
   line-height: 1;
   display: block;
@@ -14,18 +14,23 @@
 .score {
   color: darken(#f4f9ff, 60%);
   font-size: 2rem;
-  padding: 15px;
+  padding: 1rem;
 
   .icon {
-    opacity: .15;
+    opacity: 0.15;
 
     &.on {
-      color: #FB713F;
+      color: #fb713f;
       opacity: 1;
     }
   }
 
   &:last-child {
     text-align: right;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 1.4rem;
+    padding: 0.9rem;
   }
 }

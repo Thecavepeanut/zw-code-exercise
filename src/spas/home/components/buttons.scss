@@ -27,6 +27,16 @@
     animation: none;
     cursor: not-allowed;
   }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 1.4rem;
+
+    &.shuffle-btn {
+      width: 80px;
+      height: 80px;
+      margin-top: -40px;
+    }
+  }
 }
 
 @keyframes shimmy {
