@@ -5,9 +5,10 @@ import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import App from './spas/containers/app';
-
 import reducer from './spas/reducers';
+
+// Components
+import App from './spas/containers/app';
 
 const middleware = [thunk];
 

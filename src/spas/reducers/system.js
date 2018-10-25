@@ -7,12 +7,14 @@ import mediaQuery from '../../utils/constants/mobile-sizes';
 
 export const defaultState: SystemState = {
   isMobile: false,
-  mobileType: 'computer',
+  mobileType: 'desktop',
+  pageWidth: 0,
 };
 
 export default function (state: SystemState = defaultState, action: Action): SystemState {
   switch (action.type) {
     case 'INIT_APPLICATION': {
+      // Always set to help guard against state mutation
       return { ...state };
     }
     case 'SET_DEVICE_TYPE': {
@@ -26,7 +28,12 @@ export default function (state: SystemState = defaultState, action: Action): Sys
       if (screenSize <= mediaQuery.phone) {
         isMobileType = 'phone';
       }
-      return { ...state, isMobile: checkMobile, mobileType: isMobileType };
+      return {
+        ...state,
+        isMobile: checkMobile,
+        mobileType: isMobileType,
+        pageWidth: action.screenSize,
+      };
     }
     default:
       return state;

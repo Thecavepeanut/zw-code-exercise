@@ -2,10 +2,17 @@
 
 import type { State } from './states';
 
-export type InitApplication = { type: 'INIT_APPLICATION' }
+// System state
+export type InitApplication = { type: 'INIT_APPLICATION' };
+export type SetDeviceType = { type: 'SET_DEVICE_TYPE', screenSize: number };
+
+// Game State
+export type GameState = { type: 'TOGGLE_INTRO', toggleIntro: boolean };
 
 export type Action =
-| InitApplication;
+| GameState
+| InitApplication
+| SetDeviceType;
 
 export type GetState = () => State;
 // eslint-disable-next-line no-use-before-define
