@@ -12,6 +12,9 @@ import { initApplication, setDeviceType } from '../../utils/actions';
 import type { Dispatch } from '../../utils/types/actions';
 import type { State } from '../../utils/types/states';
 
+// Helpers
+import { getDocumentWidth } from '../../utils/helpers';
+
 // Start empty
 type StateProps = {
   pageWidth: number,
@@ -29,14 +32,14 @@ let hasMount = 0;
 class App extends React.Component<ApplicationProps> {
   windowResizeListener = () => {
     if (document.body &&
-      document.body.clientWidth !== this.props.pageWidth) {
+      getDocumentWidth(document) !== this.props.pageWidth) {
       this.forceUpdate();
     }
   };
   componentDidMount() {
     console.log(['App mount count', hasMount++]);
     this.props.onInitApp();
-    const screenSize = document.body ? document.body.clientWidth : 0;
+    const screenSize = getDocumentWidth(document);
     this.props.onSetDeviceType(screenSize);
 
     // Add window listener for window width and mobile check
@@ -49,7 +52,7 @@ class App extends React.Component<ApplicationProps> {
 
   UNSAFE_componentWillUpdate() {
     // Check the windwo size on component update
-    const documentWidth = document.body ? document.body.clientWidth : 0;
+    const documentWidth = getDocumentWidth(document);
     if (documentWidth !== this.props.pageWidth) {
       this.props.onSetDeviceType(documentWidth);
     }
