@@ -11,7 +11,7 @@ class CardTable extends Component {
 
     this.state = {
       deck: ['one', 'two', 'three'],
-      winningScore: 2,
+      winningScore: 10,
       isRevealed: -1,
       isShuffling: false,
       score: {
@@ -120,9 +120,7 @@ class CardTable extends Component {
     return (
       <div className="container">
         <div className="statusbar">
-          <ScoreCard score={score} toWin={winningScore}>
-            <Alert alert={alert} />
-          </ScoreCard>
+          <Alert alert={alert} />
         </div>
         <div className="content">
           <div className="card-container">
@@ -134,12 +132,14 @@ class CardTable extends Component {
           </div>
         </div>
         <div className="toolbar">
-          <Button
-            classes={['btn', 'shuffle-btn']}
-            label="Shuffle"
-            click={this.handleStartRound}
-            disabled={isShuffling}
-          />
+          <ScoreCard score={score} toWin={winningScore}>
+            <Button
+              classes={['btn', 'shuffle-btn']}
+              label="Shuffle"
+              click={this.handleStartRound}
+              disabled={isShuffling}
+            />
+          </ScoreCard>
         </div>
       </div>
     );

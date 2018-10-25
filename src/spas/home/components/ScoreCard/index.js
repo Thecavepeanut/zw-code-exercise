@@ -25,13 +25,13 @@ class ScoreCard extends Component {
     return (
       <React.Fragment>
         <div className="row">
+          <div className="name">{Object.keys(score)[0]}</div>
+          <div className="name">{Object.keys(score)[1]}</div>
+        </div>
+        <div className="row">
           <div className="score">{this.setScore(score.Player, toWin)}</div>
           {children}
           <div className="score">{this.setScore(score.House)}</div>
-        </div>
-        <div className="row">
-          <div className="name">{Object.keys(score)[0]}</div>
-          <div className="name">{Object.keys(score)[1]}</div>
         </div>
       </React.Fragment>
     );
