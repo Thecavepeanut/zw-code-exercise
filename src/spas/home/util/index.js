@@ -8,3 +8,12 @@ export function shuffleArray(array) {
   }
   return array;
 }
+
+export const messaging = {
+  success: ['Nice job!', 'You gotta be cheating!', 'Get yourself to Vegas!'],
+  fail: [
+    'More beer for me.',
+    'The house never loses',
+    "I'm sure you're good at other things"
+  ]
+};

@@ -20,13 +20,13 @@ class ScoreCard extends Component {
   }
 
   render() {
-    const { score, children } = this.props;
+    const { score, toWin, children } = this.props;
 
     return (
       <React.Fragment>
         <div className="row">
-          <div className="score">{this.setScore(score.Player, 10)}</div>
-          <div className="alert-container">{children}</div>
+          <div className="score">{this.setScore(score.Player, toWin)}</div>
+          {children}
           <div className="score">{this.setScore(score.House)}</div>
         </div>
         <div className="row">

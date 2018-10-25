@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { shuffleArray } from '../../util';
+import { shuffleArray, messaging } from '../../util';
 import ScoreCard from '../../components/ScoreCard';
 import Button from '../../components/Button';
 import Cards from '../../components/Cards/Cards';
+import Alert from '../../components/Alert';
 
 class CardTable extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class CardTable extends Component {
 
     this.state = {
       deck: ['one', 'two', 'three'],
+      winningScore: 2,
       isRevealed: -1,
       isShuffling: false,
       score: {
@@ -24,14 +26,36 @@ class CardTable extends Component {
   }
 
   handleScore(playerWins) {
-    this.setState(prevState => ({
-      score: {
-        Player: playerWins
-          ? prevState.score.Player + 1
-          : prevState.score.Player,
-        House: !playerWins ? prevState.score.House + 1 : prevState.score.House
+    const alertType = playerWins ? 'success' : 'fail';
+
+    this.setState(
+      prevState => ({
+        score: {
+          Player: playerWins
+            ? prevState.score.Player + 1
+            : prevState.score.Player,
+          House: !playerWins ? prevState.score.House + 1 : prevState.score.House
+        },
+        alert: {
+          msg:
+            messaging[alertType][
+              Math.floor(Math.random() * messaging[alertType].length)
+            ],
+          type: alertType
+        }
+      }),
+      () => {
+        if (this.state.score.Player === this.state.winningScore) {
+          this.setState({
+            alert: {
+              msg:
+                'All right, you got me. Now take your money before the cops show up.',
+              type: 'success'
+            }
+          });
+        }
       }
-    }));
+    );
   }
 
   handleShuffle() {
@@ -68,7 +92,8 @@ class CardTable extends Component {
     this.setState(
       {
         isRevealed: 0,
-        isShuffling: true
+        isShuffling: true,
+        alert: {}
       },
       () => {
         setTimeout(() => {
@@ -83,12 +108,21 @@ class CardTable extends Component {
   }
 
   render() {
-    const { deck, isShuffling, isRevealed, score } = this.state;
+    const {
+      deck,
+      isShuffling,
+      isRevealed,
+      score,
+      alert,
+      winningScore
+    } = this.state;
 
     return (
       <div className="container">
         <div className="statusbar">
-          <ScoreCard score={score}>alert</ScoreCard>
+          <ScoreCard score={score} toWin={winningScore}>
+            <Alert alert={alert} />
+          </ScoreCard>
         </div>
         <div className="content">
           <div className="card-container">
