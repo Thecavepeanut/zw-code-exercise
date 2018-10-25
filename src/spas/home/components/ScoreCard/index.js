@@ -4,8 +4,8 @@ import './scorecard.scss';
 
 const Tally = ({ classes }) => <span className={classes.join(' ')} />;
 
-class ScoreCard extends Component {
-  setScore(currentScore, size = currentScore) {
+const ScoreCard = props => {
+  function setScore(currentScore, size = currentScore) {
     let tally = [];
     for (let i = 0; i < size; i++) {
       tally.push(
@@ -19,23 +19,21 @@ class ScoreCard extends Component {
     return tally;
   }
 
-  render() {
-    const { score, toWin, children } = this.props;
+  const { score, toWin, children } = props;
 
-    return (
-      <React.Fragment>
-        <div className="row">
-          <div className="name">{Object.keys(score)[0]}</div>
-          <div className="name">{Object.keys(score)[1]}</div>
-        </div>
-        <div className="row">
-          <div className="score">{this.setScore(score.Player, toWin)}</div>
-          {children}
-          <div className="score">{this.setScore(score.House)}</div>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <div className="row">
+        <div className="name">{Object.keys(score)[0]}</div>
+        <div className="name">{Object.keys(score)[1]}</div>
+      </div>
+      <div className="row">
+        <div className="score">{setScore(score.Player, toWin)}</div>
+        {children}
+        <div className="score">{setScore(score.House)}</div>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default ScoreCard;

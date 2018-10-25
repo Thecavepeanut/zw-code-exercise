@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as util from '../../util';
 import ScoreCard from '../../components/ScoreCard';
 import Button from '../../components/Button';
-import Cards from '../../components/Cards/Cards';
+import Cards from '../../components/Cards';
 import Alert from '../../components/Alert';
 import Modal from '../../components/Modal';
 
@@ -20,21 +20,23 @@ class CardTable extends Component {
     const alertType = playerWins ? 'success' : 'fail';
 
     this.setState(
-      prevState => ({
-        score: {
-          Player: playerWins
-            ? prevState.score.Player + 1
-            : prevState.score.Player,
-          House: !playerWins ? prevState.score.House + 1 : prevState.score.House
-        },
-        alert: {
-          msg:
-            util.messaging[alertType][
-              Math.floor(Math.random() * util.messaging[alertType].length)
-            ],
-          type: alertType
-        }
-      }),
+      prevState => {
+        const prevScore = prevState.score;
+
+        return {
+          score: {
+            Player: playerWins ? prevScore.Player + 1 : prevScore.Player,
+            House: !playerWins ? prevScore.House + 1 : prevScore.House
+          },
+          alert: {
+            msg:
+              util.messaging[alertType][
+                Math.floor(Math.random() * util.messaging[alertType].length)
+              ],
+            type: alertType
+          }
+        };
+      },
       () => {
         if (this.state.score.Player === this.state.winningScore) {
           this.setState({
@@ -93,7 +95,7 @@ class CardTable extends Component {
 
         setTimeout(() => {
           clearInterval(this.shuffler);
-        }, 3000); // Shuffle Duration
+        }, 4000); // Shuffle Duration
       }
     );
   }
