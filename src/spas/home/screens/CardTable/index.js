@@ -64,7 +64,8 @@ class CardTable extends Component {
 
   setShuffle() {
     this.setState({
-      isRevealed: -1
+      isRevealed: -1,
+      disableReveal: true
     });
     this.shuffler = setInterval(() => {
       this.handleShuffle();
@@ -72,6 +73,10 @@ class CardTable extends Component {
   }
 
   setReveal(idx) {
+    if (this.state.disableReveal) {
+      return null;
+    }
+
     if (this.state.isShuffling) {
       this.handleScore(idx === 0);
     }
@@ -95,6 +100,9 @@ class CardTable extends Component {
 
         setTimeout(() => {
           clearInterval(this.shuffler);
+          this.setState({
+            disableReveal: false
+          });
         }, 4000); // Shuffle Duration
       }
     );

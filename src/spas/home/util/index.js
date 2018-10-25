@@ -23,6 +23,7 @@ export const defaultGameState = {
   winningScore: 10,
   isRevealed: 0,
   isShuffling: false,
+  disableReveal: false,
   score: {
     Player: 0,
     House: 0
