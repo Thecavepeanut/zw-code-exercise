@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { shuffleArray } from '../../util';
-import Card from './Card';
-import Monte from './Monte';
+import ScoreCard from '../../components/ScoreCard';
+import Button from '../../components/Button';
+import Cards from '../../components/Cards/Cards';
 
 class CardTable extends Component {
   constructor() {
     super();
 
     this.state = {
-      cards: ['one', 'two', 'three'],
+      deck: ['one', 'two', 'three'],
       isRevealed: -1,
       isShuffling: false
     };
@@ -19,10 +20,10 @@ class CardTable extends Component {
 
   handleShuffle() {
     this.setState(prevState => {
-      const newOrder = shuffleArray(prevState.cards);
+      const newOrder = shuffleArray(prevState.deck);
 
       return {
-        cards: newOrder
+        deck: newOrder
       };
     });
   }
@@ -36,15 +37,15 @@ class CardTable extends Component {
     }, 500); // Animation Speed
   }
 
-  setReveal(index) {
-    if (index === 0) {
+  setReveal(idx) {
+    if (idx === 0) {
       // correct
     } else {
       // wrong
     }
 
     this.setState({
-      isRevealed: index,
+      isRevealed: idx,
       isShuffling: false
     });
   }
@@ -76,30 +77,28 @@ class CardTable extends Component {
   }
 
   render() {
-    const { cards, isShuffling, isRevealed } = this.state;
+    const { deck, isShuffling, isRevealed } = this.state;
 
     return (
-      <div className="card-container">
-        <button
-          type="button"
-          className={`btn ${isShuffling ? 'offscreen' : ''}`}
-          onClick={this.handleStartRound}
-        >
-          Shuffle
-        </button>
+      <div className="container">
+        <div className="content">
+          <div className="card-container">
+            <Button
+              label="Shuffle"
+              click={this.handleStartRound}
+              disabled={isShuffling}
+            />
 
-        {cards.map((card, i) => {
-          return (
-            <Card
-              key={`card-${i}`}
-              id={cards[i]}
-              isRevealed={isRevealed === i}
-              revealMe={() => this.setReveal(i)}
-            >
-              {i === 0 && <Monte />}
-            </Card>
-          );
-        })}
+            <Cards
+              deck={deck}
+              revealed={isRevealed}
+              reveal={idx => this.setReveal(idx)}
+            />
+          </div>
+        </div>
+        <div className="toolbar">
+          <ScoreCard />
+        </div>
       </div>
     );
   }
