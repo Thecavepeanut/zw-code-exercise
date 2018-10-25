@@ -15,5 +15,17 @@
   color: darken(#f4f9ff, 60%);
   font-size: 2rem;
   padding: 15px;
-  opacity: .15;
+
+  .icon {
+    opacity: .15;
+
+    &.on {
+      color: #FB713F;
+      opacity: 1;
+    }
+  }
+
+  &:last-child {
+    text-align: right;
+  }
 }

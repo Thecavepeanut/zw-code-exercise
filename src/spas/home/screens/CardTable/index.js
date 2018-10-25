@@ -23,6 +23,17 @@ class CardTable extends Component {
     this.setReveal = this.setReveal.bind(this);
   }
 
+  handleScore(playerWins) {
+    this.setState(prevState => ({
+      score: {
+        Player: playerWins
+          ? prevState.score.Player + 1
+          : prevState.score.Player,
+        House: !playerWins ? prevState.score.House + 1 : prevState.score.House
+      }
+    }));
+  }
+
   handleShuffle() {
     this.setState(prevState => {
       const newOrder = shuffleArray(prevState.deck);
@@ -43,24 +54,14 @@ class CardTable extends Component {
   }
 
   setReveal(idx) {
-    if (idx === 0) {
-      // correct
-    } else {
-      // wrong
+    if (this.state.isShuffling) {
+      this.handleScore(idx === 0);
     }
 
-    this.setState({
-      isRevealed: idx,
+    this.setState(prevState => ({
+      isRevealed: prevState.isRevealed === idx ? -1 : idx,
       isShuffling: false
-    });
-  }
-
-  handleEndRound() {
-    clearInterval(this.shuffler);
-
-    // this.setState({
-    //   isShuffling: false
-    // });
+    }));
   }
 
   handleStartRound() {
@@ -75,7 +76,7 @@ class CardTable extends Component {
         }, 1000); // Reveal Delay
 
         setTimeout(() => {
-          this.handleEndRound();
+          clearInterval(this.shuffler);
         }, 3000); // Shuffle Duration
       }
     );

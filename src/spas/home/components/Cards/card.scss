@@ -1,7 +1,5 @@
 .card-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-basis: 80%;
   position: relative;
   height: 30vh;
@@ -10,8 +8,8 @@
 
 .card {
   box-sizing: border-box;
+  cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
   height: 30vh;
   width: 20vw;
@@ -36,21 +34,25 @@
 
   &.revealed {
     margin-top: -30vh;
-    height: 60vh;
-    align-items: flex-end;
 
-    &:before {
-      bottom: 50%;
+    .monte {
+      top: 37.5vh;
     }
   }
 
   .monte {
     position: relative;
+    top: 7.5vh;
+    transition: all .5s ease-out;
     z-index: -1;
 
     svg {
-      width: 200px;
-      height: 200px;
+      background: white;
+      border-radius: 5000px;
+      box-shadow: 1px 3px 4px rgba(0, 0, 0, .25);
+      width: 150px;
+      height: 150px;
+      padding: 20px;
     }
   }
 }
