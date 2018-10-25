@@ -1,0 +1,19 @@
+.name {
+  color: darken(#f4f9ff, 60%);
+  font-size: .8rem;
+  padding: 8px 12px;
+  line-height: 1;
+  display: block;
+  text-transform: uppercase;
+
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.score {
+  color: darken(#f4f9ff, 60%);
+  font-size: 2rem;
+  padding: 15px;
+  opacity: .15;
+}

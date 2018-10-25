@@ -25,3 +25,34 @@ body {
   width: 100%;
 }
 
+.statusbar {
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+
+    &:first-child {
+      background: top linear-gradient(rgb(216, 233, 244) 0%, lighten(#f4f9ff, 20%) 50%);
+      border: 1px solid darken(#f4f9ff, 5%);
+    }
+
+    > div {
+      flex-basis: calc(100%/3);
+    }
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  > .btn {
+    margin: 20px;
+  }
+}
