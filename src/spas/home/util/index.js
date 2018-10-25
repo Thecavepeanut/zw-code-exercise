@@ -17,3 +17,20 @@ export const messaging = {
     "I'm sure you're good at other things"
   ]
 };
+
+export const defaultGameState = {
+  deck: ['one', 'two', 'three'],
+  winningScore: 10,
+  isRevealed: 0,
+  isShuffling: false,
+  score: {
+    Player: 0,
+    House: 0
+  },
+  alert: {
+    msg:
+      'Welcome to 3 Card Zipwhip! Track the coin to score, score 10 times to win! Click the icon below to begin.',
+    type: 'info'
+  },
+  reset: false
+};
