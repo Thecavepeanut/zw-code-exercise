@@ -1,13 +1,13 @@
 const
-    webpack = require('webpack'),
-    glob = require('glob'),
-    ENV = process.env.NODE_ENV || 'development',
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    HappyPack = require('happypack'),
-    OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-    path = require('path'),
-    compiledFiles = './src/spas/**/index.js',
-    modules = { main: ['babel-polyfill', './src/index.js'] }
+  webpack = require('webpack'),
+  glob = require('glob'),
+  ENV = process.env.NODE_ENV || 'development',
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
+  HappyPack = require('happypack'),
+  OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  path = require('path'),
+  compiledFiles = './src/spas/**/index.js',
+  modules = { main: ['babel-polyfill', './src/index.js'] }
 
 
 //code splitting
@@ -128,7 +128,7 @@ module.exports = {
         })
       ]
     }
-    
+
     if (ENV === 'production') {
 
       module.exports.plugins.push(

@@ -1,6 +1,25 @@
 /* PUT STYLES HERE */
+/* Start Basic normalization */
+*, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+* {
+  line-height: 1.15em;
+  position: relative;
+  z-index: 1;
+}
+
+/* End Basic normalization */
 
 svg {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
