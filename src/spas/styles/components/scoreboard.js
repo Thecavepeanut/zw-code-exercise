@@ -44,11 +44,21 @@ export const ScoreBoardContainer = styled('div')`
   }
 
   @media (max-width:${mediaQuery.tablet}px) {
+    padding: 15px;
     width: 75%;
+    > div {
+      margin-right: 20px;
+    }
+    p {
+      font-size: 1.5em;
+    }
   }
 
   @media (max-width:${mediaQuery.phone}px) {
     width: 90%;
+    p {
+      font-size: 1.25em;
+    }
   }
 `;
 
