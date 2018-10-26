@@ -9,11 +9,17 @@ export const GameIcon = styled('div')`
   max-width: 100px;
   top: ${(props: { top?: number }) => props.top || 0};
   text-align: center;
+  z-index: 2;
 
   img {
     height: 100%;
     width: auto;
     fill: #F60;
+
+    &:hover {
+      cursor: pointer;
+      fill: blue;
+    }
   }
 
   &:before {
@@ -21,6 +27,13 @@ export const GameIcon = styled('div')`
     clear: both;
     display: table;
   }
+`;
+
+export const VisitorContainer = styled('div')`
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
 `;
 
 export default GameIcon;

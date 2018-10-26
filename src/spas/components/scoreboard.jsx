@@ -8,10 +8,10 @@ import type { Props } from '../containers/scoreboard';
 const Board = ({ score }: Props) => (
   <div>
     <div>
-      <p>{score && score.home}</p>
+      <p>Home: {score && score.home}</p>
     </div>
     <div>
-      <p>{score && score.visitors}</p>
+      <p>Visitors: {score && score.visitors}</p>
     </div>
   </div>
 );
