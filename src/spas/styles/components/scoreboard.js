@@ -19,6 +19,7 @@ export const ScoreBoardContainer = styled('div')`
   margin: 0 auto;
   padding: 30px;
   position: fixed;
+  top: 20px;
   width: 60%;
   transform: translateX(-50%);
   z-index: 5;
