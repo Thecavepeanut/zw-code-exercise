@@ -8,6 +8,7 @@
 
   &:last-child {
     text-align: right;
+    justify-content: flex-end;
   }
 }
 
@@ -27,6 +28,7 @@
 
   &:last-child {
     text-align: right;
+    justify-content: flex-end;
   }
 
   @media only screen and (max-width: 900px) {

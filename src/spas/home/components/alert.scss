@@ -9,8 +9,8 @@
   position: fixed;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
   top: 0;
-  left: 10%;
-  width: 80%;
+  left: 15%;
+  width: 70%;
   z-index: 99;
   transition: top 0.5s ease-out;
 
@@ -34,7 +34,7 @@
 
   &.hide,
   &.alert-undefined {
-    top: -5rem;
+    top: -15rem;
   }
 }
 
