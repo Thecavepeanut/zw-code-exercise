@@ -1,7 +1,7 @@
 // @flow strict-local
 
 // Contants to use
-import animations from '../utils/constants/animations';
+import animations from '../shared/constants/animations';
 
 // $FlowFixMe: TODO -> Temp allow for Object due to time constraintes.
 export const getDocumentWidth = (document: Object) => {

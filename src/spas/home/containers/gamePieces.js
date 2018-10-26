@@ -4,26 +4,26 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 // Import Types
-import type { Dispatch } from '../../utils/types/actions';
-import type { State } from '../../utils/types/states';
+import type { Dispatch } from '../shared/types/actions';
+import type { State } from '../shared/types/states';
 
 // Components
 import ScoreBoard from './scoreboard';
 
 // Helpers
-import { getRandomAnimation, getRandomNumber } from '../../utils/helpers';
+import { getRandomAnimation, getRandomNumber } from '../shared/helpers';
 
 // Actions
 import {
   addPoint,
   setRandomAnimation,
-} from '../../utils/actions';
+} from '../shared/actions';
 
 // Styles
 import { GameIcon, VisitorContainer } from '../styles/game';
 
 // images
-const GamePieceImage = require('../home/ne.svg');
+const GamePieceImage = require('../ne.svg');
 
 // Local Types
 type StateProps = {

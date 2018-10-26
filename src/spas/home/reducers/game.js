@@ -1,10 +1,10 @@
 // @flow
 
-import type { Action } from '../../utils/types/actions';
-import type { GameState } from '../../utils/types/states';
+import type { Action } from '../shared/types/actions';
+import type { GameState } from '../shared/types/states';
 
 // Helpers
-import { getRandomAnimation } from '../../utils/helpers';
+import { getRandomAnimation } from '../shared/helpers';
 
 export const defaultState: GameState = {
   animation: null,

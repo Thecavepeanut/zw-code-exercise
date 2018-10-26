@@ -6,8 +6,8 @@ import type { Reducer } from 'redux';
 import gameboard, { defaultState as gameState } from './game';
 import system, { defaultState as systemState } from './system';
 
-import type { State } from '../../utils/types/states';
-import type { Action } from '../../utils/types/actions';
+import type { State } from '../shared/types/states';
+import type { Action } from '../shared/types/actions';
 
 const reducer: Reducer<State, Action> = combineReducers({
   gameboard,

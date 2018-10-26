@@ -2,10 +2,10 @@
 import styled from 'styled-components';
 
 // Colors
-import COLORS from '../../../utils/constants/colors';
+import COLORS from '../../shared/constants/colors';
 
 // Constants
-import mediaQuery from '../../../utils/constants/mobile-sizes';
+import mediaQuery from '../../shared/constants/mobile-sizes';
 
 export const ScoreBoardContainer = styled('div')`
   background: #FFF;

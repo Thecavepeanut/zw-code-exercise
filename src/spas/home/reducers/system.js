@@ -1,9 +1,9 @@
 // @flow
 
-import type { Action } from '../../utils/types/actions';
-import type { SystemState } from '../../utils/types/states';
+import type { Action } from '../shared/types/actions';
+import type { SystemState } from '../shared/types/states';
 
-import mediaQuery from '../../utils/constants/mobile-sizes';
+import mediaQuery from '../shared/constants/mobile-sizes';
 
 export const defaultState: SystemState = {
   isMobile: false,

@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 // Constants
-import COLORS from '../../../utils/constants/colors';
+import COLORS from '../../shared/constants/colors';
 
 export const IntroContainer = styled('div')`
   background: #FFF;

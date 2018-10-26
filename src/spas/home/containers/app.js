@@ -8,18 +8,18 @@ import { debounce } from 'lodash';
 import { AppContainer } from '../styles/containers/';
 
 // Import Types
-import type { Dispatch } from '../../utils/types/actions';
-import type { State } from '../../utils/types/states';
+import type { Dispatch } from '../shared/types/actions';
+import type { State } from '../shared/types/states';
 
 // Helpers
-import { getDocumentWidth } from '../../utils/helpers';
+import { getDocumentWidth } from '../shared/helpers';
 
 // Actions
 import {
   initApplication,
   setDeviceType,
   toggleIntro,
-} from '../../utils/actions';
+} from '../shared/actions';
 
 // Components
 import Intro from '../components/intro';

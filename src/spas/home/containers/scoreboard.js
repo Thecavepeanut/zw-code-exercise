@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Board from '../components/scoreboard';
 
 // Types
-import type { State, GameScore } from '../../utils/types/states';
+import type { State, GameScore } from '../shared/types/states';
 
 type StateProps = {
   score: GameScore,

@@ -1,7 +1,7 @@
 // @flow
 
 import styled from 'styled-components';
-import COLORS from '../../../utils/constants/colors';
+import COLORS from '../../shared/constants/colors';
 
 export const AppContainer = styled('div')`
   height: 100%;

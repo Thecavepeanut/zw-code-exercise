@@ -3,14 +3,15 @@ import styled from 'styled-components';
 
 export const GameIcon = styled('div')`
   left: ${(props: { left?: number }) => props.left || 0};
-  padding: 30px;
+  padding: 0;
   position: fixed;
   height: 25%;
   min-height: 100px;
   min-width: 100px;
+  overflow: hidden;
   top: ${(props: { top?: number }) => props.top || 0};
   text-align: center;
-  width: 25%;
+  width: 26%;
   z-index: 2;
 
   img {
