@@ -19,7 +19,7 @@ $cardHeight: $cardWidth * 1.4;
   position: absolute;
   top: 0;
   transition: all 0.5s ease-out;
-  transition-property: left, margin-top;
+  transition-property: left, margin-left, margin-top;
 
   &:before {
     content: '';
@@ -70,9 +70,12 @@ $cardHeight: $cardWidth * 1.4;
   left: 0;
 }
 
+// NOTE: IE cannot handle calculating "left" as a function, hence the margin-left
 #card-two {
-  left: calc(50% - #{$cardWidth/2});
+  left: 50%;
+  margin-left: calc(-#{$cardWidth/2});
 }
 #card-three {
-  left: calc(100% - #{$cardWidth});
+  left: 100%;
+  margin-left: calc(-#{$cardWidth});
 }
