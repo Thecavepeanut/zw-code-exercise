@@ -1,9 +1,9 @@
 // @flow
 
 export default [
-  'animateBR',
+  'animateBottom',
   'animateBL',
-  'animateDown',
+  'animateBR',
   'animateLeft',
   'animateRight',
   'animateTL',

@@ -16,10 +16,19 @@ import type { State } from '../../utils/types/states';
 import { getDocumentWidth, getRandomAnimation } from '../../utils/helpers';
 
 // Actions
-import { initApplication, setDeviceType, setRandomAnimation, toggleIntro } from '../../utils/actions';
+import {
+  addPoint,
+  initApplication,
+  setDeviceType,
+  setRandomAnimation,
+  toggleIntro,
+} from '../../utils/actions';
 
 // Components
 import Intro from '../components/intro';
+
+// images
+const GamePieceImage = require('../home/ne.svg');
 
 type StateProps = {
   pageWidth: number,
@@ -28,6 +37,7 @@ type StateProps = {
 }
 
 type DispatchProps = {
+  onAddPoint: (team: string) => void,
   onInitApp: () => void,
   onSetDeviceType: (screenSize: number) => void,
   onSetRandomAnimation: (top: number, left: number) => void,
@@ -101,15 +111,23 @@ class App extends React.Component<ApplicationProps> {
 
   render() {
     const {
-      animation, onToggleIntro, showIntro,
+      animation, onAddPoint, onToggleIntro, showIntro,
     } = this.props;
+    const setanimation = animation || '';
+
     return (
       <AppContainer>
         {showIntro && <Intro
           onToggleIntro={onToggleIntro}
         />}
-        <h1>Hello Worlds!</h1>
-        <GameIcon id='gameIcon' className={animation} top={this.getRandomNumber()} left={this.getRandomNumber()}>Icon</GameIcon>
+        <GameIcon id='gameIcon'
+          className={`${setanimation} svg`}
+          top={this.getRandomNumber()}
+          left={this.getRandomNumber()}
+          onClick={() => onAddPoint('home')}
+        >
+          <img src={GamePieceImage} alt='Game piece' />
+        </GameIcon>
       </AppContainer>
     );
   }
@@ -122,6 +140,7 @@ const mapStateToProps = (state: State): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  onAddPoint: (team: string) => dispatch(addPoint(team)),
   onInitApp: () => dispatch(initApplication()),
   onSetDeviceType: (screenSize: number) => dispatch(setDeviceType(screenSize)),
   onToggleIntro: (toggle?: boolean) => dispatch(toggleIntro(toggle)),

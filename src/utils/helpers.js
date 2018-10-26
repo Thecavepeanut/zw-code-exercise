@@ -9,8 +9,10 @@ export const getDocumentWidth = (document: Object) => {
   return documentWidth;
 };
 
-export const getRandomAnimation = (currentAnimation: null | string) => {
-  const randomPick = animations[Math.floor(Math.random() * animations.length)];
+export const getRandomAnimation = (currentAnimation: null | string): string => {
+  const filter = currentAnimation != null ? currentAnimation.replace('animate', '')[0] : 'T';
+  const filtered = animations.filter(a => !a.includes(filter));
+  const randomPick = filtered[Math.floor(Math.random() * filtered.length)];
   if (randomPick === currentAnimation) {
     getRandomAnimation(currentAnimation);
   }
