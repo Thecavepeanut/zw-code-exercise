@@ -42,6 +42,10 @@ export const ScoreBoardContainer = styled('div')`
     line-height: 0;
   }
 
+  @media (max-width:${mediaQuery.tablet}px) {
+    width: 75%;
+  }
+
   @media (max-width:${mediaQuery.phone}px) {
     width: 90%;
   }
