@@ -9,6 +9,7 @@ import { getRandomAnimation } from '../../utils/helpers';
 export const defaultState: GameState = {
   animation: null,
   intro: true,
+  isWinner: false,
   score: {
     home: 0,
     visitors: 0,

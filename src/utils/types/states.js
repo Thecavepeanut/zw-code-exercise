@@ -8,6 +8,7 @@ export type GameScore = {
 export type GameState = {
   animation: null | string,
   intro: boolean,
+  isWinner: boolean,
   score: GameScore,
 };
 

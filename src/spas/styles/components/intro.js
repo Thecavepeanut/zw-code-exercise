@@ -2,14 +2,18 @@
 
 import styled from 'styled-components';
 
+// Constants
+import COLORS from '../../../utils/constants/colors';
+
 export const IntroContainer = styled('div')`
   background: #FFF;
+  border: 4px solid ${COLORS.theme.main};
   border-radius: 3px;
   box-shadow: 3px 5px 15px #000;
   left: 50%;
   max-width: 480px;
   min-width: 350px;
-  padding: 20px;
+  padding: 20px 20px 60px;
   position: fixed;
   text-align: center;
   top: 50%;

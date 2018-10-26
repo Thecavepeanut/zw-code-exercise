@@ -66,7 +66,6 @@ class App extends React.Component<ApplicationProps> {
     // Remove event listener to prevent multi trigger
     window.removeEventListener('resize', this.windowResizeListener);
   }
-
   UNSAFE_componentWillUpdate() {
     // Check the windwo size on component update
     const documentWidth = getDocumentWidth(document);

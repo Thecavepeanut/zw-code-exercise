@@ -28,6 +28,8 @@ const GamePieceImage = require('../home/ne.svg');
 // Local Types
 type StateProps = {
   animation: null | string,
+  isWinner: boolean,
+  isLoser: boolean,
 };
 
 type DispatchProps = {
@@ -55,7 +57,9 @@ class GamePieces extends React.Component<Props> {
         GamePiece.style.top = `${top}`;
         GamePiece.style.left = `${left}`;
       }
-      this.loopAnimation();
+      if (!this.props.isWinner) {
+        this.loopAnimation();
+      }
     }, animateDelay);
   };
 
@@ -95,6 +99,7 @@ const mapStateToProps = (state: State): StateProps => ({
   pageWidth: state.system.pageWidth,
   showIntro: state.gameboard.intro,
   isWinner: (state.gameboard.score.home === 10),
+  isLoser: (state.gameboard.score.visitors === 10),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

@@ -16,6 +16,9 @@ const IntroBoard = ({ onToggleIntro }: Props) => (
     <NoClickContainer />
     <IntroContainer>
       <h2>Welcome to the {'"click"'}</h2>
+      <p>Objective: Score more points than your opponent</p>
+      <p>First to 10 points wins!</p>
+      <p>Good luck!</p>
       <button onClick={() => onToggleIntro()} className='primary'>Get clicking</button>
     </IntroContainer>
   </Fragment>

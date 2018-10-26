@@ -5,10 +5,12 @@ export const GameIcon = styled('div')`
   left: ${(props: { left?: number }) => props.left || 0};
   padding: 30px;
   position: fixed;
-  max-height: 100px;
-  max-width: 100px;
+  height: 25%;
+  min-height: 100px;
+  min-width: 100px;
   top: ${(props: { top?: number }) => props.top || 0};
   text-align: center;
+  width: 25%;
   z-index: 2;
 
   img {
