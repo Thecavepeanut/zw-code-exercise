@@ -26,6 +26,10 @@
       padding-bottom: 100%;
     }
 
+    &.selected {
+      background: darken(#fb713f, 10%);
+    }
+
     @media only screen and (max-width: 900px) {
       padding: 20px;
     }

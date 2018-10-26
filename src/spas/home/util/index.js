@@ -24,6 +24,8 @@ export const defaultGameState = {
   isRevealed: 0,
   isShuffling: false,
   disableReveal: false,
+  difficultyModal: false,
+  difficulty: 3000,
   score: {
     Player: 0,
     House: 0

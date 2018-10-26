@@ -13,6 +13,8 @@ class CardTable extends Component {
     this.state = util.defaultGameState;
     this.handleStartRound = this.handleStartRound.bind(this);
     this.setReveal = this.setReveal.bind(this);
+    this.setBool = this.setBool.bind(this);
+    this.setDifficulty = this.setDifficulty.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
@@ -87,6 +89,19 @@ class CardTable extends Component {
     }));
   }
 
+  setBool(boolKey) {
+    this.setState(prevState => ({
+      [boolKey]: !prevState[boolKey]
+    }));
+  }
+
+  setDifficulty(level) {
+    this.setState({
+      difficulty: level * 3000,
+      difficultyModal: false
+    });
+  }
+
   handleStartRound() {
     this.setState(
       {
@@ -103,7 +118,7 @@ class CardTable extends Component {
           this.setState({
             disableReveal: false
           });
-        }, 4000); // Shuffle Duration
+        }, this.state.difficulty); // Shuffle Duration
       }
     );
   }
@@ -120,12 +135,32 @@ class CardTable extends Component {
       score,
       alert,
       winningScore,
-      reset
+      reset,
+      difficultyModal,
+      difficulty
     } = this.state;
 
     return (
       <div className="container">
         <Alert alert={alert} hide={isShuffling} />
+        <Button
+          classes={['btn', 'difficulty-btn']}
+          label="Difficulty"
+          click={() => this.setBool('difficultyModal')}
+          disabled={isShuffling}
+        />
+        {difficultyModal && (
+          <Modal>
+            {['Easy', 'Medium', 'Hard'].map((level, i) => (
+              <Button
+                key={level}
+                classes={['btn', difficulty / 3000 === i + 1 ? 'selected' : '']}
+                label={level}
+                click={() => this.setDifficulty(i + 1)}
+              />
+            ))}
+          </Modal>
+        )}
 
         <div className="content">
           <div className="card-container">

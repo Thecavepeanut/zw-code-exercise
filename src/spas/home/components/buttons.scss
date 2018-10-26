@@ -23,6 +23,20 @@
     animation: shimmy 4s infinite ease-in-out;
   }
 
+  &.difficulty-btn {
+    background-color: transparent;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmYjcxM2Y7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5nYXVhZ2U8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEyLDJBMTAsMTAsMCwxLDEsMiwxMiwxMCwxMCwwLDAsMSwxMiwyWm0wLTJBMTIsMTIsMCwxLDAsMjQsMTIsMTIsMTIsMCwwLDAsMTIsMFptOCw5LjU5YTguMzUsOC4zNSwwLDAsMC0uNTItMS4yNEwxNy4wNSw5LjQ2YTYuMTQsNi4xNCwwLDAsMSwuNTIsMS4yNFpNNy40NSw4LjY5YTYuNDIsNi40MiwwLDAsMSwuOTItMWwtMS44OS0yYTkuMjUsOS4yNSwwLDAsMC0uOTIsMVpNOS4xNiw3LjE4YTUuMzUsNS4zNSwwLDAsMSwxLjItLjUzbC0xLTIuNTdhOC41Nyw4LjU3LDAsMCwwLTEuMi41M1pNNi40LDEwLjc5YTcuMDksNy4wOSwwLDAsMSwuNS0xLjI1TDQuNDMsOC40N2ExMi4wNiwxMi4wNiwwLDAsMC0uNSwxLjI1Wm05LjQ0LTYuMmE5LjA2LDkuMDYsMCwwLDAtMS4yLS41MmwtMSwyLjU4YTUuMjgsNS4yOCwwLDAsMSwxLjIuNTFabTIuNiwyLjEzYTkuMjUsOS4yNSwwLDAsMC0uOTItMWwtMS44OSwyYTYuNDIsNi40MiwwLDAsMSwuOTIsMVpNMTIuNjUsMy42NmwtLjY1LDAtLjY1LDBWNi40NWE1LjMsNS4zLDAsMCwxLDEuMywwWk0xMiwxNy40NGEyLjM0LDIuMzQsMCwwLDEtMS4xMy00LjM5TDEyLDcuNzRsMS4xMyw1LjMxQTIuMzQsMi4zNCwwLDAsMSwxMiwxNy40NFoiLz48L3N2Zz4=');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    left: 20px;
+    top: 15px;
+    font-size: 0;
+  }
+
   &:disabled {
     animation: none;
     cursor: not-allowed;
