@@ -61,13 +61,28 @@ export default function (state: GameState = defaultState, action: Action): GameS
           newState.gameOver.winner = newScore.home;
           newState.gameOver.loser = newScore.visitors;
         } else {
-          newState.gameOver.message = 'Oh nooooo, you lose!';
+          newState.gameOver.message = 'Oh nooooo, you lost!';
           newState.gameOver.winner = newScore.visitors;
           newState.gameOver.loser = newScore.home;
         }
       }
       // Spread into state and return;
       return { ...newState, score: { ...newScore } };
+    }
+    case 'START_GAME_OVER': {
+      const newState = { ...state };
+      newState.gameOver = {
+        loser: null,
+        message: null,
+        winner: null,
+      };
+      newState.hasWinner = false;
+      newState.score = {
+        home: 0,
+        visitors: 0,
+      };
+
+      return { ...newState };
     }
     default:
       return state;

@@ -40,7 +40,7 @@ export const ScoreBoardContainer = styled('div')`
   p {
     font-size: 2em;
     font-weight: 500;
-    line-height: 0;
+    position: relative;
   }
 
   @media (max-width:${mediaQuery.tablet}px) {

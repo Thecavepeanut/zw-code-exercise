@@ -36,11 +36,17 @@ export const AppContainer = styled('div')`
   button, .button {
     padding: 5px 10px;
     border-radius: 3px;
+    font-weight: 600;
 
     &.primary {
       background: ${COLORS.theme.main};
+      border-radius: 200px;
       color: #FFF;
-      font-weight: 500;
+      padding: 10px 30px 8px;
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 `;

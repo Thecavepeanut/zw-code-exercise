@@ -51,14 +51,12 @@ class GamePieces extends React.Component<Props> {
         classes = classes.split(' ');
         const top = GamePiece.offsetTop;
         const left = GamePiece.offsetLeft;
-        classes[0] = getRandomAnimation(classes[0]);
+        classes[0] = this.props.hasWinner ? 'hasWinner' : getRandomAnimation(classes[0]);
         GamePiece.className = classes.join(' ');
         GamePiece.style.top = `${top}`;
         GamePiece.style.left = `${left}`;
       }
-      if (!this.props.hasWinner) {
-        this.loopAnimation();
-      }
+      this.loopAnimation();
     }, animateDelay);
   };
 

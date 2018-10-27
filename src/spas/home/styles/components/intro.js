@@ -27,6 +27,10 @@ export const IntroContainer = styled('div')`
     display: table;
     width: 100%;
   }
+
+  button {
+    margin-top: 30px;
+  }
 `;
 
 export default IntroContainer;

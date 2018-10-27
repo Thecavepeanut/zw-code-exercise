@@ -7,6 +7,7 @@ import type {
   InitApplication,
   SetDeviceType,
   SetRandomAnimation,
+  StartGameOver,
   ToggleIntro,
 } from '../types/actions';
 
@@ -22,6 +23,7 @@ export const setDeviceType = (screenSize: number): SetDeviceType => ({
 export const addPoint = (team: string): AddPoint => ({ type: 'ADD_POINT', team });
 export const closePanel = (): ClosePanel => ({ type: 'CLOSE_GAME_OVER' });
 export const setRandomAnimation = (): SetRandomAnimation => ({ type: 'GET_RANDOM_ANIMATION' });
+export const startOver = (): StartGameOver => ({ type: 'START_GAME_OVER' });
 export const toggleIntro = (toggle?: boolean): ToggleIntro => ({ type: 'TOGGLE_INTRO', toggle });
 
 

@@ -6,23 +6,25 @@ import type { Props } from '../containers/game-over';
 
 // Styles
 import { NoClickContainer } from '../styles/app';
-import { GameOverMessage } from '../styles/components/game-over';
+import { GameOverMessage, Score, SubTitle, Title } from '../styles/components/game-over';
 
-const GameOverContainer = ({ gameOver }: Props) => (
+const GameOverContainer = ({ gameOver, isWinner, onStartOver }: Props) => (
   <Fragment>
     <NoClickContainer zIndex={20} />
-    <GameOverMessage>
-      <h2>{gameOver.message}</h2>
+    <GameOverMessage className={isWinner ? 'chicken-dinner' : 'crying-lost'}>
+      <Title>{gameOver.message}</Title>
+      <SubTitle>Final Score</SubTitle>
       <div>
-      <div>
+        <div>
           <p>Winner</p>
-          <p>{gameOver.winner}</p>
+          <Score>{gameOver.winner}</Score>
         </div>
         <div>
           <p>Loser</p>
-          <p>{gameOver.loser}</p>
+          <Score>{gameOver.loser}</Score>
         </div>
       </div>
+      <button onClick={() => onStartOver()} className='primary'>Play again</button>
     </GameOverMessage>
   </Fragment>
 );
