@@ -8,8 +8,13 @@ import { getRandomAnimation } from '../shared/helpers';
 
 export const defaultState: GameState = {
   animation: null,
+  gameOver: {
+    loser: null,
+    message: null,
+    winner: null,
+  },
   intro: true,
-  isWinner: false,
+  hasWinner: false,
   score: {
     home: 0,
     visitors: 0,
@@ -45,6 +50,21 @@ export default function (state: GameState = defaultState, action: Action): GameS
         default:
           newScore.home = (home + 1);
           break;
+      }
+
+      if (newScore.home === 10 || newScore.visitors === 10) {
+        newState.hasWinner = newScore.home === 10 || newScore.visitors === 10;
+        const isWinner = newScore.home === 10;
+
+        if (isWinner) {
+          newState.gameOver.message = 'Winner, winner, chicken dinner!';
+          newState.gameOver.winner = newScore.home;
+          newState.gameOver.loser = newScore.visitors;
+        } else {
+          newState.gameOver.message = 'Oh nooooo, you lose!';
+          newState.gameOver.winner = newScore.visitors;
+          newState.gameOver.loser = newScore.home;
+        }
       }
       // Spread into state and return;
       return { ...newState, score: { ...newScore } };

@@ -5,10 +5,17 @@ export type GameScore = {
   visitors: number,
 };
 
+export type GameOver = {
+  loser: null | number,
+  message: null | string,
+  winner: null | number,
+}
+
 export type GameState = {
   animation: null | string,
+  gameOver: GameOver,
   intro: boolean,
-  isWinner: boolean,
+  hasWinner: boolean,
   score: GameScore,
 };
 

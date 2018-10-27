@@ -2,6 +2,8 @@
 
 // Types
 import type {
+  AddPoint,
+  ClosePanel,
   InitApplication,
   SetDeviceType,
   SetRandomAnimation,
@@ -17,7 +19,8 @@ export const setDeviceType = (screenSize: number): SetDeviceType => ({
 });
 
 // Game actions
-export const addPoint = (team: string) => ({ type: 'ADD_POINT', team });
+export const addPoint = (team: string): AddPoint => ({ type: 'ADD_POINT', team });
+export const closePanel = (): ClosePanel => ({ type: 'CLOSE_GAME_OVER' });
 export const setRandomAnimation = (): SetRandomAnimation => ({ type: 'GET_RANDOM_ANIMATION' });
 export const toggleIntro = (toggle?: boolean): ToggleIntro => ({ type: 'TOGGLE_INTRO', toggle });
 

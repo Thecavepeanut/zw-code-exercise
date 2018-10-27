@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import type { Dispatch } from '../shared/types/actions';
 import type { State } from '../shared/types/states';
 
-// Components
+// Containers
+import GameOver from './game-over';
 import ScoreBoard from './scoreboard';
 
 // Helpers
@@ -28,8 +29,7 @@ const GamePieceImage = require('../ne.svg');
 // Local Types
 type StateProps = {
   animation: null | string,
-  isWinner: boolean,
-  isLoser: boolean,
+  hasWinner: boolean,
 };
 
 type DispatchProps = {
@@ -49,7 +49,6 @@ class GamePieces extends React.Component<Props> {
         let classes = GamePiece.className.replace(' stopAnimation', '');
         GamePiece.className = `${classes} stopAnimation`;
         classes = classes.split(' ');
-        delete classes[classes.length];
         const top = GamePiece.offsetTop;
         const left = GamePiece.offsetLeft;
         classes[0] = getRandomAnimation(classes[0]);
@@ -57,7 +56,7 @@ class GamePieces extends React.Component<Props> {
         GamePiece.style.top = `${top}`;
         GamePiece.style.left = `${left}`;
       }
-      if (!this.props.isWinner) {
+      if (!this.props.hasWinner) {
         this.loopAnimation();
       }
     }, animateDelay);
@@ -74,11 +73,12 @@ class GamePieces extends React.Component<Props> {
 
   render() {
     const {
-      animation, onAddPoint,
+      animation, hasWinner, onAddPoint,
     } = this.props;
     const setanimation = animation || '';
     return (
       <Fragment>
+        {hasWinner && <GameOver />}
         <ScoreBoard />
         <VisitorContainer onClick={() => onAddPoint('visitors')}/>
         <GameIcon id='gameIcon'
@@ -98,8 +98,7 @@ const mapStateToProps = (state: State): StateProps => ({
   animation: state.gameboard.animation,
   pageWidth: state.system.pageWidth,
   showIntro: state.gameboard.intro,
-  isWinner: (state.gameboard.score.home === 10),
-  isLoser: (state.gameboard.score.visitors === 10),
+  hasWinner: state.gameboard.hasWinner,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

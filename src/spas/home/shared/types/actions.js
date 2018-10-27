@@ -8,11 +8,13 @@ export type SetDeviceType = { type: 'SET_DEVICE_TYPE', screenSize: number };
 
 // Game State
 export type AddPoint = { type: 'ADD_POINT', team: string };
+export type ClosePanel = { type: 'CLOSE_GAME_OVER' };
 export type SetRandomAnimation = { type: 'GET_RANDOM_ANIMATION' };
 export type ToggleIntro = { type: 'TOGGLE_INTRO', toggle?: boolean }
 
 export type Action =
 | AddPoint
+| ClosePanel
 | InitApplication
 | SetDeviceType
 | SetRandomAnimation

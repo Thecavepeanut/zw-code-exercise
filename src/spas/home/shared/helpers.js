@@ -21,5 +21,3 @@ export const getRandomAnimation = (currentAnimation: null | string): string => {
 
 // Pass the max in order to get random number between 0 and [max]
 export const getRandomNumber = (max: number = Infinity) => Math.floor(Math.random() * max) + 1;
-
-export default getDocumentWidth;
