@@ -7,8 +7,10 @@ ZW Code Exercise - React Game
 * Next navigate to `http://localhost:8080`
 
 ## Setup includes flow package.
-After npm -i you should have flow installed.
+After npm i you should have flow available.
 Run npx flow to start the flow server
+Use npm run flow to initiate a flow check over your files
+Ensure to use // @flow to include any file you which to type
 
 
 ## Building for prod
