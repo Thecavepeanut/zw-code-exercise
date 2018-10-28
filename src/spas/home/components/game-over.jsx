@@ -1,4 +1,6 @@
 // @flow
+// This is the stateless component used to show the game end options
+// elements are recieved from the container/game-over
 
 import React, { Fragment } from 'react';
 
@@ -24,7 +26,7 @@ const GameOverContainer = ({ gameOver, isWinner, onStartOver }: Props) => (
           <Score>{gameOver.loser}</Score>
         </div>
       </div>
-      <button onClick={() => onStartOver()} className='primary'>Play again</button>
+      <button onClick={() => onStartOver()} className='primary'>Play again</button> <button onClick={() => onStartOver(true)} className='secondary'>Reset</button>
     </GameOverMessage>
   </Fragment>
 );

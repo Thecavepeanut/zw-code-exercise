@@ -14,8 +14,9 @@ export type GameOver = {
 export type GameState = {
   animation: null | string,
   gameOver: GameOver,
-  intro: boolean,
   hasWinner: boolean,
+  intro: boolean,
+  level: string,
   score: GameScore,
 };
 

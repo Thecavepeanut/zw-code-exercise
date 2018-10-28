@@ -5,6 +5,7 @@ import type {
   AddPoint,
   ClosePanel,
   InitApplication,
+  SelectLevel,
   SetDeviceType,
   SetRandomAnimation,
   StartGameOver,
@@ -22,8 +23,9 @@ export const setDeviceType = (screenSize: number): SetDeviceType => ({
 // Game actions
 export const addPoint = (team: string): AddPoint => ({ type: 'ADD_POINT', team });
 export const closePanel = (): ClosePanel => ({ type: 'CLOSE_GAME_OVER' });
+export const selectLevel = (level: string): SelectLevel => ({ type: 'SET_SELECTED_LEVEL', level });
 export const setRandomAnimation = (): SetRandomAnimation => ({ type: 'GET_RANDOM_ANIMATION' });
-export const startOver = (): StartGameOver => ({ type: 'START_GAME_OVER' });
+export const startOver = (reset?: boolean): StartGameOver => ({ type: 'START_GAME_OVER', reset });
 export const toggleIntro = (toggle?: boolean): ToggleIntro => ({ type: 'TOGGLE_INTRO', toggle });
 
 

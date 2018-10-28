@@ -1,8 +1,13 @@
 // @flow
 import styled from 'styled-components';
 
+// Colors
+import COLORS from '../shared/constants/colors';
+
+// Responsive breakpoints
 import mediaQueries from '../shared/constants/mobile-sizes';
 
+// Set default height/width to use to calc
 const gamePieceHeight = 210;
 const gamePieceWidth = 300;
 
@@ -35,6 +40,15 @@ export const GameIcon = styled('div')`
       width: 150px;
     }
   }
+`;
+
+export const Reload = styled('button')`
+  background: #FFF;
+  border: ${COLORS.theme.main};
+  bottom: 10px;
+  left: 10px;
+  position: absolute;
+  z-index: 9;
 `;
 
 export const VisitorContainer = styled('div')`

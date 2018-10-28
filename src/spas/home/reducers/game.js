@@ -13,8 +13,9 @@ export const defaultState: GameState = {
     message: null,
     winner: null,
   },
-  intro: true,
   hasWinner: false,
+  intro: true,
+  level: 'beginner',
   score: {
     home: 0,
     visitors: 0,
@@ -25,18 +26,6 @@ export const defaultState: GameState = {
 
 export default function (state: GameState = defaultState, action: Action): GameState {
   switch (action.type) {
-    case 'GET_RANDOM_ANIMATION': {
-      const newState = { ...state };
-      const newAnimation = getRandomAnimation(state.animation);
-      return { ...newState, animation: newAnimation };
-    }
-    case 'TOGGLE_INTRO': {
-      const { toggle } = action;
-      // If toggle isn't passed, use the current state to change
-      const setToggle = toggle || !state.intro;
-      const newState = { ...state, intro: setToggle };
-      return { ...newState };
-    }
     case 'ADD_POINT': {
       const newState = { ...state };
       const { score } = newState;
@@ -69,6 +58,15 @@ export default function (state: GameState = defaultState, action: Action): GameS
       // Spread into state and return;
       return { ...newState, score: { ...newScore } };
     }
+    case 'GET_RANDOM_ANIMATION': {
+      const newState = { ...state };
+      const newAnimation = getRandomAnimation(state.animation);
+      return { ...newState, animation: newAnimation };
+    }
+    case 'SET_SELECTED_LEVEL': {
+      const newState = { ...state, level: action.level };
+      return { ...newState };
+    }
     case 'START_GAME_OVER': {
       const newState = { ...state };
       newState.gameOver = {
@@ -81,7 +79,16 @@ export default function (state: GameState = defaultState, action: Action): GameS
         home: 0,
         visitors: 0,
       };
-
+      if (action.reset) {
+        newState.intro = true;
+      }
+      return { ...newState };
+    }
+    case 'TOGGLE_INTRO': {
+      const { toggle } = action;
+      // If toggle isn't passed, use the current state to change
+      const setToggle = toggle || !state.intro;
+      const newState = { ...state, intro: setToggle };
       return { ...newState };
     }
     default:

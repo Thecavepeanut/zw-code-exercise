@@ -34,15 +34,39 @@ export const AppContainer = styled('div')`
   }
 
   button, .button {
-    padding: 5px 10px;
+    border: none;
     border-radius: 3px;
+    color: ${COLORS.theme.main}
     font-weight: 600;
+    margin-rigth: 30px;
+    padding: 5px 10px;
 
     &.primary {
       background: ${COLORS.theme.main};
       border-radius: 200px;
       color: #FFF;
       padding: 10px 30px 8px;
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid ${COLORS.theme.main};
+      border-radius: 200px;
+      color: ${COLORS.theme.main}
+    }
+
+    &.asText {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid #FFF;
+      color: ${COLORS.theme.main};
+      padding; 4px;
+      margin-right: 8px;
+
+      &.active, &:hover {
+        border-bottom: 2px solid ${COLORS.theme.main};
+      }
     }
 
     &:hover {

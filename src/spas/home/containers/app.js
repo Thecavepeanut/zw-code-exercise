@@ -17,6 +17,7 @@ import { getDocumentWidth } from '../shared/helpers';
 // Actions
 import {
   initApplication,
+  selectLevel,
   setDeviceType,
   toggleIntro,
 } from '../shared/actions';
@@ -34,6 +35,7 @@ type StateProps = {
 type DispatchProps = {
   onInitApp: () => void,
   onSetDeviceType: (screenSize: number) => void,
+  onSelectLevel: (level: string) => void,
   onToggleIntro: (toggle?: boolean) => void,
 }
 
@@ -76,12 +78,15 @@ class App extends React.Component<ApplicationProps> {
 
   render() {
     const {
-      onToggleIntro, showIntro,
+      onSelectLevel,
+      onToggleIntro,
+      showIntro,
     } = this.props;
 
     return (
       <AppContainer>
         {showIntro && <Intro
+          onSelectLevel={onSelectLevel}
           onToggleIntro={onToggleIntro}
         />}
         <GamePieces />
@@ -98,6 +103,7 @@ const mapStateToProps = (state: State): StateProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   onInitApp: () => dispatch(initApplication()),
+  onSelectLevel: (level: string) => dispatch(selectLevel(level)),
   onSetDeviceType: (screenSize: number) => dispatch(setDeviceType(screenSize)),
   onToggleIntro: (toggle?: boolean) => dispatch(toggleIntro(toggle)),
 });

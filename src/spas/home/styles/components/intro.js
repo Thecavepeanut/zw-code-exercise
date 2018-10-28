@@ -33,4 +33,19 @@ export const IntroContainer = styled('div')`
   }
 `;
 
+export const LevelSelection = styled('div')`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  > * {
+    width: 100%;
+    text-align: center;
+    margin-right: 30px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
 export default IntroContainer;

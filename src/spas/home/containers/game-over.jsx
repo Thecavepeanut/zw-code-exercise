@@ -1,4 +1,6 @@
 // @flow
+// This is the panel shown to use the user at the game end.
+// Items here are setup to pass to the component/game-over for display
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -15,7 +17,7 @@ import type { State, GameOver as GameOverState } from '../shared/types/states';
 
 type DispatchProps = {
   onClosePanel: () => void,
-  onStartOver: () => void,
+  onStartOver: (reset?: boolean) => void,
 };
 
 type StateProps = {
@@ -42,7 +44,7 @@ const mapStateToProps = (state: State): StateProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   onClosePanel: () => dispatch(closePanel()),
-  onStartOver: () => dispatch(startOver()),
+  onStartOver: (reset?: boolean) => dispatch(startOver(reset)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameOver);
