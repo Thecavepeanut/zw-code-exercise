@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import './styles.scss'
-import GithubKitty from './github.svg'
 import './home.font'
 import Square from './square.js'
+import Clicks from './clicks.js'
 
 export default class HomeSPA extends Component {
     constructor() {
         super();
-        this.state = {}
+        this.state = {
+            score: 0
+        }
         this.selectColor = this.selectColor.bind(this)
         this.generateSizeAndPosition = this.generateSizeAndPosition.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     selectColor() {
@@ -21,10 +24,15 @@ export default class HomeSPA extends Component {
     generateSizeAndPosition() {
         const windowWidth = window.innerWidth
         const windowHeight = window.innerHeight
-        const squareWidth = Math.floor(windowWidth/ 10) > 25 ? Math.floor(windowWidth/ 10) : 25
-        let posX = Math.floor(Math.random() * (windowWidth- squareWidth))
+        const squareWidth = Math.floor(windowWidth / 10) > 50 ? Math.floor(windowWidth / 10) : 50
+        let posX = Math.floor(Math.random() * (windowWidth - squareWidth))
         let posY = Math.floor(Math.random() * (windowHeight - squareWidth))
         this.setState({ squareWidth, posX, posY })
+    }
+
+    handleClick() {
+        // console.log(this.state.score)
+        this.setState(prevState => {return {score: prevState.score + 1}})
     }
 
     componentDidMount() {
@@ -37,13 +45,14 @@ export default class HomeSPA extends Component {
     render(){
         return (
             <div>
-                <span className="icon icon-beer"/>
+                <Clicks score={this.state.score} />
                 <Square
                     width={this.state.squareWidth} 
                     height={this.state.squareWidth} 
                     color={this.state.color} 
                     posX={this.state.posX} 
                     posY={this.state.posY} 
+                    handleClick={this.handleClick}
                 />
             </div>
         )
