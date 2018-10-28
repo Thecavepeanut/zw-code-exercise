@@ -4,6 +4,7 @@ import './home.font'
 import Square from './square.js'
 import Clicks from './clicks.js'
 import Winner from './winner.js'
+import StartGame from './startGame.js'
 
 export default class HomeSPA extends Component {
     constructor() {
@@ -16,6 +17,8 @@ export default class HomeSPA extends Component {
         this.selectColor = this.selectColor.bind(this)
         this.generateSizeAndPosition = this.generateSizeAndPosition.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.playGame = this.playGame.bind(this)
+        this.playAgain = this.playAgain.bind(this)
     }
 
     selectColor() {
@@ -44,17 +47,27 @@ export default class HomeSPA extends Component {
         })
     }
 
-    componentDidMount() {
-        // this.svgInterval = setInterval(() => {
+    playGame() {
+        this.svgInterval = setInterval(() => {
             this.selectColor()
             this.generateSizeAndPosition()
-        // }, 1000)
+        }, 1000)
+        let modal = document.getElementsByClassName('modal')
+        modal[0].style.display = 'none';
+    }
+
+    playAgain() {
+        this.setState({
+            wonGame: false,
+            score: 0
+        }, this.playGame());
     }
 
     render(){
         return (
             <div>
                 <Clicks score={this.state.score} />
+                <StartGame playGame={this.playGame} />
                 {
                     !this.state.wonGame 
                         ? <Square
@@ -65,7 +78,7 @@ export default class HomeSPA extends Component {
                             posY={this.state.posY} 
                             handleClick={this.handleClick}
                         />
-                        : <Winner />
+                        : <Winner playAgain={this.playAgain}/>
                 }
             </div>
         )
