@@ -1,9 +1,11 @@
 import React from 'react'
 
-const winner = ({ winner }) => {
+const winner = () => {
   return (
-    <div>
-      You Won! 
+    <div className="modal">
+      <div className="modal-content">
+        <h1>You Won!</h1>
+      </div>
     </div>
   )
 }

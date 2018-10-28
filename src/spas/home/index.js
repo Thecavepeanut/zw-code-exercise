@@ -29,7 +29,7 @@ export default class HomeSPA extends Component {
         const windowHeight = window.innerHeight
         const squareWidth = Math.floor(windowWidth / 10) > 50 ? Math.floor(windowWidth / 10) : 50
         let posX = Math.floor(Math.random() * (windowWidth - squareWidth))
-        let posY = Math.floor(Math.random() * (windowHeight - squareWidth))
+        let posY = Math.floor(Math.random() * (windowHeight - squareWidth - 30)) + 30 //30 to account for score bar
         this.setState({ squareWidth, posX, posY })
     }
 
@@ -45,10 +45,10 @@ export default class HomeSPA extends Component {
     }
 
     componentDidMount() {
-        this.svgInterval = setInterval(() => {
+        // this.svgInterval = setInterval(() => {
             this.selectColor()
             this.generateSizeAndPosition()
-        }, 1000)
+        // }, 1000)
     }
 
     render(){

@@ -17,7 +17,7 @@ export default class Clicks extends Component {
 
   render() {
     return (
-      <div>
+      <div className="clicks">
         {this.renderNumberOfClicks()}
       </div>
     )
