@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './styles.scss'
 import './home.font'
 import Mole from './mole.js'
@@ -13,18 +14,11 @@ export default class HomeSPA extends Component {
             score: 0,
         }
         this.svgInterval
-        this.selectColor = this.selectColor.bind(this)
         this.generateSizeAndPosition = this.generateSizeAndPosition.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.playGame = this.playGame.bind(this)
         this.playAgain = this.playAgain.bind(this)
         this.renderView = this.renderView.bind(this)
-    }
-
-    selectColor() {
-        const colors = ['ff6698', 'ffb366', 'ffff66', '98ff66', '6698ff']
-        let color = `#${colors[Math.floor(Math.random() * colors.length)]}`
-        this.setState({ color })
     }
 
     generateSizeAndPosition() {
@@ -48,8 +42,8 @@ export default class HomeSPA extends Component {
     playGame() {
         document.getElementById('modal').style.display = 'none'
         this.setState({ view: 'inGame' })
+        this.generateSizeAndPosition() //get first size and position
         this.svgInterval = setInterval(() => {
-            this.selectColor()
             this.generateSizeAndPosition()
         }, 1000)
     }

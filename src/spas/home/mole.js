@@ -1,10 +1,10 @@
 import React from 'react';
 
-const moleSVG = ({ width, color, posX, posY, handleClick }) => (
+const moleSVG = ({ width, posX, posY, handleClick }) => (
   <div onClick={handleClick}>
-    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={width} style={{ position: 'absolute', left: posX, top: posY }}> 
-      <image id="image0" width={width} height={width}
-    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkEAYAAAAgckkXAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+    <svg className='mole' xmlns='http://www.w3.org/2000/svg' width={width} height={width} style={{ position: 'absolute', left: posX, top: posY }}> 
+      <image id='image0' width={width} height={width}
+    href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkEAYAAAAgckkXAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0T///////8JWPfcAAAA
 B3RJTUUH4gocByUXqUijCgAAAAFvck5UAc+id5oAAFP/SURBVHja7Z13mBRV9vc/t6rTdE8OwJBz
 TiIZQUQBRRFMmBBFRIyYE7JgAEVBREWMIJgQA0EEJCkZkZxzGhjSMDlPd9d9/6hT48q+7uoqwf1x
@@ -385,7 +385,7 @@ XMf5fGpHd1Y2DhGE9UcZEv9bOWd4Z09RNKeuiMPP5XQE4xR0/uLUtFpnTe5UPXUU0+kYTofsKCh7
 ldKYHJkBS0cuZ+/hVMxyruvUxHMim50lnjOjOor+W+J07KhTzuuI836cjpL2H87nMApKDF2pYjkz
 SKVTzuvU5nKWKk5HdjqiowjOTC6pqaV7Imfp4tyfc/+uU65jnPK7ojPVwf+s/D/KA1cb8grccgAA
 ACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0xMC0yOFQxNDozNzoyMy0wNzowMB+5fd0AAAAldEVYdGRh
-dGU6bW9kaWZ5ADIwMTgtMTAtMjhUMTQ6Mzc6MjMtMDc6MDBu5MVhAAAAAElFTkSuQmCC" />
+dGU6bW9kaWZ5ADIwMTgtMTAtMjhUMTQ6Mzc6MjMtMDc6MDBu5MVhAAAAAElFTkSuQmCC' />
     </svg>
   </div>
 )
