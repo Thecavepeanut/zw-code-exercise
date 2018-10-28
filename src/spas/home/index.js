@@ -3,13 +3,16 @@ import './styles.scss'
 import './home.font'
 import Square from './square.js'
 import Clicks from './clicks.js'
+import Winner from './winner.js'
 
 export default class HomeSPA extends Component {
     constructor() {
         super();
         this.state = {
-            score: 0
+            score: 0,
+            wonGame: false
         }
+        this.svgInterval
         this.selectColor = this.selectColor.bind(this)
         this.generateSizeAndPosition = this.generateSizeAndPosition.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -31,12 +34,18 @@ export default class HomeSPA extends Component {
     }
 
     handleClick() {
-        // console.log(this.state.score)
-        this.setState(prevState => {return {score: prevState.score + 1}})
+        this.setState(prevState => {return {score: prevState.score + 1}}, () => {
+            if (this.state.score === 10) {
+                clearInterval(this.svgInterval)
+                this.setState({
+                    wonGame: true
+                })
+            }
+        })
     }
 
     componentDidMount() {
-        setInterval(() => {
+        this.svgInterval = setInterval(() => {
             this.selectColor()
             this.generateSizeAndPosition()
         }, 1000)
@@ -46,14 +55,18 @@ export default class HomeSPA extends Component {
         return (
             <div>
                 <Clicks score={this.state.score} />
-                <Square
-                    width={this.state.squareWidth} 
-                    height={this.state.squareWidth} 
-                    color={this.state.color} 
-                    posX={this.state.posX} 
-                    posY={this.state.posY} 
-                    handleClick={this.handleClick}
-                />
+                {
+                    !this.state.wonGame 
+                        ? <Square
+                            width={this.state.squareWidth} 
+                            height={this.state.squareWidth} 
+                            color={this.state.color} 
+                            posX={this.state.posX} 
+                            posY={this.state.posY} 
+                            handleClick={this.handleClick}
+                        />
+                        : <Winner />
+                }
             </div>
         )
     }
