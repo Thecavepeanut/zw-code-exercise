@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './styles.scss'
 import './home.font'
-import Square from './square.js'
+import Mole from './mole.js'
 import Clicks from './clicks.js'
 import Winner from './winner.js'
 import StartGame from './startGame.js'
@@ -11,7 +11,6 @@ export default class HomeSPA extends Component {
         super();
         this.state = {
             score: 0,
-            wonGame: false
         }
         this.svgInterval
         this.selectColor = this.selectColor.bind(this)
@@ -19,6 +18,7 @@ export default class HomeSPA extends Component {
         this.handleClick = this.handleClick.bind(this)
         this.playGame = this.playGame.bind(this)
         this.playAgain = this.playAgain.bind(this)
+        this.renderView = this.renderView.bind(this)
     }
 
     selectColor() {
@@ -30,56 +30,60 @@ export default class HomeSPA extends Component {
     generateSizeAndPosition() {
         const windowWidth = window.innerWidth
         const windowHeight = window.innerHeight
-        const squareWidth = Math.floor(windowWidth / 10) > 50 ? Math.floor(windowWidth / 10) : 50
-        let posX = Math.floor(Math.random() * (windowWidth - squareWidth))
-        let posY = Math.floor(Math.random() * (windowHeight - squareWidth - 30)) + 30 //30 to account for score bar
-        this.setState({ squareWidth, posX, posY })
+        const moleWidth = Math.floor(windowWidth / 10) > 50 ? Math.floor(windowWidth / 10) : 50
+        let posX = Math.floor(Math.random() * (windowWidth - moleWidth))
+        let posY = Math.floor(Math.random() * (windowHeight - moleWidth - 30)) + 30 //30 to account for score bar
+        this.setState({ moleWidth, posX, posY })
     }
 
     handleClick() {
-        this.setState(prevState => {return {score: prevState.score + 1}}, () => {
+        this.setState(prevState => { return { score: prevState.score + 1 } }, () => {
             if (this.state.score === 10) {
                 clearInterval(this.svgInterval)
-                this.setState({
-                    wonGame: true
-                })
+                this.setState({ view: 'wonGame' })
             }
         })
     }
 
     playGame() {
+        document.getElementById('modal').style.display = 'none'
+        this.setState({ view: 'inGame' })
         this.svgInterval = setInterval(() => {
             this.selectColor()
             this.generateSizeAndPosition()
         }, 1000)
-        let modal = document.getElementsByClassName('modal')
-        modal[0].style.display = 'none';
     }
 
     playAgain() {
         this.setState({
-            wonGame: false,
+            view: 'inGame',
             score: 0
         }, this.playGame());
     }
 
-    render(){
+    renderView() {
+        if (this.state.view === 'inGame') {
+            return (
+                <Mole
+                    width={this.state.moleWidth}
+                    color={this.state.color}
+                    posX={this.state.posX}
+                    posY={this.state.posY}
+                    handleClick={this.handleClick}
+                />
+            )
+        } else if (this.state.view === 'wonGame') {
+            return ( <Winner playAgain={this.playAgain} /> )
+        } else {
+            return ( <StartGame playGame={this.playGame} /> )
+        }
+    }
+
+    render() {
         return (
             <div>
                 <Clicks score={this.state.score} />
-                <StartGame playGame={this.playGame} />
-                {
-                    !this.state.wonGame 
-                        ? <Square
-                            width={this.state.squareWidth} 
-                            height={this.state.squareWidth} 
-                            color={this.state.color} 
-                            posX={this.state.posX} 
-                            posY={this.state.posY} 
-                            handleClick={this.handleClick}
-                        />
-                        : <Winner playAgain={this.playAgain}/>
-                }
+                {this.renderView()}
             </div>
         )
     }
