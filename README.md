@@ -1,6 +1,9 @@
 # zw-code-exercise
 ZW Code Exercise - React Game
 
+## Completed Video Demonstration
+[Watch here](https://youtu.be/R_rXoj-Vo_4)
+
 ## Setup
 * Using node version 8.9.1 run `npm install`
 * Run `npm start`
