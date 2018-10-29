@@ -45,7 +45,7 @@ export default class HomeSPA extends Component {
     this.generateSizeAndPosition()
     this.svgInterval = setInterval(() => {
       this.generateSizeAndPosition()
-    }, 1000)
+    }, 1500)
   }
 
   playAgain() {

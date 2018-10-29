@@ -1,8 +1,8 @@
 import React from 'react';
 
 const moleSVG = ({ width, posX, posY, handleClick }) => (
-  <div onClick={handleClick}>
-    <svg className='mole' xmlns='http://www.w3.org/2000/svg' width={width} height={width} style={{ position: 'absolute', left: posX, top: posY }}> 
+  <div>
+    <svg onClick={handleClick} className='mole' xmlns='http://www.w3.org/2000/svg' width={width} height={width} style={{ position: 'absolute', left: posX, top: posY }}> 
       <image id='image0' width={width} height={width}
     href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkEAYAAAAgckkXAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0T///////8JWPfcAAAA
