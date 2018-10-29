@@ -65,5 +65,28 @@ button {
 .mole {
 	transition-property: all;
 	transition-duration: .5s;
-	transition-timing-function: linear;
+  transition-timing-function: linear;
 }
+
+svg {
+  min-width: 100px;
+  min-height: 100px
+}
+
+svg image {
+  min-width: 100px;
+  min-height: 100px;
+}
+
+/*----- Media -----*/
+@media (max-width: 900px) {
+  svg { 
+    width: 500px !important ;
+    height: 500px !important;
+  }
+
+  svg image {
+    width: 500px !important;
+    height: 500px !important;
+  }
+} 
