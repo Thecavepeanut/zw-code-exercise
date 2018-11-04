@@ -29,19 +29,19 @@ export default class Paddle extends React.Component {
 
     componentDidMount() {
         const { position } = this.state;
-        
+
         document.addEventListener('mousemove', this.handleMouseMove);
+        document.addEventListener('touchmove', this.handleTouchMove);
         observer.subscribe(EVENTS.WINDOW_RESIZED, this.handleWindowResized);
         observer.publish(EVENTS.PADDLE_MOVED, position);
     }
 
     componentWillUnmount() {
         document.removeEventListener('mousemove', this.handleMouseMove);
+        document.removeEventListener('touchmove', this.handleTouchMove);        
     }
 
-    handleMouseMove = event => {
-        const { clientX } = event;
-
+    handleMouseOrTouchMove(clientX, clientY) {
         const { y } = this.state.position;
         const { width } = PADDLE_SIZE;
         const { observer } = window;
@@ -54,6 +54,18 @@ export default class Paddle extends React.Component {
         this.setState({ position });
 
         observer.publish(EVENTS.PADDLE_MOVED, position);
+    }
+
+    handleTouchMove = event => {
+        const { clientX, clientY } = event.touches[0];
+
+        this.handleMouseOrTouchMove(clientX, clientY);
+    }
+
+    handleMouseMove = event => {
+        const { clientX, clientY } = event;
+        
+        this.handleMouseOrTouchMove(clientX, clientY);
     }
 
     render() {
