@@ -7,7 +7,7 @@ const
     OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     path = require('path'),
     compiledFiles = './src/spas/**/index.js',
-    modules = { main: ['babel-polyfill', './src/index.js'] }
+    modules = { main: ['babel-polyfill', './src/spas/home/index.js'] }
 
 
 //code splitting
@@ -91,9 +91,19 @@ module.exports = {
           // threadPool: new HappyPack.ThreadPool({ size: 1 }),
           id: 'js',
           loaders: [
-            // 'react-hot-loader',
-            'babel-loader'
-          ]
+            {
+              loader: 'babel-loader',
+              query: {
+                presets: ['react', 'es2015', 'react-hmre'],
+                plugins: [
+                  'transform-class-properties',
+                  'transform-es2015-destructuring',
+                  'transform-object-rest-spread'
+                ]
+              }
+            }
+          ],
+          
         }),
         new HappyPack({
           cacheContext: {

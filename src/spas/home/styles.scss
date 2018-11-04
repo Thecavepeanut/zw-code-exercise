@@ -1,6 +1,13 @@
-/* PUT STYLES HERE */
+
+body {
+    background: #222;
+    font-family: 'Share Tech Mono', monospace;
+    color: #fff;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
 
 svg {
-    width: 100px;
-    height: 100px;
+    fill: #fff;
 }

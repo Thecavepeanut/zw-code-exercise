@@ -1,0 +1,16 @@
+$shadow-color: rgb(200, 200, 200);
+
+.Paddle {
+    background: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    box-shadow: 1px -1px $shadow-color,
+                2px -2px $shadow-color,
+                3px -3px $shadow-color,
+                4px -4px $shadow-color,
+                5px -5px $shadow-color,
+                6px -6px $shadow-color;
+}

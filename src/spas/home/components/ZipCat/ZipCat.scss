@@ -1,0 +1,10 @@
+.ZipCat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 25px 25px;
+
+    svg {
+        transition: all 1s ease;
+    }
+}
