@@ -7,4 +7,4 @@
 **Demo:** https://jacobdavis.me/zip-cat
 
 **Preview:**
-![preview](https://jacobdavis.me/zip-cat/preview.gif?v=2)
+![preview](https://www.jacobdavis.me/zip-cat/preview.gif)
