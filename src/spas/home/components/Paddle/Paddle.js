@@ -57,6 +57,8 @@ export default class Paddle extends React.Component {
     }
 
     handleTouchMove = event => {
+        event.preventDefault();
+        
         const { clientX, clientY } = event.touches[0];
 
         this.handleMouseOrTouchMove(clientX, clientY);
