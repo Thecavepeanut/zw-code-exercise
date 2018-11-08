@@ -5,14 +5,36 @@ import GithubKitty from './github.svg'
 import './home.font'
 
 class HomeSPA extends Component {
-    render(){
+    constructor(props) {
+        super(props);
+        this.state = {date: new Date()};
+      }
+    
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        );
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+    
+      tick() {
+        this.setState({
+          date: new Date()
+        });
+      }
+    
+      render() {
         return (
-            <div>
-                <span className="icon icon-beer"/>
-                <GithubKitty />
-            </div>
-        )
-    }
+          <div>
+            <h1>Below is the clock</h1>
+            <h2>Time now is {this.state.date.toLocaleTimeString()}.</h2>
+          </div>
+        );
+      }
 }
 
 
