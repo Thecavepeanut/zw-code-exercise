@@ -3,37 +3,34 @@ import ReactDOM from 'react-dom'
 import './styles.scss'
 import GithubKitty from './github.svg'
 import './home.font'
+import GamePage from './components/GamePage'
+import GameInactivePage from './components/GameInactivePage'
 
 class HomeSPA extends Component {
     constructor(props) {
         super(props);
-        this.state = {date: new Date()};
-      }
-    
-      componentDidMount() {
-        this.timerID = setInterval(
-          () => this.tick(),
-          1000
-        );
-      }
-    
-      componentWillUnmount() {
-        clearInterval(this.timerID);
-      }
-    
-      tick() {
-        this.setState({
-          date: new Date()
-        });
+        this.state = {
+            gameIsReady: false,
+            gameIsOn: true
+        };
       }
     
       render() {
-        return (
-          <div>
-            <h1>Below is the clock</h1>
-            <h2>Time now is {this.state.date.toLocaleTimeString()}.</h2>
-          </div>
-        );
+        if(this.state.gameIsReady){
+            return(
+                <div className="spa-wrapper">
+                    <GameInactivePage />    
+                </div>
+            );
+        }
+        if(this.state.gameIsOn){
+            return(
+                <div className="spa-wrapper">
+                    <GamePage />    
+                </div>
+            );
+            
+        }
       }
 }
 

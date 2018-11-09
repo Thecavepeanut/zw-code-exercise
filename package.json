@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo sorry no tests",
     "clear": "rm -rf dist/home && rm -rf dist/main && rm -rf dist/tree-shake",
-    "start": "webpack -d && webpack-dev-server --content-base dist/ && webpack --watch",
+    "start": "webpack -d && copy src\\index.html dist\\index.html && copy src\\favicon.png dist\\favicon.png && webpack-dev-server --content-base dist/ && webpack --watch",
     "build": "SET \"NODE_ENV='production'\" && webpack -p --optimize-minimize && copy src\\index.html dist\\index.html && copy src\\favicon.png dist\\favicon.png"
   },
   "repository": {
