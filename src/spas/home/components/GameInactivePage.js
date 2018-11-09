@@ -5,13 +5,21 @@ export class GameInactivePage extends Component {
         super(props);
         this.state = {
         }
+        this.playGame = this.playGame.bind(this);
+    }
+
+    playGame(){
+        this.props.onPlayNewGame();
     }
 
     render() {
+        const buttonText = this.props.onGameLost === null ? "Start Game" : "Play Again";
+            
         return (
             <div>
-                <div className="greeting-page">
-                    <h1 className="greeting-text">Greetings!</h1>
+                <div className="welcome-winning-screen">
+                    <h1 className="welcome-winning-text">{this.props.textMessage}</h1>
+                    <button className="play-button" onClick={this.playGame}>{buttonText}</button>
                 </div>
             </div>
         );

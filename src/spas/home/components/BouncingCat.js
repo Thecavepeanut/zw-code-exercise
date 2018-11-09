@@ -17,11 +17,12 @@ export class BouncingCat extends Component {
         }
         this.interval = setInterval(() => this.draw(), 1800);
         this.clickingCat = this.clickingCat.bind(this);
+        this.resize = this.resize.bind(this);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
-        window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('resize', this.resize);
     }
 
     componentDidMount() {
