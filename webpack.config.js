@@ -52,6 +52,10 @@ module.exports = {
           loaders: ['happypack/loader?id=svg']
         },
         {
+          test: /\.mp3$/,
+          use: 'file-loader',
+        },
+        {
           test: /\.json$/,
           use: 'json-loader'
         },
@@ -128,7 +132,7 @@ module.exports = {
         })
       ]
     }
-    
+
     if (ENV === 'production') {
 
       module.exports.plugins.push(
