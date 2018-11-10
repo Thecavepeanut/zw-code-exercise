@@ -74,12 +74,12 @@ export class BouncingCat extends Component {
 
     render() {
         return (
-            <div className="gameField" >
+            <div className="cat-page-wrapper" >
                 <div 
                     className={(this.state.clicked) ? "wrap clicked" : "wrap"} 
                     style={{ left: this.state.position.x + "px", top: this.state.position.y + "px" }}
                 >
-                    <GithubKitty id="target" className="targetIcon" onClick={this.clickingCat}/>
+                    <GithubKitty className="cat-icon" onClick={this.clickingCat}/>
                 </div>
             </div>
         )

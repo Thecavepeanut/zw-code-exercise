@@ -17,8 +17,8 @@ export class GameInactivePage extends Component {
             
         return (
             <div>
-                <div className="welcome-winning-screen">
-                    <h1 className="welcome-winning-text">{this.props.textMessage}</h1>
+                <div className="game-inactive-page">
+                    <h1 className="inactive-page-text">{this.props.textMessage}</h1>
                     <button className="play-button" onClick={this.playGame}>{buttonText}</button>
                 </div>
             </div>

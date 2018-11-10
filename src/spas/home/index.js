@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './styles.scss'
-import GithubKitty from './github.svg'
 import './home.font'
 import GamePage from './components/GamePage'
 import GameInactivePage from './components/GameInactivePage'
@@ -50,14 +49,14 @@ class HomeSPA extends Component {
             }
 
             return(
-                <div className="spa-wrapper">
+                <div className="component-wrapper">
                     <GameInactivePage onPlayNewGame={this.startGame} textMessage={displayText} onGameLost={this.state.gameLost} />    
                 </div>
             );
         }
         if(this.state.gameIsOn){
             return(
-                <div className="spa-wrapper">
+                <div className="component-wrapper">
                     <GamePage onGameOver={this.gameOver}/>    
                 </div>
             );

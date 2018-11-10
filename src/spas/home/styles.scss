@@ -1,30 +1,25 @@
-/* PUT STYLES HERE */
 @media all { 
 
-    /* RESETTING*/
     *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-    .spa-wrapper{
+    .component-wrapper{
         text-align: center;
         font-family: 'Spicy+Rice', monospace;
         overflow: hidden;
-        color: black;
+        color: #b6f442;
         font-size: 16px;
         height: 100vh;
         width: 100vw;
         background: #BBD2C5;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
     }
 
-    /* GAME SCREEN */
-    .gameField {
+    .cat-page-wrapper {
         position: relative;
         transform: translate(-10%, 0);
         width: 100vw;
@@ -46,15 +41,14 @@
     }
 
     .icon{
-        color: black;
-        opacity: 0.8;
+        color: #b6f442;
     }
 
     .icon:before{
         vertical-align: text-bottom!important;
     }
 
-    .targetIcon {
+    .cat-icon {
         width: 100%;
         height: auto;
         fill: rgb(0, 191, 255);
@@ -76,14 +70,12 @@
     .wrap.clicked {
         transform-origin: center;
         transform: scale(1.2);
-        .targetIcon{
+        .cat-icon{
             fill: black;
         }
     }
 
-    /* WELCOME SCREEN && WINNER/LOST SCREEN */ 
-
-    .welcome-winning-screen{
+    .game-inactive-page{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -92,7 +84,7 @@
         height: 100vh;
     }
 
-    .welcome-winning-text {
+    .inactive-page-text {
         font-size: 2.5rem;
         width: 65%;
         line-height: 1.5em;
@@ -104,9 +96,9 @@
 
     .play-button {
         font-family: 'Spicy+Rice', monospace;
-        font-size: 1.5rem;
+        font-size: 2rem;
         background-color: gray;
-        color: black;
+        color: #b6f442;
         border-radius: 5px;
         margin-top: 40px;
         padding: 15px 20px;
@@ -146,23 +138,22 @@
 }
 
 @media (max-width: 768px) { 
-    /* GAME SCREEN */
     .wrap {
         width: 12%;
     }
-}
-
-@media (max-width: 750px) { 
-    /* GAME SCREEN */
-    .wrap {
-        width: 15%;
+    .inactive-page-text {
+        font-size: 2rem;
+    }
+    .play-button {
+        width: 40%;
+        font-size: 1.4rem;
     }
 }
 
-@media (max-width: 576px) {  
-    /* GAME SCREEN */
+
+@media (max-width: 600px) {  
     nav {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: left;
     }
     .wrap {
@@ -172,15 +163,51 @@
         line-height: 1.5em;
         font-size: 1.5rem;
     }
-
+    .inactive-page-text {
+        font-size: 1.4rem;
+    }
+    .play-button {
+        width: 40%;
+        font-size: 1.1rem;
+    }
 }
 
-@media (max-width: 420px) {  
-    /* GAME SCREEN */
+@media (max-width: 414px) {  
+    nav {
+        flex-direction: column;
+        text-align: left;
+    }
     .status-text {
         font-size: 1.2rem;
     }
     .wrap {
         width: 25%;
+    }
+    .inactive-page-text {
+        font-size: 1.1rem;
+    }
+    .play-button {
+        width: 40%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 320px) {  
+    nav {
+        flex-direction: column;
+        text-align: left;
+    }
+    .status-text {
+        font-size: 1.2rem;
+    }
+    .wrap {
+        width: 25%;
+    }
+    .inactive-page-text {
+        font-size: 1.1rem;
+    }
+    .play-button {
+        width: 40%;
+        font-size: 0.8rem;
     }
 }
