@@ -9,7 +9,12 @@ const BeerScore = ({ score }) => {
                     key={i}
                     className="icon icon-beer"
                     style={{
-                        fontSize: "40px"
+                        fontSize: "40px",
+                        color: `rgb(${Math.floor(
+                            Math.random() * 257
+                        )}, ${Math.floor(Math.random() * 257)}, ${Math.floor(
+                            Math.random() * 257
+                        )} )`
                     }}
                 />
             );
