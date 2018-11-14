@@ -22,17 +22,18 @@ class HomeSPA extends Component {
     handleIncreaseScore() {
         this.setState(function(state) {
             return {
-                score: state.score + 1
+                score: state.score === 10 ? 0 : state.score + 1
             };
         });
     }
 
     render() {
+        const { score } = this.state;
         console.log(`Score ${this.state.score}`);
         return (
             <div className="container">
                 <h1>Github Kitty Game</h1>
-                <BeerScore />
+                <BeerScore score={score} />
                 <GameBoard keepScore={this.handleIncreaseScore} />
             </div>
         );
