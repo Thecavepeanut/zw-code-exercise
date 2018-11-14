@@ -14,6 +14,7 @@ class Gameboard extends Component {
         this.getAnimationName = this.getAnimationName.bind(this);
     }
 
+    // randomly choose an animation from the list of animations
     getAnimationName() {
         const random = Math.floor(Math.random() * 4);
 
@@ -24,6 +25,7 @@ class Gameboard extends Component {
         });
     }
 
+    // speedy animation
     speedyAnimation() {
         const top = Math.floor(Math.random() * 450);
         const left = Math.floor(Math.random() * 75);
@@ -38,6 +40,7 @@ class Gameboard extends Component {
 
     render() {
         const { animationNum, animations, durations, top, left } = this.state;
+
         return (
             <div className="board">
                 <GithubKitty

@@ -29,7 +29,7 @@ class HomeSPA extends Component {
 
     render() {
         const { score } = this.state;
-        console.log(`Score ${this.state.score}`);
+
         return (
             <div className="container">
                 <h1>Github Kitty Game</h1>

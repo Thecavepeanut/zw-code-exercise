@@ -40,14 +40,6 @@ svg {
     position: relative;
 }
 
-//   animations: [
-//                 "pulse",
-//                 "spin-move",
-//                 "speedy",
-//                 "reverse-spin-move",
-//                 "multiply"
-//             ]
-
 @keyframes pulse {
     0% {
         transform: scale(0);
