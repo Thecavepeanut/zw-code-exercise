@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-console.log('hello worlds!')
+import React from "react";
+import ReactDOM from "react-dom";
+import HomeSPA from "./spas/home/index.js";
 
-ReactDOM.render(<h1>Hello Worlds!</h1>, document.getElementById('react-spa'))
+ReactDOM.render(<HomeSPA />, document.getElementById("react-spa"));

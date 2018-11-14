@@ -1,19 +1,22 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import './styles.scss'
-import GithubKitty from './github.svg'
-import './home.font'
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+// styles
+import "./styles.scss";
+// iconts
+import GithubKitty from "./github.svg";
+import "./home.font";
+// components
+import GameBoard from "./components/GameBoard";
 
 class HomeSPA extends Component {
-    render(){
+    render() {
         return (
             <div>
-                <span className="icon icon-beer"/>
-                <GithubKitty />
+                <h1>Github Kitty Game</h1>
+                <GameBoard />
             </div>
-        )
+        );
     }
 }
 
-
-ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))
+export default HomeSPA;
