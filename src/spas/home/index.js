@@ -11,7 +11,7 @@ import GameBoard from "./components/GameBoard";
 class HomeSPA extends Component {
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Github Kitty Game</h1>
                 <GameBoard />
             </div>
