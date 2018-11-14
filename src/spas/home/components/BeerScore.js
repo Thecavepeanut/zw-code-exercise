@@ -6,6 +6,7 @@ const BeerScore = ({ score }) => {
         for (let i = 0; i < score; i++) {
             beerPoints.push(
                 <span
+                    key={i}
                     className="icon icon-beer"
                     style={{
                         fontSize: "40px"
