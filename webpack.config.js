@@ -7,7 +7,8 @@ const
     OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     path = require('path'),
     compiledFiles = './src/spas/**/index.js',
-    modules = { main: ['babel-polyfill', './src/index.js'] }
+    modules = { main: ['babel-polyfill', './src/index.js'] },
+    HtmlWebpackPlugin = require("html-webpack-plugin")
 
 
 //code splitting
@@ -34,7 +35,7 @@ module.exports = {
         contentBase: './dist',
         historyApiFallback: {
             index: 'index.html'
-          },
+        },
     },
     devtool: 'source-map',
     module: {
@@ -125,6 +126,9 @@ module.exports = {
             'sass-loader?sourceMap',
             'postcss-loader?sourceMap'
           ]
+        }),
+        new HtmlWebpackPlugin({
+          template: "./src/index.html"
         })
       ]
     }
