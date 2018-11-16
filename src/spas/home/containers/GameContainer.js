@@ -20,7 +20,7 @@ class GameContainer extends React.Component{
 
   handlePlayerScores(){
     const playerScore = this.state.playerScore
-    if(this.state.playerScore === constants.winningScore-1){
+    if(this.state.playerScore === constants.WINNING_SCORE-1){
       // winning point
       this.setState({
         playerScore: playerScore + 1,
@@ -32,7 +32,6 @@ class GameContainer extends React.Component{
         playerScore: playerScore + 1
       })
     }
-    
   }
 
   handleStartGame(){
