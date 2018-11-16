@@ -11,20 +11,21 @@ class GameContainer extends React.Component{
     super()
     this.state = {
       playerScore: 0,
-      isPlaying: false
+      isPlaying: false,
+      screenType: constants.START_SCREEN
     }
     this.handlePlayerScores = this.handlePlayerScores.bind(this)
     this.handleStartGame = this.handleStartGame.bind(this)
   }
 
   handlePlayerScores(){
-    console.log('handlePlayerScores')
     const playerScore = this.state.playerScore
     if(this.state.playerScore === constants.winningScore-1){
       // winning point
       this.setState({
         playerScore: playerScore + 1,
-        isPlaying: false
+        isPlaying: false,
+        screenType: constants.END_SCREEN
       })
     }else{
       this.setState({
@@ -37,40 +38,49 @@ class GameContainer extends React.Component{
   handleStartGame(){
     this.setState({
       playerScore: 0,
-      isPlaying: true
+      isPlaying: true,
+      screenType: constants.PLAYING_SCREEN
     })
   }
 
   renderStartScreen(){
-    return !this.state.isPlaying && this.state.playerScore === 0 && 
-      <GamePrompt onClick={this.handleStartGame}
+    return <GamePrompt onClick={this.handleStartGame}
         promptTitle='ZipWhip Click Game'
         promptText='Instructions: Click the kitty 10 times to win'
         buttonText='Start Game'/>
   }
 
-  renderSuccessCreen(){
-    return this.state.playerScore >= constants.winningScore && 
-    <GamePrompt onClick={this.handleStartGame}
+  renderEndScreen(){
+    return <GamePrompt onClick={this.handleStartGame}
       promptText='👾👾 YOU WIN THE JACKPOT! 👾👾'
       buttonText='Play Again'/>
   }
 
+  renderPlayingScreen(){
+    return <div>
+      <h1>> Hello Kitty!</h1>
+      <Scorecard playerScore={this.state.playerScore}/>
+      <MovingTarget onClick={this.handlePlayerScores}/>
+    </div>
+  }
+
   renderGameScreen(){
-    return this.state.isPlaying && 
-      <div>
-        <h1>> Hello Kitty!</h1>
-        <Scorecard playerScore={this.state.playerScore}/>
-        <MovingTarget onClick={this.handlePlayerScores}/>
-      </div>
+    switch(this.state.screenType){
+      case constants.START_SCREEN:
+        return this.renderStartScreen();
+      case constants.PLAYING_SCREEN:
+        return this.renderPlayingScreen();
+      case constants.END_SCREEN:
+        return this.renderEndScreen();
+      default:
+        return this.renderStartScreen();
+    }
   }
 
   render(){
     return (
       <div className="game-container">
-        {this.renderStartScreen()}
         {this.renderGameScreen()}
-        {this.renderSuccessCreen()}
       </div>
     )
   }
