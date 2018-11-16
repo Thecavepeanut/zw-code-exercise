@@ -16,16 +16,12 @@ class MovingTarget extends React.Component{
     this.xSpeed = constants.TARGET_SPEED;
     this.ySpeed = constants.TARGET_SPEED;
     this.interval = setInterval(() => this.tick(), 30);
-  }
-
-  componentDidMount(){
-    
+    this.handleTargetClick = this.handleTargetClick.bind(this);
   }
 
   componentWillUnmount(){
     clearInterval(this.interval);
   }
-
 
   tick(){
     let { x, y } = this.state.targetPosition;
@@ -36,11 +32,11 @@ class MovingTarget extends React.Component{
 
     if((x + constants.ICON_SIZE) >= window.innerWidth || x <= 0){
       // check left/right bounds and reverse
-      this.xSpeed = -1 * xSpeed
+      this.reverseSpeed(true)
     }
     if((y + constants.ICON_SIZE) >= window.innerHeight || y <= 0){
       // check top/bottom bounds and reverse
-      this.ySpeed = -1 * ySpeed
+      this.reverseSpeed(false)
     }
 
     this.setState({
@@ -51,11 +47,24 @@ class MovingTarget extends React.Component{
     })
   }
 
+  reverseSpeed(xHit){
+    if(xHit){
+      this.xSpeed = (this.xSpeed * (Math.random() + 0.5)) * -1
+    }else{
+      this.ySpeed = (this.ySpeed * (Math.random() + 0.5)) * -1
+    }
+  }
+
+  handleTargetClick(){
+    this.props.onClick();
+    this.reverseSpeed(Math.random() > 0.5);
+  }
+
   render(){
     return (
       <div className="moving-target-container">
         <GithubKitty className="github-kitty-icon" 
-        onClick={this.props.onClick}
+        onClick={this.handleTargetClick}
         style={{ left: this.state.targetPosition.x + "px", top: this.state.targetPosition.y + "px" }}/>
       </div>
     )
