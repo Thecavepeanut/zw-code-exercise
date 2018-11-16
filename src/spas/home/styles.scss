@@ -1,6 +1,58 @@
 /* PUT STYLES HERE */
 
+body{
+  margin: 0;
+  color: #03d800
+}
+
 svg {
     width: 100px;
     height: 100px;
+}
+
+.game-container{
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: #03d800;
+  display: flex
+}
+
+.game-prompt-container{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-prompt-title{
+  margin: 20px 0;
+}
+.game-prompt-text{
+  margin: 14px 0;
+}
+
+.button{
+  width: fit-content;
+  border: 1px solid #03d800;
+  padding: 8px 16px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.button:hover{
+  background: #262626
+}
+
+.github-kitty-icon{
+  width: 100px;
+  height: auto;
+  fill: rgb(0, 191, 255);
+  cursor: pointer;
+  position: absolute;
+}
+
+.beer-icon{
+  width: 30px;
+  fill: #03d800
 }
