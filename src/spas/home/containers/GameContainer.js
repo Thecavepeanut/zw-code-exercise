@@ -42,7 +42,7 @@ class GameContainer extends React.Component{
   }
 
   renderStartScreen(){
-    return !this.state.isPlaying && !this.state.isPlaying && 
+    return !this.state.isPlaying && this.state.playerScore === 0 && 
       <GamePrompt onClick={this.handleStartGame}
         promptTitle='ZipWhip Click Game'
         promptText='Instructions: Click the kitty 10 times to win'
@@ -52,14 +52,14 @@ class GameContainer extends React.Component{
   renderSuccessCreen(){
     return this.state.playerScore >= constants.winningScore && 
     <GamePrompt onClick={this.handleStartGame}
-      promptText='YOU WIN THE JACKPOT!'
+      promptText='👾👾 YOU WIN THE JACKPOT! 👾👾'
       buttonText='Play Again'/>
   }
 
   renderGameScreen(){
     return this.state.isPlaying && 
       <div>
-        <div>Click the moving Kitty 10 times to win!</div>
+        <h1>> Hello Kitty!</h1>
         <Scorecard playerScore={this.state.playerScore}/>
         <MovingTarget onClick={this.handlePlayerScores}/>
       </div>
