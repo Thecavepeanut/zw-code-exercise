@@ -15,5 +15,4 @@ class HomeSPA extends Component {
     }
 }
 
-
-ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'))
+export default HomeSPA
