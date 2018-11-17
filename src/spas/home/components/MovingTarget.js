@@ -1,5 +1,7 @@
 import React from 'react'
 import constants from '../helpers/constants'
+import requestInterval from '../helpers/requestInterval'
+import clearRequestInterval from '../helpers/clearInterval'
 
 import GithubKitty from '../icons/github.svg'
 
@@ -9,18 +11,21 @@ class MovingTarget extends React.Component{
     super();
     this.state = {
       targetPosition: {
-        x: Math.floor(Math.random() * (window.innerWidth)),
-        y: Math.floor(Math.random() * (window.innerHeight))
+        x: Math.floor(Math.random() * (window.innerWidth - constants.ICON_SIZE)),
+        y: Math.floor(Math.random() * (window.innerHeight - constants.ICON_SIZE))
       } 
     }
     this.xSpeed = constants.TARGET_SPEED;
     this.ySpeed = constants.TARGET_SPEED;
-    this.interval = setInterval(() => this.tick(), 30);
     this.handleTargetClick = this.handleTargetClick.bind(this);
   }
 
+  componentDidMount(){
+    this.interval = requestInterval(() => this.tick());
+  }
+
   componentWillUnmount(){
-    clearInterval(this.interval);
+    clearRequestInterval(this.interval);
   }
 
   tick(){
@@ -61,11 +66,10 @@ class MovingTarget extends React.Component{
   }
 
   render(){
+    const newPosition = { top: this.state.targetPosition.y + "px", left: this.state.targetPosition.x + "px" }
     return (
-      <div className="moving-target-container">
-        <GithubKitty className="github-kitty-icon" 
-        onClick={this.handleTargetClick}
-        style={{ left: this.state.targetPosition.x + "px", top: this.state.targetPosition.y + "px" }}/>
+      <div className="moving-target-container github-kitty-icon" style={newPosition} onClick={this.handleTargetClick}>
+        <GithubKitty />
       </div>
     )
   }

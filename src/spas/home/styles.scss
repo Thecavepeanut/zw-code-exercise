@@ -80,6 +80,15 @@ svg {
     100% {fill: orange;}
   }
 
+  @-moz-keyframes colorRotate
+  {
+    0%   {fill: red;}
+    25%  {fill: yellow;}
+    50%  {fill: blue;}
+    75%  {fill: green;}
+    100% {fill: orange;}
+  }
+
   @-webkit-keyframes colorRotate
   {
     0%   {fill: red;}

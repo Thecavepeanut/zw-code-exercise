@@ -51,7 +51,7 @@ class GameContainer extends React.Component{
 
   renderEndScreen(){
     return <GamePrompt onClick={this.handleStartGame}
-      promptText='👾👾 YOU WIN THE JACKPOT! 👾👾'
+      promptText='👾👾 YOU WIN! WOOP WOOP! 👾👾'
       buttonText='Play Again'/>
   }
 
