@@ -39,7 +39,7 @@ module.exports = {
     devtool: 'source-map',
     module: {
         loaders: [{
-          test: /\.js$/,
+          test: /\.js|.jsx$/,
           include: [
             path.resolve(__dirname, 'src')
           ],
@@ -128,7 +128,7 @@ module.exports = {
         })
       ]
     }
-    
+
     if (ENV === 'production') {
 
       module.exports.plugins.push(

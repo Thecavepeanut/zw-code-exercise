@@ -1,0 +1,20 @@
+{
+    "name":"Hit The Target",
+    "description": "Click on the Cat icon to score game points.",
+    "game": {
+        "maxScore": 10,
+        "duration": 2000,
+        "messages": ["Hey There!" , "Let's play", "Click on the cat icon 10 times before time ends"]
+    },
+    "gamestatus":{
+      "won":{
+        "buttonMessage": "Replay",
+        "statusMessage": "Awesome, You won!"
+      },
+      "lost": {
+        "buttonMessage": "Try again",
+        "statusMessage": "Oops You lost"
+      }
+    }
+
+}
