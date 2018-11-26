@@ -1,6 +1,174 @@
-/* PUT STYLES HERE */
+body {
+  background: #ecf0f1;
+  color: #2c3e50;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app{
+  width: 90vw;
+  max-width: 950px;
+}
+
+.progress-bar {
+  height: 2vh;
+  width: 100%;
+  border-radius: 50px;
+  border: 2px solid #7f8c8d;
+  margin-bottom: 3vh;
+}
+
+.filler {
+  background: linear-gradient(rgb(241,196,15), rgb(243,156,18));
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
+.game-title {
+  font-size: 5vh;
+  text-align: center;
+  user-select: none;
+}
+
+.game-over {
+  animation: rainbow 10s infinite ease-in-out, scale 1s cubic-bezier(.71,.55,.62,1.57);
+}
+
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 svg {
-    width: 100px;
-    height: 100px;
+  width: 7vh;
+  height: 7vh;
+  margin: 16px;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  &:hover {
+    width: 7.5vh;
+    height: 7.5vh;
+  }
+  &:active {
+    width: 8vh;
+    height: 8vh;
+  }
+}
+
+.target {
+  width: 9vh;
+  height: 9vh;
+  &:hover {
+    width: 9vh;
+    height: 9vh;
+  }
+  &:active {
+    width: 9vh;
+    height: 9vh;
+  }
+  cursor: default;
+  flex-basis: 100%;
+  margin-bottom: 3vh;
+  animation: spin 8s cubic-bezier(.8, 0, .2, 1) infinite;
+}
+
+.final {
+  position: absolute;
+  animation: movingTarget 15s infinite ease-in-out;
+}
+
+@keyframes spin {
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes movingTarget {
+  0% {
+      top: 10vh;
+      left: 10vw;
+      transform: rotate(180deg);
+  }
+  10% {
+    top: 50vh;
+    left: 50vw;
+    transform: rotate(-30deg);
+  }
+  20% {
+      top: 60vh;
+      left: 80vw;
+      transform: rotate(360deg);
+  }
+  30% {
+    top: 40vh;
+    left: 40vw;
+    transform: rotate(-30deg);
+  }
+  40% {
+      top: 80vh;
+      left: 20vw;
+      transform: rotate(-90deg);
+  }
+  50% {
+    top: 60vh;
+    left: 30vw;
+    transform: rotate(180deg);
+  }
+  60% {
+      top: 20vh;
+      left: 80vw;
+      transform: rotate(-30deg);
+  }
+  70% {
+    top: 60vh;
+    left: 10vw;
+    transform: rotate(90deg);
+  }
+  80% {
+      top: 50vh;
+      left: 30vw;
+      transform: rotate(360deg);
+  }
+  90% {
+    top: 70vh;
+    left: 70vw;
+    transform: rotate(-45deg);
+  }
+  100% {
+      top: 10vh;
+      left: 10vw;
+      transform: rotate(180deg);
+  }
+}
+
+@keyframes rainbow {
+  0% { color: #f1c40f; }
+  7% { color: #f39c12; }
+  14% { color: #e67e22; }
+  21% { color: #d35400; }
+  28% { color: #8e44ad; }
+  35% { color: #9b59b6; }
+  42% { color: #3498db; }
+  50% { color: #2980b9; }
+  57% { color: #16a085; }
+  64% { color: #1abc9c; }
+  71% { color: #2ecc71; }
+  78% { color: #27ae60; }
+  85% { color: #7f8c8d; }
+  92% { color: #95a5a6; }
+  100% { color: #bdc3c7; }
+}
+
+@keyframes scale {
+  from {
+    opacity: 0;
+    transform: scale(.25, .25);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1, 1);
+  }
 }
