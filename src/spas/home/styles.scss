@@ -4,3 +4,8 @@ svg {
     width: 100px;
     height: 100px;
 }
+#mainContainer {
+display: flex;
+flex: 1;
+flex-direction: column;
+}
