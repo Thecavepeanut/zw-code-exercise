@@ -6,6 +6,7 @@ const
     HappyPack = require('happypack'),
     OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
     compiledFiles = './src/spas/**/index.js',
     modules = { main: ['babel-polyfill', './src/index.js'] }
 
@@ -80,6 +81,9 @@ module.exports = {
         modules: ['src', 'node_modules']
       },
       plugins: [
+          new HtmlWebpackPlugin({
+              template: "./src/index.html"
+          }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ExtractTextPlugin('[name]/styles.css'),

@@ -1,6 +1,26 @@
 /* PUT STYLES HERE */
+html, body {
+    margin: 0;
+    height: 100%;
+}
 
 svg {
     width: 100px;
     height: 100px;
+}
+
+#react-spa {
+    min-height: 100%;
+    background-image: linear-gradient(to bottom right, #59cef0, #126dc1);
+}
+
+.app {
+    font-family: Roboto, Arial, sans-serif;
+    color: #fff;
+
+    h1 {
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+    }
 }
