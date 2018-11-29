@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import '../styles.scss'
 import Counter from '../Components/Counter'
-import Snowball from '../Components/Snowball'
+import PlayArea from '../Components/PlayArea'
 import Snowman from '../Components/Snowman'
 
 class Game extends Component {
@@ -26,7 +26,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <Counter count={this.state.count} />
-                {this.state.completed ? <Snowman /> : <Snowball handleClick={this.incrementCount} completed={this.state.completed} />}
+                {this.state.completed ? <Snowman /> : <PlayArea handleClick={this.incrementCount} completed={this.state.completed} />}
                 <div className="ground"></div>
             </div>
         )

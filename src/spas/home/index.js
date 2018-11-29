@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <div className="app">
                 <header>
-                    <h1>Do you want to build a snowman?</h1>
+                    <h1>Make A Snowman</h1>
                 </header>
                 <Game />
             </div>

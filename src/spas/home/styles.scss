@@ -5,8 +5,7 @@ html, body {
 }
 
 svg {
-    width: 100px;
-    height: 100px;
+    color: #fff;
 }
 
 #react-spa {
@@ -22,7 +21,7 @@ svg {
     flex-direction: column;
 
     header {
-        height: 100px;
+        height: 75px;
         background-color: #000;
         display: flex;
         justify-content: center;
@@ -43,12 +42,17 @@ svg {
     }
 }
 
-.play-area {
+.play-area, .end-screen {
     z-index: 2;
 }
 
+.end-screen {
+    flex: 1;
+    max-height: 100%;
+}
+
 .ground {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -63,14 +67,68 @@ svg {
     justify-content: center;
     align-items: center;
     margin: auto;
+
+    div {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
 }
 
-.snowball-container div {
-    margin: auto;
+.snowman-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.snowman-head {
+    width: 135px;
+    height: 135px;
+    z-index: 4;
+    position: relative;
+    top: 75px
+}
+
+.snowman-torso {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 50px;
+    z-index: 3;
+}
+
+.snowman-base {
+    width: 275px;
+    height: 275px;
+    z-index: 2;
 }
 
 .rolling {
     animation: spin 2s linear 1;
+}
+
+.counter {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+
+    .message {
+        font-size: 24px;
+    }
+
+    div {
+        padding: 5px;
+    }
+}
+
+.part-check {
+    div {
+        display: flex;
+        align-items: center;
+        padding: 3px;
+    }
 }
 
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
