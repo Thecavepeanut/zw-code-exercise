@@ -8,7 +8,9 @@ class App extends Component {
     render(){
         return (
             <div className="app">
-                <h1>Do you want to build a snowman?</h1>
+                <header>
+                    <h1>Do you want to build a snowman?</h1>
+                </header>
                 <Game />
             </div>
         )
