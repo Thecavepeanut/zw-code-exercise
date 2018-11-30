@@ -53,30 +53,40 @@ class HomeSPA extends Component {
       <div id="mainContainer">
         <div id="headerContainer">
           <p>Welcome to the game!</p>
-          <p>Score:</p>
-          {this.state.count > 0 ? (
-            <BeerPoints count={this.state.count} />
-          ) : (
-            <div />
-          )}
-        </div>
-        <div id="gridContainer">
-          <div id="grid">
-            {this.state.iconArray.map((item, index) => {
-              if (item === 0) {
-                return <Chameleon key={index} />;
-              }
-              if (item === 1) {
-                return <Cow key={index} />;
-              }
-              if (item === 2) {
-                return <Penguin key={index} />;
-              }
-              if (item === 3) {
-                return <Kitty key={index} onClick={this.clickKitty} />;
-              }
-            })}
+
+          <div id="score">
+            <p>Score:</p>
+            {this.state.count > 0 ? (
+              <BeerPoints count={this.state.count} />
+            ) : (
+              <div />
+            )}
           </div>
+        </div>
+
+        <div id="gameContainer">
+          {this.state.count < 10 ? (
+            <div id="grid">
+              {this.state.iconArray.map((item, index) => {
+                if (item === 0) {
+                  return <Chameleon key={index} />;
+                }
+                if (item === 1) {
+                  return <Cow key={index} />;
+                }
+                if (item === 2) {
+                  return <Penguin key={index} />;
+                }
+                if (item === 3) {
+                  return <Kitty key={index} onClick={this.clickKitty} />;
+                }
+              })}
+            </div>
+          ) : (
+            <div id="winScreen">
+              <p>WINNER!</p>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -11,6 +11,7 @@ flex-direction: column;
 }
 
 #headerContainer {
+  margin: 20px;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -21,10 +22,16 @@ flex-direction: column;
 #headerContainer p {
   display: flex;
   flex-direction: row;
-
+}
+#score {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-#gridContainer {
+#gameContainer {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -34,4 +41,16 @@ flex-direction: column;
 #grid {
   height: 400px;
   width: 560px;
+}
+#winScreen {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 560px;
+  background-color: black;
+}
+#winScreen p {
+  color: white;
 }
