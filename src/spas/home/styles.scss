@@ -1,9 +1,7 @@
 /* PUT STYLES HERE */
-svg {
-  width: 40px;
-  height: 40px;
+body {
+  background-color: black;
 }
-
 #mainContainer {
 display: flex;
 flex: 1;
@@ -19,28 +17,41 @@ flex-direction: column;
   align-items: center;
 }
 
-#headerContainer p {
+#headerContainer h1 {
   display: flex;
   flex-direction: row;
+  color: White;
 }
-#score {
+#scoreContainer {
   display: flex;
   width: 100%;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
-
+#scoreContainer h2 {
+  color: white;
+}
+.points {
+  fill: white;
+}
 #gameContainer {
   display: flex;
   flex: 1;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
 }
 #grid {
-  height: 400px;
+  height: 440px;
   width: 560px;
+  background-color: #1ccc68;
+}
+
+svg {
+  width: 40px;
+  height: 40px;
 }
 
 #winScreen {
@@ -52,6 +63,17 @@ flex-direction: column;
   width: 560px;
   background-color: black;
 }
-#winScreen p {
+#winScreen h1 {
   color: white;
+}
+
+@media(max-width: 640px) {
+  #grid {
+    height: 330px;
+    width: 420px;
+  }
+  svg {
+    width: 30px;
+    height: 30px;
+  }
 }

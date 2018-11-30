@@ -25,8 +25,8 @@ class HomeSPA extends Component {
   }
   componentDidMount() {
     this.timer = setInterval(() => {
-      this.updateIcon();
-    }, 50);
+      this.loadArrayData();
+    }, 1250);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -39,14 +39,16 @@ class HomeSPA extends Component {
     };
     return data;
   }
-  async updateIcon() {
-    let randElement = Math.floor(Math.random() * 139);
-    if (randElement !== this.state.kittenPosition) {
-      const data = this.setIcon(randElement);
-      this.state.iconArray.splice(randElement, 1, data);
-      this.setState({ iconArray: this.state.iconArray });
-    }
-  }
+
+  //for rapid individual icon updates
+  //   async updateIcon() {
+  //     let randElement = Math.floor(Math.random() * 139);
+  //     if (randElement !== this.state.kittenPosition) {
+  //       const data = this.setIcon(randElement);
+  //       this.state.iconArray.splice(randElement, 1, data);
+  //       this.setState({ iconArray: this.state.iconArray });
+  //     }
+  //   }
   loadArrayData() {
     let array = [];
     for (let i = 0; i < 140; i++) {
@@ -83,9 +85,9 @@ class HomeSPA extends Component {
     return (
       <div id="mainContainer">
         <div id="headerContainer">
-          <p>Welcome to the Clickin' Kitten!</p>
-          <div id="score">
-            <p>Score:</p>
+          <h1>Welcome to the Clickin' Kitten!</h1>
+          <div id="scoreContainer">
+            <h2>Score:</h2>
             {this.state.count > 0 ? (
               <BeerPoints count={this.state.count} />
             ) : (
@@ -98,9 +100,6 @@ class HomeSPA extends Component {
           {this.state.count < 10 ? (
             <div id="grid">
               {this.state.iconArray.map((item, index) => {
-                // console.log(
-                //   "stuff at index: " + index + "data is " + JSON.stringify(item)
-                // );
                 return (
                   <GridItem key={index} data={item} onClick={this.clickKitty} />
                 );
@@ -108,7 +107,7 @@ class HomeSPA extends Component {
             </div>
           ) : (
             <div id="winScreen">
-              <p>WINNER!</p>
+              <h1>WINNER!</h1>
             </div>
           )}
         </div>
