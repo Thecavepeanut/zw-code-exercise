@@ -26,7 +26,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <Counter count={this.state.count} />
-                {this.state.completed ? <Snowman /> : <PlayArea handleClick={this.incrementCount} completed={this.state.completed} />}
+                {this.state.completed ? <Snowman /> : <PlayArea handleClick={this.incrementCount} count={this.state.count} />}
                 <div className="ground"></div>
             </div>
         )

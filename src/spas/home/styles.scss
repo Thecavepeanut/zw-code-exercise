@@ -22,7 +22,7 @@ svg {
 
     header {
         height: 75px;
-        background-color: #000;
+        background-color: rgba(0,0,0,.75);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,16 +61,13 @@ svg {
 }
 
 .snowball-container {
-    width: 200px;
-    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
+    padding-bottom: 50px;
 
     div {
-        width: 100px;
-        height: 100px;
         margin: auto;
     }
 }
@@ -103,10 +100,6 @@ svg {
     z-index: 2;
 }
 
-.rolling {
-    animation: spin 2s linear 1;
-}
-
 .counter {
     font-size: 16px;
     display: flex;
@@ -130,6 +123,10 @@ svg {
         align-items: center;
         padding: 3px;
     }
+}
+
+.rolling {
+    animation: spin 1s linear 1;
 }
 
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
