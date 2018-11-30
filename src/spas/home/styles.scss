@@ -1,11 +1,37 @@
 /* PUT STYLES HERE */
-
 svg {
-    width: 100px;
-    height: 100px;
+  width: 40px;
+  height: 40px;
 }
+
 #mainContainer {
 display: flex;
 flex: 1;
 flex-direction: column;
+}
+
+#headerContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#headerContainer p {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#gridContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#grid {
+  height: 400px;
+  width: 560px;
 }

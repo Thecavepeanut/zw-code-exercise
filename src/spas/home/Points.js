@@ -10,7 +10,7 @@ class BeerPoints extends Component {
   render() {
     const points = [];
     for (let i = 0; i < this.props.count; i++) {
-      points.push(<Beer />);
+      points.push(<Beer key={i} />);
     }
     return <div>{points}</div>;
   }
