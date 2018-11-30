@@ -10,27 +10,42 @@ import "./home.font";
 class HomeSPA extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0, iconArray: [] };
+    this.state = { count: 0, iconArray: [], lastCatPosition: null };
     this.clickKitty = this.clickKitty.bind(this);
   }
   clickKitty(e) {
     e.preventDefault();
     this.setState({ count: this.state.count + 1 });
+    this.addCatData();
   }
   componentWillMount() {
     this.loadArrayData();
   }
 
-  //load in array of random icons
   loadArrayData() {
+    //clear old data
+    // this.clearArrayData();
     for (let i = 0; i < 140; i++) {
       let randInt = Math.floor(Math.random() * 3);
       this.state.iconArray.push(randInt);
     }
-    let randIndex = Math.floor(Math.random() * 139);
-    //add one number for kitten icon
-    this.state.iconArray.splice(randIndex, 1, 3);
-    console.log(this.state.iconArray);
+    this.addCatData();
+  }
+  addCatData() {
+    if (this.state.lastCatPosition === null) {
+      let randIndex = Math.floor(Math.random() * 139);
+      //add one number for kitten icon
+      this.state.iconArray.splice(randIndex, 1, 3);
+      this.setState({ lastCatPosition: randIndex });
+    } else {
+      let randInt = Math.floor(Math.random() * 3);
+      this.state.iconArray.splice(this.state.lastCatPosition, 1, randInt);
+
+      let randIndex = Math.floor(Math.random() * 139);
+      //add one number for kitten icon
+      this.state.iconArray.splice(randIndex, 1, 3);
+      this.setState({ lastCatPosition: randIndex });
+    }
   }
 
   render() {
@@ -45,7 +60,6 @@ class HomeSPA extends Component {
             <div />
           )}
         </div>
-
         <div id="gridContainer">
           <div id="grid">
             {this.state.iconArray.map((item, index) => {
@@ -59,10 +73,9 @@ class HomeSPA extends Component {
                 return <Penguin key={index} />;
               }
               if (item === 3) {
-                return <Kitty key={index} />;
+                return <Kitty key={index} onClick={this.clickKitty} />;
               }
             })}
-            {/* <Kitty onClick={this.clickKitty} /> */}
           </div>
         </div>
       </div>
