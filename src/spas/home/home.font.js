@@ -6,7 +6,7 @@ module.exports = {
     "./icons/chameleon.svg",
     "./icons/cow.svg",
     "./icons/kitty.svg",
-    ".icons/penguin.svg"
+    "./icons/penguin.svg"
   ],
   fileName: BUNDLE_HELPER.path(__dirname) + "/fonts.[ext]"
 };
