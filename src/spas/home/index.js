@@ -16,20 +16,21 @@ class HomeSPA extends Component {
   clickKitty(e) {
     e.preventDefault();
     this.setState({ count: this.state.count + 1 });
-    this.addCatData();
+    this.loadArrayData();
   }
   componentWillMount() {
     this.loadArrayData();
   }
 
   loadArrayData() {
-    //clear old data
-    // this.clearArrayData();
+    const data = [];
     for (let i = 0; i < 140; i++) {
       let randInt = Math.floor(Math.random() * 3);
-      this.state.iconArray.push(randInt);
+      data.push(randInt);
     }
-    this.addCatData();
+    this.setState({ iconArray: data }, () => {
+      this.addCatData();
+    });
   }
   addCatData() {
     if (this.state.lastCatPosition === null) {
