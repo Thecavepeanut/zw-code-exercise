@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Beer from "./icons/beer.svg";
 
 class BeerPoints extends Component {
