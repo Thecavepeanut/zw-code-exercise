@@ -5,7 +5,7 @@ import '../styles.scss'
 class PlayArea extends Component {
     constructor(props) {
         super(props);
-        this.state = {rolling: false}
+        this.state = {rolling: false, transition: true}
 
         this.rollSnowball = this.rollSnowball.bind(this)
         this.haltSnowball = this.haltSnowball.bind(this)
@@ -20,11 +20,11 @@ class PlayArea extends Component {
             return
         }
         props.handleClick();
-        this.setState({rolling: true})
+        this.setState({rolling: true, transition: this.state.transition})
     }
 
     haltSnowball() {
-        this.setState({rolling: false})
+        this.setState({rolling: false, transition: this.state.transition})
     }
 
     snowballSize(count) {
@@ -52,7 +52,7 @@ class PlayArea extends Component {
             <div className="play-area">
                 <div className="snowball-container">
                     <div onClick={() => {this.rollSnowball(this.props)}}
-                         className={this.state.rolling ? 'rolling' : ''}
+                         className={`${this.state.rolling ? 'rolling' : ''} ${this.state.transition ? '' : 'no-transition'}`}
                          style={this.snowballSize(this.props.count)}
                          ref={this.snowball}>
                         <SnowballSVG />

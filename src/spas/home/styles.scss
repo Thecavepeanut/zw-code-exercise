@@ -47,8 +47,11 @@ svg {
 }
 
 .end-screen {
-    flex: 1;
     max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    margin-bottom: 30px;
 }
 
 .ground {
@@ -68,7 +71,12 @@ svg {
     padding-bottom: 50px;
 
     div {
+        transition: width 1s;
         margin: auto;
+    }
+
+    .no-transition {
+        transition: none;
     }
 }
 
