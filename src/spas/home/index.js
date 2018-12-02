@@ -12,7 +12,7 @@ class HomeSPA extends Component {
       iconArray: [],
       lastKittenPosition: null,
       kittenPosition: null,
-      backgroundColor: { r: null, g: null, b: null }
+      backgroundColor: { hue: null, saturation: null, lightness: null }
     };
     this.clickKitty = this.clickKitty.bind(this);
   }
@@ -46,15 +46,6 @@ class HomeSPA extends Component {
     return data;
   }
 
-  //for rapid individual icon updates
-  //   async updateIcon() {
-  //     let randElement = Math.floor(Math.random() * 139);
-  //     if (randElement !== this.state.kittenPosition) {
-  //       const data = this.setIcon(randElement);
-  //       this.state.iconArray.splice(randElement, 1, data);
-  //       this.setState({ iconArray: this.state.iconArray });
-  //     }
-  //   }
   loadArrayData() {
     let array = [];
     for (let i = 0; i < 140; i++) {
@@ -71,18 +62,26 @@ class HomeSPA extends Component {
   }
 
   setBackgroundColor() {
-    const r = Math.floor(Math.random() * 250);
-    const g = Math.floor(Math.random() * 250);
-    const b = Math.floor(Math.random() * 250);
+    let h = Math.floor(Math.random() * 360);
+    let s = Math.floor(Math.random() * 70) + 25;
+    let l = Math.floor(Math.random() * 40) + 45;
+
+    //if hue is too similar to last, reroll the random number
+    //low probability it will be close again, but not worth the loop for this project
+    if (
+      h > this.state.backgroundColor.hue - 10 &&
+      h < this.state.backgroundColor.hue + 10
+    ) {
+      h = Math.floor(Math.random() * 360);
+    }
 
     this.setState({
       backgroundColor: {
-        r: r,
-        g: g,
-        b: b
+        hue: h,
+        saturation: s,
+        lightness: l
       }
     });
-    console.log(this.state.backgroundColor);
   }
 
   addCatData() {
@@ -103,9 +102,9 @@ class HomeSPA extends Component {
   }
 
   render() {
-    const r = this.state.backgroundColor.r;
-    const g = this.state.backgroundColor.g;
-    const b = this.state.backgroundColor.b;
+    const h = this.state.backgroundColor.hue;
+    const s = this.state.backgroundColor.saturation;
+    const l = this.state.backgroundColor.lightness;
     return (
       <div id="mainContainer">
         <div id="headerContainer">
@@ -122,7 +121,13 @@ class HomeSPA extends Component {
 
         <div id="gameContainer">
           {this.state.count < 10 ? (
-            <div id="grid" style={{ backgroundColor: `rgb(${r}, ${g}, ${b})` }}>
+            <div
+              id="grid"
+              style={{
+                backgroundColor: `hsl(${h}, ${s}%, ${l}%)`,
+                transition: "background-color 0.5s ease"
+              }}
+            >
               {this.state.iconArray.map((item, index) => {
                 return (
                   <GridItem key={index} data={item} onClick={this.clickKitty} />
