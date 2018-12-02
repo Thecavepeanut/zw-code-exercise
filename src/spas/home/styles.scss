@@ -62,6 +62,18 @@ height: 100vh;
     }
   }
   
+.svgDown {
+  transform: rotate(0turn);
+}
+.svgRight {
+  transform: rotate(0.25turn);
+}
+.svgUp {
+  transform: rotate(0.5turn);
+}
+.svgLeft {
+  transform: rotate(0.75turn);
+}
 
 svg {
   width: 40px;

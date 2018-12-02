@@ -24,6 +24,7 @@ class HomeSPA extends Component {
     this.loadArrayData();
   }
   componentDidMount() {
+    const time = 2000 - this.state.count * 250;
     this.timer = setInterval(() => {
       this.loadArrayData();
     }, 1250);
@@ -32,10 +33,13 @@ class HomeSPA extends Component {
     clearInterval(this.timer);
   }
   setIcon(element) {
-    let randInt = Math.floor(Math.random() * 3);
+    let randIcon = Math.floor(Math.random() * 3);
+    //different random number for direction
+    let randDir = Math.floor(Math.random() * 3);
     const data = {
       id: element,
-      icon: randInt
+      icon: randIcon,
+      direction: randDir
     };
     return data;
   }

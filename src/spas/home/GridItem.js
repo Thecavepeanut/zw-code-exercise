@@ -3,6 +3,7 @@ import Kitty from "./icons/kitty.svg";
 import Chameleon from "./icons/chameleon.svg";
 import Penguin from "./icons/penguin.svg";
 import Cow from "./icons/cow.svg";
+import "./styles.scss";
 
 class GridItem extends Component {
   constructor(props) {
@@ -17,19 +18,36 @@ class GridItem extends Component {
   componentWillUnmount() {
     clearTimeout(this.fade);
   }
+
+  svgRotation() {
+    const direction = this.props.data.direction;
+    if (direction === 0) {
+      return "svgDown";
+    }
+    if (direction === 1) {
+      return "svgRight";
+    }
+    if (direction === 2) {
+      return "svgUp";
+    }
+    if (direction === 3) {
+      return "svgLeft";
+    }
+  }
   render() {
-    const style = this.state.fadeIn ? "fading" : "solid";
     if (this.props.data.icon === 0) {
-      return <Chameleon className={style} />;
+      return <Chameleon className={this.svgRotation()} />;
     }
     if (this.props.data.icon === 1) {
-      return <Cow className={style} />;
+      return <Cow className={this.svgRotation()} />;
     }
     if (this.props.data.icon === 2) {
-      return <Penguin className={style} />;
+      return <Penguin className={this.svgRotation()} />;
     }
     if (this.props.data.icon === 3) {
-      return <Kitty onClick={this.props.onClick} className={style} />;
+      return (
+        <Kitty onClick={this.props.onClick} className={this.svgRotation()} />
+      );
     }
     return <div />;
   }
