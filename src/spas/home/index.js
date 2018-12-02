@@ -11,7 +11,8 @@ class HomeSPA extends Component {
       count: 0,
       iconArray: [],
       lastKittenPosition: null,
-      kittenPosition: null
+      kittenPosition: null,
+      backgroundColor: { r: null, g: null, b: null }
     };
     this.clickKitty = this.clickKitty.bind(this);
   }
@@ -27,6 +28,7 @@ class HomeSPA extends Component {
     const time = 2000 - this.state.count * 250;
     this.timer = setInterval(() => {
       this.loadArrayData();
+      this.setBackgroundColor();
     }, 1250);
   }
   componentWillUnmount() {
@@ -68,6 +70,21 @@ class HomeSPA extends Component {
     );
   }
 
+  setBackgroundColor() {
+    const r = Math.floor(Math.random() * 250);
+    const g = Math.floor(Math.random() * 250);
+    const b = Math.floor(Math.random() * 250);
+
+    this.setState({
+      backgroundColor: {
+        r: r,
+        g: g,
+        b: b
+      }
+    });
+    console.log(this.state.backgroundColor);
+  }
+
   addCatData() {
     //replace a random icon with a new cat icon
     let randIndex = Math.floor(Math.random() * 139);
@@ -86,6 +103,9 @@ class HomeSPA extends Component {
   }
 
   render() {
+    const r = this.state.backgroundColor.r;
+    const g = this.state.backgroundColor.g;
+    const b = this.state.backgroundColor.b;
     return (
       <div id="mainContainer">
         <div id="headerContainer">
@@ -102,7 +122,7 @@ class HomeSPA extends Component {
 
         <div id="gameContainer">
           {this.state.count < 10 ? (
-            <div id="grid">
+            <div id="grid" style={{ backgroundColor: `rgb(${r}, ${g}, ${b})` }}>
               {this.state.iconArray.map((item, index) => {
                 return (
                   <GridItem key={index} data={item} onClick={this.clickKitty} />
