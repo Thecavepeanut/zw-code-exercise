@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.scss";
-import BeerPoints from "./Points";
-import GridItem from "./GridItem";
+import Points from "./Points";
+import Grid from "./Grid";
 import "./home.font";
 
 class HomeSPA extends Component {
@@ -16,27 +16,32 @@ class HomeSPA extends Component {
     };
     this.clickKitty = this.clickKitty.bind(this);
   }
-  clickKitty(e) {
-    e.preventDefault();
+  //need to use onTouchStart synthetic event (maybe even onTouchStartCapture)
+  clickKitty() {
+    const time = 2500 - this.state.count * 250;
+    //keep interval from jumping after a click
+    clearInterval(this.timer);
     this.setState({ count: this.state.count + 1 });
     this.loadArrayData();
+    this.timer = setInterval(() => {
+      this.loadArrayData();
+    }, time);
   }
   componentWillMount() {
     this.loadArrayData();
   }
   componentDidMount() {
-    const time = 2000 - this.state.count * 250;
+    const time = 2500 - this.state.count * 250;
     this.timer = setInterval(() => {
       this.loadArrayData();
-      this.setBackgroundColor();
-    }, 1250);
+    }, time);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
   setIcon(element) {
     let randIcon = Math.floor(Math.random() * 3);
-    //different random number for direction
     let randDir = Math.floor(Math.random() * 3);
     const data = {
       id: element,
@@ -45,8 +50,9 @@ class HomeSPA extends Component {
     };
     return data;
   }
-
+  //used to set up the new order of the grid
   loadArrayData() {
+    this.setBackgroundColor();
     let array = [];
     for (let i = 0; i < 140; i++) {
       array.push(this.setIcon(i));
@@ -60,14 +66,13 @@ class HomeSPA extends Component {
       }
     );
   }
-
+  //set grid color
   setBackgroundColor() {
     let h = Math.floor(Math.random() * 360);
     let s = Math.floor(Math.random() * 70) + 25;
     let l = Math.floor(Math.random() * 40) + 45;
 
     //if hue is too similar to last, reroll the random number
-    //low probability it will be close again, but not worth the loop for this project
     if (
       h > this.state.backgroundColor.hue - 10 &&
       h < this.state.backgroundColor.hue + 10
@@ -83,9 +88,8 @@ class HomeSPA extends Component {
       }
     });
   }
-
+  //replace a random icon with a new cat icon
   addCatData() {
-    //replace a random icon with a new cat icon
     let randIndex = Math.floor(Math.random() * 139);
     this.setState({ kittenPosition: randIndex });
     this.state.iconArray.splice(randIndex, 1, {
@@ -102,44 +106,14 @@ class HomeSPA extends Component {
   }
 
   render() {
-    const h = this.state.backgroundColor.hue;
-    const s = this.state.backgroundColor.saturation;
-    const l = this.state.backgroundColor.lightness;
     return (
       <div id="mainContainer">
         <div id="headerContainer">
-          <h1>Welcome to the Clickin' Kitten!</h1>
-          <div id="scoreContainer">
-            <h2>Score:</h2>
-            {this.state.count > 0 ? (
-              <BeerPoints count={this.state.count} />
-            ) : (
-              <div />
-            )}
-          </div>
+          <h1>Welcome to Clickin' Kitten!</h1>
+          <p>(click the kitten)</p>
+          <Points count={this.state.count} />
         </div>
-
-        <div id="gameContainer">
-          {this.state.count < 10 ? (
-            <div
-              id="grid"
-              style={{
-                backgroundColor: `hsl(${h}, ${s}%, ${l}%)`,
-                transition: "background-color 0.5s ease"
-              }}
-            >
-              {this.state.iconArray.map((item, index) => {
-                return (
-                  <GridItem key={index} data={item} onClick={this.clickKitty} />
-                );
-              })}
-            </div>
-          ) : (
-            <div id="winScreen">
-              <h1>WINNER!</h1>
-            </div>
-          )}
-        </div>
+        <Grid data={this.state} onClick={this.clickKitty} />
       </div>
     );
   }

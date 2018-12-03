@@ -1,5 +1,7 @@
 /* PUT STYLES HERE */
 body {
+  margin: 0;
+  padding: 0;
   background-color: black;
 }
 #mainContainer {
@@ -17,6 +19,7 @@ height: 100vh;
   margin: 20px;
   display: flex;
   flex: 1 0 0;
+  flex-shrink: 0;
   height: 200px;
   flex-direction: column;
   justify-content: center;
@@ -28,14 +31,21 @@ height: 100vh;
   flex-direction: row;
   color: White;
 }
+#headerContainer p {
+  display: flex;
+  flex-direction: row;
+  color: White;
+}
 #scoreContainer {
   display: flex;
-  width: 100%;
+  width: 100vw;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
 #scoreContainer h2 {
+  margin-left: 10px;
+  margin-right: 10px;
   color: white;
 }
 .points {

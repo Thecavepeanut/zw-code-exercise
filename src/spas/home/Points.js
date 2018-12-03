@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Beer from "./icons/beer.svg";
 
-class BeerPoints extends Component {
+class Points extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,8 +11,13 @@ class BeerPoints extends Component {
     for (let i = 0; i < this.props.count; i++) {
       points.push(<Beer key={i} className="points" />);
     }
-    return <div>{points}</div>;
+    return (
+      <div id="scoreContainer">
+        <h2>Score:</h2>
+        {this.props.count > 0 ? <div>{points}</div> : <div />}
+      </div>
+    );
   }
 }
 
-export default BeerPoints;
+export default Points;

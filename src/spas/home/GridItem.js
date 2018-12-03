@@ -8,15 +8,6 @@ import "./styles.scss";
 class GridItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fadeIn: true
-    };
-  }
-  componentDidMount() {
-    this.fade = setTimeout(this.setState({ fadeIn: false }), 1000);
-  }
-  componentWillUnmount() {
-    clearTimeout(this.fade);
   }
 
   svgRotation() {
@@ -46,7 +37,12 @@ class GridItem extends Component {
     }
     if (this.props.data.icon === 3) {
       return (
-        <Kitty onClick={this.props.onClick} className={this.svgRotation()} />
+        <Kitty
+          onClick={() => {
+            this.props.onClick();
+          }}
+          className={this.svgRotation()}
+        />
       );
     }
     return <div />;
