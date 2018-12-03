@@ -88,7 +88,12 @@ align-items: center;
     margin: 0px;
   }
 }
-
+//IE11
+*::-ms-backdrop, #grid {
+  width: 54vh;
+  height: 54vh;
+}
+//firefox
 @-moz-document url-prefix() {
   #grid {
     height: 52vh;
@@ -101,6 +106,10 @@ align-items: center;
       margin: 0;
     }
   }
+
+
+
+
 
   svg {
     height: 5vh;
