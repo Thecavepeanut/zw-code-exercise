@@ -3,12 +3,19 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+* {
+  box-sizing: border-box;
 }
 #mainContainer {
 display: flex;
 flex: 1 0 0;
 flex-direction: column;
 height: 100vh;
+width: 100vw;
+align-items: center;
 }
 
 *::-ms-backdrop, #mainContainer {
@@ -16,13 +23,11 @@ height: 100vh;
 }
 
 #headerContainer {
-  margin: 20px;
+  margin: 10px;
   display: flex;
-  flex: 1 0 0;
-  flex-shrink: 0;
-  height: 200px;
+  flex: 1 0 0;;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -30,11 +35,15 @@ height: 100vh;
   display: flex;
   flex-direction: row;
   color: White;
+  margin: 10px;
+  font-size: 6vw;
 }
 #headerContainer p {
   display: flex;
   flex-direction: row;
   color: White;
+  margin: 10px;
+  font-size: 4vw;
 }
 #scoreContainer {
   display: flex;
@@ -47,29 +56,38 @@ height: 100vh;
   margin-left: 10px;
   margin-right: 10px;
   color: white;
+  font-size: 5vw;
+}
+#scoreContainer div {
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 .points {
   fill: white;
+  height: 40px;
+  width: 40px;
 }
 #gameContainer {
-  display: flex;
-  flex: 1 0 0;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
 #grid {
-  height: 440px;
-  width: 560px;
-  // background-color: #1ccc68;
+  width: 50vh;
+  height: 50vh;
 }
 @-moz-document url-prefix() {
   #grid {
-    height: 450px;
-    width: 560px;
-    // background-color: #1ccc68;
+    height: 400px;
+    width: 400px;
     }
+  }
+
+  svg {
+    height: 5vh;
+    width: 5vh;
+    padding: 0;
+    margin: 0;
   }
   
 .svgDown {
@@ -85,11 +103,6 @@ height: 100vh;
   transform: rotate(0.75turn);
 }
 
-svg {
-  width: 40px;
-  height: 40px;
-}
-
 #winScreen {
   display: flex;
   flex: 1 0 0;
@@ -103,13 +116,25 @@ svg {
   color: white;
 }
 
-@media(max-width: 640px) {
+@media(min-height: 1000px) and (orientation: portrait){
+  #gameContainer {
+    width: 100%;
+    height: auto;
+  }
   #grid {
-    height: 330px;
-    width: 420px;
+    height: 100vw;
+    width: 100%;
   }
   svg {
-    width: 30px;
+    height: 9.5vw;
+    width: 9.5vw;
+  }
+}
+
+@media(max-width: 640px ) {
+  .points {
+    fill: white;
     height: 30px;
+    width: 30px;
   }
 }

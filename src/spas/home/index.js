@@ -32,9 +32,9 @@ class HomeSPA extends Component {
   }
   componentDidMount() {
     const time = 2500 - this.state.count * 250;
-    this.timer = setInterval(() => {
-      this.loadArrayData();
-    }, time);
+    // this.timer = setInterval(() => {
+    //   this.loadArrayData();
+    // }, time);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -54,7 +54,7 @@ class HomeSPA extends Component {
   loadArrayData() {
     this.setBackgroundColor();
     let array = [];
-    for (let i = 0; i < 140; i++) {
+    for (let i = 0; i < 100; i++) {
       array.push(this.setIcon(i));
     }
     this.setState(
@@ -90,7 +90,7 @@ class HomeSPA extends Component {
   }
   //replace a random icon with a new cat icon
   addCatData() {
-    let randIndex = Math.floor(Math.random() * 139);
+    let randIndex = Math.floor(Math.random() * 99);
     this.setState({ kittenPosition: randIndex });
     this.state.iconArray.splice(randIndex, 1, {
       id: randIndex,
