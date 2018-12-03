@@ -66,6 +66,8 @@ align-items: center;
 }
 #gameContainer {
   margin-bottom: 20px;
+  display: flex;
+  flex: 1;
 }
 
 #grid {
@@ -79,7 +81,7 @@ align-items: center;
     width: 54vh;
     height: 54vh;
   }
-  #svg {
+  svg {
     height: 5vh;
     width: 5vh;
     padding: 0;

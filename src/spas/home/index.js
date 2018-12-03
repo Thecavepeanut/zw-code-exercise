@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.scss";
-import Points from "./Points";
-import Grid from "./Grid";
+import Points from "./components/Points";
+import Grid from "./components/Grid";
 import "./home.font";
 
 class HomeSPA extends Component {
@@ -16,9 +16,22 @@ class HomeSPA extends Component {
     };
     this.clickKitty = this.clickKitty.bind(this);
   }
-  //need to use onTouchStart synthetic event (maybe even onTouchStartCapture)
+
+  componentWillMount() {
+    this.loadArrayData();
+  }
+  componentDidMount() {
+    const time = 2500 - this.state.count * 200;
+    this.timer = setInterval(() => {
+      this.loadArrayData();
+    }, time);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   clickKitty() {
-    const time = 2500 - this.state.count * 250;
+    const time = 2500 - this.state.count * 200;
     //keep interval from jumping after a click
     clearInterval(this.timer);
     this.setState({ count: this.state.count + 1 });
@@ -26,18 +39,6 @@ class HomeSPA extends Component {
     this.timer = setInterval(() => {
       this.loadArrayData();
     }, time);
-  }
-  componentWillMount() {
-    this.loadArrayData();
-  }
-  componentDidMount() {
-    const time = 2500 - this.state.count * 250;
-    // this.timer = setInterval(() => {
-    //   this.loadArrayData();
-    // }, time);
-  }
-  componentWillUnmount() {
-    clearInterval(this.timer);
   }
 
   setIcon(element) {

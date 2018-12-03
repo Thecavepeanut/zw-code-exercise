@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Beer from "./icons/beer.svg";
+import Beer from "../icons/beer.svg";
 
 class Points extends Component {
   constructor(props) {

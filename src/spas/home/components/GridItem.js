@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Kitty from "./icons/kitty.svg";
-import Chameleon from "./icons/chameleon.svg";
-import Penguin from "./icons/penguin.svg";
-import Cow from "./icons/cow.svg";
-import "./styles.scss";
+import Kitty from "../icons/kitty.svg";
+import Chameleon from "../icons/chameleon.svg";
+import Penguin from "../icons/penguin.svg";
+import Cow from "../icons/cow.svg";
+import "../styles.scss";
 
 class GridItem extends Component {
   constructor(props) {
