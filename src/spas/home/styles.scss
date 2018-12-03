@@ -18,10 +18,6 @@ width: 100vw;
 align-items: center;
 }
 
-*::-ms-backdrop, #mainContainer {
-  display: block;
-}
-
 #headerContainer {
   margin: 10px;
   display: flex;
@@ -76,20 +72,21 @@ align-items: center;
   width: 50vh;
   height: 50vh;
 }
-*::-ms-backdrop, #grid {
-  height: 52vh;
-  width: 52vh;
-}
-*::-ms-backdrop, svg {
-  height: 52vh;
-  width: 52vh;
-  svg {
+
+//target edge for grid sizing
+@supports (-ms-ime-align: auto) {
+  #grid {
+    width: 54vh;
+    height: 54vh;
+  }
+  #svg {
     height: 5vh;
     width: 5vh;
     padding: 0;
-    margin: 0;
+    margin: 0px;
   }
 }
+
 @-moz-document url-prefix() {
   #grid {
     height: 52vh;
