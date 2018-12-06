@@ -1,20 +1,33 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './styles.scss';
-import Score from './ui/Score/Score.jsx';
-import Target from './ui/Target/Target.jsx';
+import Score from './container/Score.jsx';
+import Target from './container/Target.jsx';
+import { StateManager, Context } from './container/StateManager.jsx';
+import WinScreen from './ui/WinScreen.jsx';
 //import './home.font';
 
 class HomeSPA extends Component {
-    render(){
+    render() {
         return (
-            <div>
-                <Score />
-                <Target />
-            </div>
+            <main>
+                <StateManager>
+                    <Context.Consumer>
+                        {({ state }) =>
+                            state.hasWon ? (
+                                <WinScreen />
+                            ) : (
+                                <Fragment>
+                                    <Score />
+                                    <Target />
+                                </Fragment>
+                            )
+                        }
+                    </Context.Consumer>
+                </StateManager>
+            </main>
         );
     }
 }
-
 
 ReactDOM.render(<HomeSPA />, document.getElementById('react-spa'));
