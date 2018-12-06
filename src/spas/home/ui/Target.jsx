@@ -17,8 +17,8 @@ class Target extends Component {
 
   render() {
       return (
-          <div onClick={this.targetClicked}>
-              <GithubKitty />
+          <div className="svg-move">
+              <GithubKitty className="svg-spin" onClick={this.targetClicked} />
           </div>
       );
   }

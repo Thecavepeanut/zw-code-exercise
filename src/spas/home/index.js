@@ -18,6 +18,7 @@ class HomeSPA extends Component {
                                 <WinScreen />
                             ) : (
                                 <Fragment>
+                                    <p>{'> Hello kitty!'}</p>
                                     <Score />
                                     <Target />
                                 </Fragment>

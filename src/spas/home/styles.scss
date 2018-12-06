@@ -1,6 +1,63 @@
 /* PUT STYLES HERE */
+$svg-width: 100px;
+$svg-height: 100px;
 
 svg {
-    width: 100px;
-    height: 100px;
+    width: $svg-width;
+    height: $svg-height;
 }
+
+.svg-spin {
+    animation: spin .8s linear infinite; 
+}
+
+@-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(-360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(-360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(-360deg); 
+      transform:rotate(-360deg);
+    }
+  }
+
+.svg-move{
+    display: block;
+  position: absolute;
+  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes moveX {
+    from { left: 0; } to { left: calc(100vw - #{$svg-width}); }
+  }
+  @-moz-keyframes moveX {
+    from { left: 0; } to { left: calc(100vw -#{$svg-width}); }
+  }
+  @-o-keyframes moveX {
+    from { left: 0; } to { left: calc(100vw - #{$svg-width}); }
+  }
+  @keyframes moveX {
+    from { left: 0; } to { left: calc(100vw - #{$svg-width}); }
+  }
+  @-webkit-keyframes moveY {
+    from { top: 0; } to { top: calc(100vh - #{$svg-height}); }
+  }
+  @-moz-keyframes moveY {
+    from { top: 0; } to { top: calc(100vh - #{$svg-height}); }
+  }
+  @-o-keyframes moveY {
+    from { top: 0; } to { top: calc(100vh - #{$svg-height}); }
+  }
+  @keyframes moveY {
+    from { top: 0; } to { top: calc(100vh - #{$svg-height}); }
+  }
