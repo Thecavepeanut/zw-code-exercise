@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './styles.scss';
-import GithubKitty from './github.svg';
-//import './home.font'
+import Score from './ui/Score/Score.jsx';
+import Target from './ui/Target/Target.jsx';
+//import './home.font';
 
 class HomeSPA extends Component {
     render(){
         return (
             <div>
-                <span className="icon icon-beer"/>
-                <GithubKitty />
+                <Score />
+                <Target />
             </div>
         );
     }

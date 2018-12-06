@@ -74,7 +74,17 @@ module.exports = {
         {
           test: /(\.scss|\.css)$/,
           use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'happypack/loader?id=sass' })
-        }]
+        },
+        {
+          test: /\.(jsx|js)?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            presets: [['es2015', { modules: false }], 'react'],
+            plugins: ['transform-class-properties']
+          }
+        }
+      ]
       },
       resolve: {
         modules: ['src', 'node_modules']
@@ -93,7 +103,7 @@ module.exports = {
           loaders: [
             // 'react-hot-loader',
             'babel-loader'
-          ]
+          ],
         }),
         new HappyPack({
           cacheContext: {

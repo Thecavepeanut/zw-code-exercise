@@ -57,6 +57,8 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint-config-redtn-react": "^0.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "webpack-dev-server": "^2.9.7"
   }
