@@ -1,12 +1,12 @@
-const basename = require('path').basename
+const basename = require('path').basename; //eslint-disable-line no-unused-vars
 
 const path = (directory) => {
     const componentName = directory
         .replace(/(.*\/src\/spas\/)/g, '')
         .replace(/(\/fonts\/)|(\/fonts)$/g, '')
         .replace(/(\/scss\/)|(\/scss)$/g, '')
-        .replace(/(\/components\/)|(\/components)$/g, '')
-    return componentName
-  }
+        .replace(/(\/components\/)|(\/components)$/g, '');
+    return componentName;
+};
   
-module.exports = {path}
+module.exports = {path};
