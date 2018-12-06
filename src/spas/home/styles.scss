@@ -2,7 +2,12 @@
 $svg-width: 100px;
 $svg-height: 100px;
 
-svg {
+.svg-beer {
+    width: 25px;
+    height: 25px;
+}
+
+.svg-target {
     width: $svg-width;
     height: $svg-height;
 }

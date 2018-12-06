@@ -21,7 +21,7 @@ class Score extends Component {
                   Array(score)
                       .fill(<div />)
                       .map((val, index) => (
-                          <BeerIcon key={index} />
+                          <BeerIcon className="svg-beer" key={index} />
                       ))}
           </section>
       );
