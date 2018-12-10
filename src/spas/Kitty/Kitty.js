@@ -2,23 +2,33 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import GithubKitty from "./github.svg";
 
+/*
+Todo: this component currently throw an error after game completion:
+
+Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.
+
+This probably has to do with how I'm animating things, but after doing some Google searching, I'm still not sure how to fix.
+*/
+
 class Kitty extends Component {
   constructor() {
     super();
 
-    this.animate = this.animate.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
 
     let maxHeight = window.innerHeight - 100;
     let maxWidth = window.innerWidth - 100;
+
+    let angle = Math.random() * 2 * Math.PI;
     let posX = Math.floor(Math.random() * maxWidth);
     let posY = Math.floor(Math.random() * maxHeight);
 
-    let angle = Math.random() * 2 * Math.PI;
+    this.state = { angle, posX, posY };
 
-    this.state = { angle, posX, posY, lastWallHit: null };
-    requestAnimationFrame(() => this.animate(new Date().getTime()));
+    requestAnimationFrame(() => this.updatePosition(new Date().getTime()));
   }
-  animate(lastTime) {
+
+  updatePosition(lastTime) {
     let posX = this.state.posX;
     let posY = this.state.posY;
     let angle = this.state.angle;
@@ -33,7 +43,7 @@ class Kitty extends Component {
     // just in case.
 
     // bottom edge
-    if (this.state.posY >= maxHeight) { 
+    if (this.state.posY >= maxHeight) {
       angle = 2 * Math.PI - angle;
       posY = maxHeight;
     }
@@ -68,15 +78,15 @@ class Kitty extends Component {
       posX,
       posY,
       angle
-    }),
-      requestAnimationFrame(() => this.animate(currentTime));
+    });
+    requestAnimationFrame(() => this.updatePosition(currentTime));
   }
 
   render() {
     return (
       <div
         className="kitty"
-        onClick={this.props.click}
+        onClick={this.props.clickHandler}
         style={{ top: this.state.posY, left: this.state.posX }}
       >
         <GithubKitty />

@@ -8,16 +8,17 @@ import "./home.font";
 class HomeSPA extends Component {
   constructor() {
     super();
-    this.clicked = this.clicked.bind(this);
-    this.newGame = this.newGame.bind(this);
 
     this.state = {
       clicked: 0,
       playerWon: false
     };
+
+    this.clickHandler = this.clickHandler.bind(this);
+    this.newGame = this.newGame.bind(this);
   }
 
-  clicked() {
+  clickHandler() {
     this.setState({
       clicked: this.state.clicked + 1
     });
@@ -44,7 +45,7 @@ class HomeSPA extends Component {
           <WinningScreen newGame={this.newGame} />
         ) : (
           <div>
-            <Kitty click={this.clicked} />
+            <Kitty clickHandler={this.clickHandler} />
           </div>
         )}
       </div>
