@@ -9,37 +9,39 @@ class HomeSPA extends Component {
   constructor() {
     super();
     this.clicked = this.clicked.bind(this);
-    this.playAgain = this.playAgain.bind(this);
+    this.newGame = this.newGame.bind(this);
 
     this.state = {
       clicked: 0,
       playerWon: false
     };
   }
+
   clicked() {
     this.setState({
       clicked: this.state.clicked + 1
     });
     if (this.state.clicked >= 9) {
       this.setState({
-        playerWon: true,
+        playerWon: true
       });
     }
   }
-  playAgain() {
+
+  newGame() {
     this.setState({ playerWon: false, clicked: 0 });
   }
+
   render() {
-    let arrayCount = new Array(this.state.clicked).fill(null);
     return (
-      <div>
-        <div className="score">
-            {arrayCount.map( (_, i) => (
+      <div className="mainApp">
+        <div className="scoreboard">
+          {Array.apply(null, { length: this.state.clicked }).map((_, i) => (
             <span className="icon icon-beer" key={i} />
-            ))}
+          ))}
         </div>
         {this.state.playerWon ? (
-          <WinningScreen playAgain={this.playAgain} />
+          <WinningScreen newGame={this.newGame} />
         ) : (
           <div>
             <Kitty click={this.clicked} />

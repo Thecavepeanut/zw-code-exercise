@@ -1,24 +1,34 @@
 /* PUT STYLES HERE */
 
-html, body {
-    width:100%;
-    height:100%;
-    padding:0px;
-    margin:0px;
-    overflow:hidden;
+html,
+body,
+#react-spa,
+.mainApp {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
 }
 
-.score {
-    position:absolute;
+.scoscoreboard {
+  position: absolute;
 }
 
-svg {
-    width: 100px;
-    height: 100px;
+.winningScreen {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 
 .kitty {
-    position:relative;
-    width:100px;
-    height:100px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  svg {
+    width: 100px;
+    height: 100px;
+  }
 }

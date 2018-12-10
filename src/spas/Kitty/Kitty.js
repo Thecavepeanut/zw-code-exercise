@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import GithubKitty from "./github.svg";
 
-const LEFT = "LEFT";
-const RIGHT = "RIGHT";
-const TOP = "TOP";
-const BOTTOM = "BOTTOM";
-
 class Kitty extends Component {
   constructor() {
     super();
@@ -19,50 +14,62 @@ class Kitty extends Component {
     let posY = Math.floor(Math.random() * maxHeight);
 
     let angle = Math.random() * 2 * Math.PI;
-    let speed = window.innerWidth / 20; //cross screen every 20 ms
 
-    this.state = { angle, speed, posX, posY, lastWallHit: null };
+    this.state = { angle, posX, posY, lastWallHit: null };
     requestAnimationFrame(() => this.animate(new Date().getTime()));
   }
   animate(lastTime) {
+    let posX = this.state.posX;
+    let posY = this.state.posY;
     let angle = this.state.angle;
-    let lastHit = this.state.lastHit;
-    if (this.state.posY >= window.innerHeight - 100 && lastHit !== BOTTOM) {
-      // bottom
+    //calculating maxWidth and maxHeight
+    //every loop makes the game respond to
+    //changing the window size mid-game
+    let maxWidth = window.innerWidth - 100;
+    let maxHeight = window.innerHeight - 100;
+
+    // check if the kitty has hit an edge. if so, adjust the angle,
+    // and reset the kitty's position to still be on screen,
+    // just in case.
+
+    // bottom edge
+    if (this.state.posY >= maxHeight) { 
       angle = 2 * Math.PI - angle;
-      lastHit = BOTTOM;
+      posY = maxHeight;
     }
-    if (this.state.posX >= window.innerWidth - 100 && lastHit !== RIGHT) {
-      //right
+    // right edge
+    if (this.state.posX >= maxWidth) {
       angle = 2 * Math.PI - (angle + Math.PI);
-      lastHit = RIGHT;
+      posX = maxWidth;
     }
-    if (this.state.posX <= 0 && lastHit !== LEFT) {
-      //left
+    // left edge
+    if (this.state.posX <= 0) {
       angle = 2 * Math.PI - (angle + Math.PI);
-      lastHit = LEFT;
+      posX = 0;
     }
-    if (this.state.posY <= 0 && lastHit !== TOP) {
-      //top
+    // top edge
+    if (this.state.posY <= 0) {
       angle = 2 * Math.PI - angle;
-      lastHit = TOP;
+      posY = 0;
     }
 
-    let current = Math.round(new Date().getTime());
-    let deltaT = current - lastTime;
+    //get the time delta, so that we can move the Kitty
+    //the appropriate amount
+    let currentTime = Math.round(new Date().getTime());
+    let deltaT = lastTime - currentTime;
 
-    let posX =
-      this.state.posX + (Math.cos(angle) * this.state.speed * deltaT) / 200;
-    let posY =
-      this.state.posY + (Math.sin(angle) * this.state.speed * deltaT) / 200;
+    //do some trig, and multiply by deltaT to get
+    //the new coordinates
+    //2 is a magic number to make things slower
+    posX += (Math.cos(angle) * deltaT) / 2;
+    posY += (Math.sin(angle) * deltaT) / 2;
 
     this.setState({
       posX,
       posY,
-      angle,
-      lastHit
+      angle
     }),
-      requestAnimationFrame(() => this.animate(current));
+      requestAnimationFrame(() => this.animate(currentTime));
   }
 
   render() {
