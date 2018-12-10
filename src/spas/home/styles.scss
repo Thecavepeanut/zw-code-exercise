@@ -1,6 +1,24 @@
 /* PUT STYLES HERE */
 
+html, body {
+    width:100%;
+    height:100%;
+    padding:0px;
+    margin:0px;
+    overflow:hidden;
+}
+
+.score {
+    position:absolute;
+}
+
 svg {
     width: 100px;
     height: 100px;
+}
+
+.kitty {
+    position:relative;
+    width:100px;
+    height:100px;
 }
