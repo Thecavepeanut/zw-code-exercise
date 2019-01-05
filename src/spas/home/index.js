@@ -1,19 +1,38 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./styles.scss";
-import GithubKitty from "./github.svg";
+import Game from "./Game";
+// import Won from "./Won";
+import Start from "./Start";
+
 import "./home.font";
 
 class HomeSPA extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      game: "start",
+      version: "normal"
+    };
+    this.setGameState = this.setGameState.bind(this);
+  }
+
+  setGameState(newState) {
+    this.setState({ game: newState });
+  }
+
   render() {
-    return (
-      <div>
-        <span className="icon icon-beer" />
-        <div className="cat-box">
-          <GithubKitty className="cat" />
-        </div>
-      </div>
-    );
+    const { version, game } = this.state;
+    switch (game) {
+      // case "won":
+      //   return <Won setGameState={this.setGameState} />;
+      case "start":
+        return <Start setGameState={this.setGameState} />;
+      case "happening":
+        return <Game version={version} />;
+      default:
+        return <Start />;
+    }
   }
 }
 
