@@ -4,13 +4,15 @@ import GithubKitty from "./github.svg";
 const audioSrc =
   "https://archive.org/download/78_tuxedo-junction_erskine-hawkins--his-orchestra-johnson-dash-hawkins_gbia0012055b/Tuxedo%20Junction%20-%20Erskine%20Hawkins%20%26%20his%20Orchestra.mp3";
 
+const audioSrcSoviet =
+  "https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg";
+
 export default class Cat extends Component {
   constructor(props) {
     super(props);
     this.state = {
       catClass: "cat",
-      howManyBeers: 0,
-      game: "stopped"
+      howManyBeers: 0
     };
     this.handleCatClick = this.handleCatClick.bind(this);
     this.makeBeers = this.makeBeers.bind(this);
@@ -20,7 +22,8 @@ export default class Cat extends Component {
     const newBeers = this.state.howManyBeers + 1;
     console.log("newBeers ", newBeers);
     if (newBeers === 10) {
-      this.setState({ catClass: "cat-spin", howManyBeers: 0, game: "won" });
+      this.setState({ catClass: "cat-spin", howManyBeers: 0 });
+      this.props.setGameState("won");
     } else {
       this.setState({ catClass: "cat-spin", howManyBeers: newBeers });
     }
@@ -34,12 +37,17 @@ export default class Cat extends Component {
   }
 
   render() {
+    const { game } = this.props;
+    const { howManyBeers } = this.state;
+    const music = game === "soviet" ? audioSrcSoviet : audioSrc;
+    const catBoxStyle = game === "soviet" ? "cat-box-soviet" : "cat-box";
     return (
       <div>
-        <audio> </audio>
-        <span className="beer-styles">Number of Beers: </span>
-        {this.makeBeers(this.state.howManyBeers)}
-        <div className="cat-box">
+        <audio src={music} autoPlay />
+        <span>Number of Beers:</span>
+        {this.makeBeers(howManyBeers)}
+        <span> just {10 - howManyBeers} to go!</span>
+        <div className={catBoxStyle}>
           <div className="cat-horizontal" onClick={this.handleCatClick}>
             <div className="cat-vertical">
               <GithubKitty

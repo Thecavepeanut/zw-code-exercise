@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./styles.scss";
 import Game from "./Game";
-// import Won from "./Won";
+import Won from "./Won";
 import Start from "./Start";
 
 import "./home.font";
@@ -11,8 +11,7 @@ class HomeSPA extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      game: "start",
-      version: "normal"
+      game: "start"
     };
     this.setGameState = this.setGameState.bind(this);
   }
@@ -21,15 +20,21 @@ class HomeSPA extends Component {
     this.setState({ game: newState });
   }
 
+  setGameVersion(newVersion) {
+    this.setState({ version: newVersion });
+  }
+
   render() {
-    const { version, game } = this.state;
+    const { game } = this.state;
     switch (game) {
-      // case "won":
-      //   return <Won setGameState={this.setGameState} />;
+      case "won":
+        return <Won setGameState={this.setGameState} />;
       case "start":
         return <Start setGameState={this.setGameState} />;
-      case "happening":
-        return <Game version={version} />;
+      case "normal":
+        return <Game game={game} setGameState={this.setGameState} />;
+      case "soviet":
+        return <Game game={game} setGameState={this.setGameState} />;
       default:
         return <Start />;
     }
