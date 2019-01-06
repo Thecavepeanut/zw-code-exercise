@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GithubKitty from "./github.svg";
 
+// all audio links are public domain
 const audioSrc =
   "https://archive.org/download/78_tuxedo-junction_erskine-hawkins--his-orchestra-johnson-dash-hawkins_gbia0012055b/Tuxedo%20Junction%20-%20Erskine%20Hawkins%20%26%20his%20Orchestra.mp3";
 
@@ -11,7 +12,7 @@ export default class Cat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      catClass: "cat",
+      catClass: "cat-" + props.game,
       howManyBeers: 0
     };
     this.handleCatClick = this.handleCatClick.bind(this);
@@ -51,7 +52,9 @@ export default class Cat extends Component {
           <div className="cat-horizontal" onClick={this.handleCatClick}>
             <div className="cat-vertical">
               <GithubKitty
-                onAnimationEnd={() => this.setState({ catClass: "cat" })}
+                onAnimationEnd={() =>
+                  this.setState({ catClass: "cat-" + game })
+                }
                 className={this.state.catClass}
               />
             </div>

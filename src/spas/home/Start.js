@@ -9,7 +9,7 @@ const Start = props => {
         Are You Ready?
       </button>
       <GithubKitty
-        style={{ height: "100px", width: "100px", paddingTop: "10px" }}
+        style={{ height: "100px", width: "100px", marginTop: "10px" }}
       />
     </div>
   );
