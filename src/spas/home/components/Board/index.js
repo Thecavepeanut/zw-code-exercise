@@ -5,7 +5,6 @@ import ScoreDisplay from '../Score'
 import './Board.scss'
 
 const SIZE = {
-  CELL_SIZE: 20,
   WIDTH: 800,
   HEIGHT: 600,
 }
