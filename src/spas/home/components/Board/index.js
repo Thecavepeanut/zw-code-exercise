@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
-import GithubKitty from '../../github.svg'
-import './Board.css'
+import React, { Component, Fragment } from 'react'
+import { BoardProvider } from './BoardContext'
+import BoardPiece from '../BoardPiece'
+import ScoreDisplay from '../Score'
+import './Board.scss'
 
 const SIZE = {
   CELL_SIZE: 20,
@@ -11,29 +13,95 @@ const SIZE = {
 class Board extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      piecePositionX: null,
+      piecePositionY: null,
+      score: 0,
+    }
+
+    this.setBoardRef = element => {
+      this.boardEl = element
+    }
+
+    this.traverse = this.traverse.bind(this)
+    this.traverseInterval = setInterval(() => this.traverse(), 1000)
   }
 
-  setBoardEl(board) {
-    console.log(board)
+  componentDidMount() {
+    if (this.boardEl && !this.state.piecePositionX && !this.state.piecePositionY) {
+      const board = this.boardEl.getBoundingClientRect()
+      this.setRandomPositiions(board)
+    }
   }
 
-  componentDidMount() {}
+  componentWillUnmount() {
+    clearInterval(this.traverseInterval)
+  }
 
-  traverse() {}
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions)
+  }
 
-  onClickHandle() {}
+  updateDimensions() {
+    // This is not working currently. Need to somehow get updated ref of board
+    if (this.boardEl) {
+      const board = boardEl.getBoundingClientRect()
+      this.setRandomPositiions(board)
+    }
+  }
 
-  getClickPosition() {}
+  setRandomPositiions(board) {
+    this.setState({
+      piecePositionX: this.getRandomInt(board.left, board.right * 0.75),
+      piecePositionY: this.getRandomInt(board.top, board.bottom * 0.75),
+    })
+  }
+
+  traverse() {
+    const board = this.boardEl.getBoundingClientRect()
+
+    this.setRandomPositiions(board)
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
+  onClickPiece(e) {
+    const board = this.boardEl.getBoundingClientRect()
+
+    this.setState({ score: ++this.state.score }, () => {
+      this.setRandomPositiions(board)
+    })
+  }
 
   render() {
+    const { piecePositionY, piecePositionX, score } = this.state
+
     return (
       <div>
         <div
-          ref={this.setBoardEl}
+          ref={e => this.setBoardRef(e)}
           className="Game-board"
           style={{ width: SIZE.WIDTH, height: SIZE.HEIGHT }}
-        />
+        >
+          <BoardProvider value={{ score }}>
+            <ScoreDisplay />
+          </BoardProvider>
+          <BoardProvider
+            value={{
+              score,
+              top: piecePositionY,
+              left: piecePositionX,
+              onClickPiece: this.onClickPiece.bind(this),
+            }}
+          >
+            <BoardPiece />
+          </BoardProvider>
+        </div>
       </div>
     )
   }
