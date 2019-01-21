@@ -58,7 +58,7 @@ class BoardPiece extends Component {
                 </h1>
               )}
               {score <= 5 && (
-                <div className="piece-wrapper" onClick={e => onClickPiece(e)} style={{ left, top }}>
+                <div className="piece-wrapper" onClick={() => onClickPiece()} style={{ left, top }}>
                   <GithubKitty className="Board-piece" style={{ fill, transform }} />
                 </div>
               )}

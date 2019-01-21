@@ -19,7 +19,7 @@ class ScoreDisplay extends Component {
                     <h1 className="title has-text-success">You win!</h1>
                     <button
                       className="Score-item button is-success is-inverted"
-                      onClick={e => onClickResetGame()}
+                      onClick={() => onClickResetGame()}
                     >
                       Play Again
                     </button>
