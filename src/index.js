@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-console.log('hello worlds!')
+console.log('hello world!')
 
-ReactDOM.render(<h1>Hello Worlds!</h1>, document.getElementById('react-spa'))
+ReactDOM.render(<h1>Hello World!</h1>, document.getElementById('react-spa'))
