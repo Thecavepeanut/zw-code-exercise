@@ -70,12 +70,23 @@ class Board extends Component {
     return Math.floor(Math.random() * (max - min + 1)) + min
   }
 
-  onClickPiece(e) {
+  onClickPiece() {
     const board = this.boardEl.getBoundingClientRect()
 
     this.setState({ score: ++this.state.score }, () => {
       this.setRandomPositiions(board)
     })
+  }
+
+  onClickResetGame() {
+    const board = this.boardEl.getBoundingClientRect()
+
+    this.setState(
+      {
+        score: 0,
+      },
+      this.setRandomPositiions(board)
+    )
   }
 
   render() {
@@ -88,7 +99,7 @@ class Board extends Component {
           className="Game-board"
           style={{ width: SIZE.WIDTH, height: SIZE.HEIGHT }}
         >
-          <BoardProvider value={{ score }}>
+          <BoardProvider value={{ score, onClickResetGame: this.onClickResetGame.bind(this) }}>
             <ScoreDisplay />
           </BoardProvider>
           <BoardProvider

@@ -1,10 +1,8 @@
 import React from 'react'
 import { Router } from '@reach/router'
-
 import Header from '../Header'
 import HomePage from '../../pages/HomePage'
 import GamePage from '../../pages/GamePage'
-
 import { HOME, GAME } from '../../../../utils/constants'
 
 const App = () => {
@@ -14,7 +12,7 @@ const App = () => {
       <div className="section">
         <Router>
           <HomePage path={HOME} />
-          <GamePage path={GAME}/>
+          <GamePage path={GAME} />
         </Router>
       </div>
     </div>

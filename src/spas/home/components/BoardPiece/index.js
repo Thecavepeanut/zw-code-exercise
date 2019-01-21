@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { BoardConsumer } from '../Board/BoardContext'
 import GithubKitty from '../../github.svg'
 import './BoardPiece.scss'
-import { BoardConsumer } from '../Board/BoardContext'
+import 'bulma/css/bulma.css'
 
 const initialState = {
   // First color will be white
@@ -50,9 +51,18 @@ class BoardPiece extends Component {
           const transform = `rotate(${direction}${rotation}deg)`
 
           return (
-            <div className="piece-wrapper" onClick={e => onClickPiece(e)} style={{ left, top }}>
-              <GithubKitty className="Board-piece" style={{ fill, transform }} />
-            </div>
+            <Fragment>
+              {score > 5 && (
+                <h1 className="piece-wrapper" style={{ color: fill, left, top }}>
+                  YOU WIN!!!! YAAAAY!!!
+                </h1>
+              )}
+              {score <= 5 && (
+                <div className="piece-wrapper" onClick={e => onClickPiece(e)} style={{ left, top }}>
+                  <GithubKitty className="Board-piece" style={{ fill, transform }} />
+                </div>
+              )}
+            </Fragment>
           )
         }}
       </BoardConsumer>
