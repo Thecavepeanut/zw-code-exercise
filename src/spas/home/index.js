@@ -7,6 +7,8 @@ import PlayButton from "./components/PlayButton";
 import Scoreboard from "./components/Scoreboard";
 import Message from "./components/Message";
 
+const MAX_SCORE = 10;
+
 class HomeSPA extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,6 @@ class HomeSPA extends Component {
       targetLeftPosition: 0,
       targetTopPosition: 0,
       score: 0,
-      maxScore: 10,
       isPlaying: false,
       gamesPlayed: 0
     };
@@ -45,10 +46,10 @@ class HomeSPA extends Component {
   }
 
   updateTargetPosition() {
-    this.setState({
-      targetLeftPosition: this.getRandomPosition(0, window.innerWidth),
-      targetTopPosition: this.getRandomPosition(0, window.innerHeight)
-    });
+    this.setState(state => ({
+      targetLeftPosition: this.getRandomPosition(0, state.windowWidth),
+      targetTopPosition: this.getRandomPosition(0, state.windowHeight)
+    }));
   }
 
   getRandomPosition(min, max) {
@@ -62,29 +63,29 @@ class HomeSPA extends Component {
   }
 
   handleDroneHit(event) {
-    const { score, maxScore } = this.state;
+    const { score } = this.state;
 
-    if (score < maxScore) {
+    if (score < MAX_SCORE) {
       this.setState(
-        currentState => ({
-          score: currentState.score + 1
+        state => ({
+          score: state.score + 1
         }),
         () => {
-          this.checkForWin(this.state.score);
+          this.checkForWin();
         }
       );
     }
   }
 
-  checkForWin(score) {
-    const { maxScore } = this.state;
+  checkForWin() {
+    const { score } = this.state;
 
-    if (score >= maxScore) {
-      this.setState(currentState => ({
+    if (score >= MAX_SCORE) {
+      this.setState(state => ({
         isPlaying: false,
-        gamesPlayed: currentState.gamesPlayed + 1,
-        targetLeftPosition: currentState.targetLeftPosition,
-        targetTopPosition: currentState.windowHeight + 100
+        gamesPlayed: state.gamesPlayed + 1,
+        targetLeftPosition: state.targetLeftPosition,
+        targetTopPosition: state.windowHeight + 100
       }));
     }
   }

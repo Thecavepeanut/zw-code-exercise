@@ -20,11 +20,11 @@ html, body {
 }
 
 body {
-  font-family: $sans-serif;
-  position: relative;
   background:radial-gradient(200% 100% at bottom center,#F7F7B6,#E96F92,#75517D,#1B2947);
   background:radial-gradient(220% 105% at top center,#1B2947 10%,#75517D 40%,#E96F92 65%,#F7F7B6);
   background-attachment:fixed;
+  font-family: $sans-serif;
+  position: relative;
 }
 
 #react-spa {
@@ -90,12 +90,11 @@ body {
 }
 
 .game__message {
-  flex: 0 0 auto;
-  animation-name: fade-in;
-  animation-duration: 500ms;
-  animation-timing-function: ease-out;
+  animation-name: fade-in 500ms ease-out;
   color: #FFF;
+  flex: 0 0 auto;
   font-size: 30px;
+  user-select: none;
 
   @media screen and (min-width: 760px) {
     font-size: 5vw;
@@ -114,13 +113,14 @@ body {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 1.2px;
-  margin-top: 0;
   max-width: 240px;
   outline: 0;
   padding: 20px;
   position: relative;
   text-align: center;
-  transition: margin-top 100ms ease-out;
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform 100ms ease-out;
+  user-select: none;
   width: 80%;
 
   @media screen and (min-width: 760px) {
@@ -131,6 +131,6 @@ body {
   }
 
   &:active {
-    margin-top: 10px;
+    transform: translate3d(0px, 10px, 0px);
   }
 }
