@@ -1,6 +1,6 @@
 import React from "react";
 
-const PlayButton = ({ isPlaying, handleClick, gamesPlayed }) => {
+const PlayButton = ({ gamesPlayed, handleClick, isPlaying }) => {
   const buttonText = gamesPlayed > 0 ? "Play Again" : "Start Game";
 
   if (!isPlaying) {

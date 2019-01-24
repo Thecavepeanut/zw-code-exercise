@@ -113,17 +113,17 @@ class HomeSPA extends Component {
 
     return (
       <div className={`game ${isPlaying && "is-playing"}`}>
-        <Message isPlaying={isPlaying} gamesPlayed={gamesPlayed} />
+        <Message gamesPlayed={gamesPlayed} isPlaying={isPlaying} />
         <PlayButton
-          isPlaying={isPlaying}
-          handleClick={this.startGame}
           gamesPlayed={gamesPlayed}
+          handleClick={this.startGame}
+          isPlaying={isPlaying}
         />
         <Scoreboard isPlaying={isPlaying} score={score} />
         <Target
-          styles={targetStyle}
           handleDroneHit={this.handleDroneHit}
           handleTransitionEnd={this.handleTransitionEnd}
+          styles={targetStyle}
         />
       </div>
     );

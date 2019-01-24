@@ -65,6 +65,7 @@ body {
 
   svg {
     animation: flutter $target-flutter-speed infinite;
+    cursor: pointer;
     display: block;
     height: $target-height;
     margin-left: -($target-width/2);

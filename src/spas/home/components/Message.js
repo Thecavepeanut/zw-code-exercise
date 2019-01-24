@@ -1,6 +1,6 @@
 import React from "react";
 
-const Message = ({ isPlaying, gamesPlayed }) => {
+const Message = ({ gamesPlayed, isPlaying }) => {
   if (!isPlaying && gamesPlayed > 0) {
     return (
       <div className="game__message">

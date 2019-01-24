@@ -3,7 +3,7 @@ import "../home.font";
 
 const Point = () => <span className="icon icon-flash" />;
 
-const Scoreboard = ({ score, isPlaying }) => {
+const Scoreboard = ({ isPlaying, score }) => {
   if (isPlaying) {
     const scores = [...Array(score)].map((point, index) => (
       <Point key={index} />

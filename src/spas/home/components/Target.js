@@ -1,7 +1,7 @@
 import React from "react";
 import Drone from "../drone.svg";
 
-const Target = ({ styles, handleTransitionEnd, handleDroneHit }) => (
+const Target = ({ handleDroneHit, handleTransitionEnd, styles }) => (
   <div
     className="game__target"
     style={styles}
