@@ -1,8 +1,6 @@
-const BUNDLE_HELPER = require('../../utils')
+const BUNDLE_HELPER = require("../../utils");
 
 module.exports = {
-    files: [
-      './icons/beer.svg'
-    ],
-    fileName: BUNDLE_HELPER.path(__dirname) + '/fonts.[ext]'
-  }
+  files: ["./icons/flash.svg"],
+  fileName: BUNDLE_HELPER.path(__dirname) + "/fonts.[ext]"
+};
