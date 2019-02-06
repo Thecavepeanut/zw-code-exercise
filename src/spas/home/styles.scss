@@ -1,6 +1,108 @@
 /* PUT STYLES HERE */
+body {
+  margin: 0;
+}
 
-svg {
+.react-app,
+.home-spa {
+  height: 100vh;
+  width: 100vw;
+}
+
+.home-spa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(3, 1, 68, 1);
+
+  .scoreboard {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 2px solid yellow;
+    margin: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: yellow;
+    text-align: center;
+
+    .instructions {
+      display: flex;
+      margin: 0;
+    }
+
+    .score-count {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      font-size: 20px;
+      margin: 32px 0 0 0;
+
+      .icon.icon-beer {
+        line-height: 14px;
+        margin: 5px;
+        color: yellow;
+      }
+    }
+  }
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  width: 60vw;
+  height: 60vh;
+  position: relative;
+
+  &.game-active svg {
+    display: flex;
+  }
+
+  svg {
+    display: none;
+    fill: yellow;
+    position: absolute;
     width: 100px;
     height: 100px;
+    overflow: visible;
+    cursor: pointer;
+
+    &:hover {
+      fill: lighten(yellow, 20%);
+    }
+  }
+
+  .game-message {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 16px;
+    color: yellow;
+
+    button {
+      cursor: pointer;
+      font-size: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 1px;
+      border-radius: 0;
+      padding: 8px;
+      background-color: yellow;
+      color: black;
+      border: 0;
+
+      &:hover {
+        background-color: lighten(yellow, 20%);
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    width: 40vw;
+    height: 40vh;
+
+    svg {
+      height: 40px;
+      width: auto;
+    }
+  }
 }
